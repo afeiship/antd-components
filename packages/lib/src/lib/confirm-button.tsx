@@ -76,7 +76,7 @@ export class AcConfirmButton extends Component<AcConfirmButtonProps> {
     return (
       <Popconfirm
         title={title}
-        onConfirm={onClick}
+        onConfirm={(e) => onClick?.(e as any)}
         onCancel={this.handleCancel}
         className={cx(CLASS_NAME, className)}
         {...props}>

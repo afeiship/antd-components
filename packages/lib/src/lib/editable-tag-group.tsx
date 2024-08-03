@@ -92,7 +92,7 @@ export class AcEditableTagGroup extends React.Component<Props> {
           readOnly={readOnly}
           className={`${CLASS_NAME}__input`}
           onChange={this.handleInputChange.bind(this, index)}
-          onBlur={this.handleInputBlur.bind(this, index)}
+          onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
         />
         {!readOnly && <i className={`${CLASS_NAME}__close`} onClick={cb}></i>}
