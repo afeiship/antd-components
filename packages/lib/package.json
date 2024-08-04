@@ -42,7 +42,7 @@
     "@jswork/next-gpid": "^1.0.4",
     "@jswork/next-tree-walk": "^1.0.7",
     "@jswork/noop": "^1.0.0",
-    "@jswork/react-codeflask": "^1.0.16",
+    "@jswork/react-codeflask": "^1.0.18",
     "@jswork/react-list": "^1.2.9",
     "@jswork/weibo2res": "^1.0.4",
     "fast-deep-equal": "^3.1.3",
