@@ -1,7 +1,6 @@
 import React from 'react';
 import { DatePicker, DatePickerProps } from 'antd';
 import cx from 'classnames';
-import dayjs from 'dayjs';
 
 const CLASS_NAME = 'ac-date-picker';
 const STD_FORMAT = 'YYYY-MM-DD HH:mm:ss';
@@ -10,6 +9,7 @@ type StdCallback = (inEvent: StdEventTarget) => void;
 
 type Props = {
   className?: string;
+  dayjs?: any;
   value?: any;
   onChange?: StdCallback;
 } & DatePickerProps;
@@ -33,7 +33,7 @@ export class AcDatePicker extends React.Component<Props> {
   }
 
   get value() {
-    const { value } = this.props;
+    const { value, dayjs } = this.props;
     const fmt = this.valueFormat;
 
     if (value == null || value === '') return null;
@@ -42,14 +42,14 @@ export class AcDatePicker extends React.Component<Props> {
   }
 
   handleChange = (value) => {
-    const { onChange } = this.props;
+    const { onChange, dayjs } = this.props;
     const _value = value ? dayjs(value).format(this.valueFormat) : '';
     const _event = { target: { value: _value } };
     onChange?.(_event);
   };
 
   render() {
-    const { className, format, value, onChange, ...rest } = this.props;
+    const { className, format, value, onChange, dayjs, ...rest } = this.props;
 
     return (
       <DatePicker className={cx(CLASS_NAME, className)} value={this.value} onChange={this.handleChange} {...rest} />
