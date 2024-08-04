@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup';
+import { copy } from 'esbuild-plugin-copy';
 
 export default defineConfig({
   entry: ['src/main.ts'],
@@ -22,4 +23,15 @@ export default defineConfig({
       js: `.${format}.js`,
     };
   },
+  esbuildPlugins: [
+    copy({
+      // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
+      // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
+      resolveFrom: 'cwd',
+      assets: {
+        from: ['./src/styles/*'],
+        to: ['./dist/styles'],
+      },
+    }),
+  ],
 });
