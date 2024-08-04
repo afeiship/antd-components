@@ -1,6 +1,6 @@
 {
   "name": "@jswork/antd-components",
-  "version": "1.0.83",
+  "version": "1.0.85",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -55,7 +55,6 @@
     "ant",
     "antd",
     "components",
-    "react",
-    "deprecated"
+    "react"
   ]
 }
