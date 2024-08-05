@@ -9,7 +9,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "cd packages/example && yarn run dev",
+    "dev": "yarrn run dev:example",
+    "dev:lib": "cd packages/lib && yarn run dev",
+    "dev:example": "cd packages/example && yarn run dev",
     "predocs": "rm -rf docs && node scripts/markdown.js",
     "docs": "cd packages/example && yarn run build",
     "postdocs": "cp -R packages/example/dist docs",
