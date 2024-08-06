@@ -17,8 +17,9 @@ export default defineConfig({
   external: [
     'react',
     'react-dom',
+    'classnames',
     'antd',
-    '@ant-design-icons',
+    '@ant-design/icons',
     '@jswork/next',
     '@jswork/antd-form-builder',
     '@jswork/antd-tpls',
