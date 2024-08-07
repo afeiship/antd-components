@@ -19,6 +19,7 @@ export default defineConfig({
     'react-dom',
     'classnames',
     'antd',
+    'dayjs',
     '@ant-design/icons',
     '@jswork/next',
     '@jswork/antd-form-builder',
@@ -34,7 +35,7 @@ export default defineConfig({
     'fast-deep-equal',
     'nanoid',
     'react-input-autosize',
-    'sortablejs'
+    'sortablejs',
   ],
   loader: {
     '.svg': 'dataurl',
