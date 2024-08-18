@@ -18,6 +18,7 @@ export default defineConfig({
     'react',
     'react-dom',
     'classnames',
+    'lodash',
     'antd',
     'dayjs',
     '@ant-design/icons',
