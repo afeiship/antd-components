@@ -1,3 +1,9 @@
+import { breadcrumbDefault } from './tpls/breadcrumb';
+import { kv, checkboxKv, radioKv, treeKv, selectKv, treeSelectKv } from './tpls/kv';
+import { raw, checkboxRaw, radioRaw, selectRaw } from './tpls/raw';
+import { transferLabel } from './tpls/transfer';
+
+
 export * from './lib/alert';
 export * from './lib/breadcrumb';
 export * from './lib/checkable-dropdown';
@@ -32,3 +38,24 @@ export * from './lib/upload-dragger';
 export * from './lib/upload-picture';
 export * from './lib/upload-picture-card';
 export * from './lib/upload';
+
+
+// export all templates
+export {
+  // breadcrumb
+  breadcrumbDefault,
+  // kv
+  kv,
+  checkboxKv,
+  radioKv,
+  treeKv,
+  selectKv,
+  treeSelectKv,
+  // raw
+  raw,
+  checkboxRaw,
+  radioRaw,
+  selectRaw,
+  // transfer
+  transferLabel,
+};
