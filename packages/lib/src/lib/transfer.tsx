@@ -2,7 +2,7 @@ import React from 'react';
 import noop from '@jswork/noop';
 import { Transfer, TransferProps } from 'antd';
 import cx from 'classnames';
-import { transferLabel } from '@jswork/antd-tpls';
+import { transferLabel } from '../tpls/transfer';
 
 const CLASS_NAME = 'ac-transfer';
 type StdEventTarget = { target: { value: any } };

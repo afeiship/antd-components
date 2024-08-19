@@ -1,8 +1,11 @@
 # antd
 > This is an example page.
 
-## antd
-import { alert } from '@jswork/antd-components';
+## alert/confirm/prompt
+import { alert, confirm, prompt } from '@jswork/antd-components';
 import { Button } from 'antd';
 
-<Button onClick={()=>alert('Hello Antd')}>Show Alert</Button>
+<Button onClick={() => alert('Hello Antd')}>Show Alert</Button>
+<Button onClick={() => confirm('Are you sure?')}>Show Confirm</Button>
+<Button onClick={() => prompt('What is your name?').then((res) => console.log(res))}>Show Prompt</Button>
+

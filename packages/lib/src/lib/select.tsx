@@ -3,7 +3,7 @@ import ReactList from '@jswork/react-list';
 import noop from '@jswork/noop';
 import { Select, SelectProps } from 'antd';
 import cx from 'classnames';
-import { selectKv, kv as KvTmpl } from '@jswork/antd-tpls';
+import { selectKv, kv as KvTmpl } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-select';
 const DEFAULT_KV = {

@@ -2,12 +2,12 @@ import React from 'react';
 import { Tree, TreeProps } from 'antd';
 import cx from 'classnames';
 import '@jswork/next-tree-walk';
-import { treeKv, kv as KvTmpl } from '@jswork/antd-tpls';
+import { treeKv, kv as KvTmpl } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-tree';
 const DEFAULT_KV = {
   label: 'label',
-  value: 'value'
+  value: 'value',
 };
 
 type Props = {
@@ -27,7 +27,7 @@ export class AcTree extends React.Component<Props> {
     items: [],
     kv: DEFAULT_KV,
     template: treeKv,
-    itemsKey: 'children'
+    itemsKey: 'children',
   };
 
   get childView() {
@@ -40,7 +40,7 @@ export class AcTree extends React.Component<Props> {
     if (kv === DEFAULT_KV) return template!(args);
     return KvTmpl(args, {
       component: Tree.TreeNode,
-      ...kv
+      ...kv,
     });
   };
 

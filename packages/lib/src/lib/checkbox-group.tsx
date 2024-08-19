@@ -3,7 +3,7 @@ import ReactList from '@jswork/react-list';
 import noop from '@jswork/noop';
 import { Checkbox } from 'antd';
 import cx from 'classnames';
-import { checkboxKv } from '@jswork/antd-tpls';
+import { checkboxKv } from '../tpls/kv';
 import { CheckboxGroupProps } from 'antd/es/checkbox';
 
 const CLASS_NAME = 'ac-checkbox-group';

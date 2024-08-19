@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "@jswork/antd-form-builder": "^1.1.27",
-    "@jswork/antd-tpls": "^1.0.23",
     "@jswork/loadkit": "^1.0.6",
     "@jswork/next-dom-event": "^1.0.8",
     "@jswork/next-gpid": "^1.0.4",

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import noop from '@jswork/noop';
 import { TreeSelect, TreeSelectProps } from 'antd';
 import '@jswork/next-tree-walk';
-import { treeSelectKv } from '@jswork/antd-tpls';
+import { treeSelectKv } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-tree-select';
 type StdEventTarget = { target: { value: any } };
@@ -26,7 +26,7 @@ export class AcTreeSelect extends React.Component<Props> {
     items: [],
     template: treeSelectKv,
     itemsKey: 'children',
-    onChange: noop
+    onChange: noop,
   };
 
   get childView() {
