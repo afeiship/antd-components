@@ -8,7 +8,7 @@ import { selectKv, kv as KvTmpl } from '../tpls/kv';
 const CLASS_NAME = 'ac-select';
 const DEFAULT_KV = {
   label: 'label',
-  value: 'value',
+  value: 'value'
 };
 
 type StdEventTarget = { target: { value: any } };
@@ -33,11 +33,11 @@ export class AcSelect extends React.Component<Props> {
     kv: DEFAULT_KV,
     template: selectKv,
     onChange: noop,
-    onSearch: noop,
+    onSearch: noop
   };
 
   state = {
-    value: this.props.value,
+    value: this.props.value
   };
 
   shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
@@ -64,7 +64,7 @@ export class AcSelect extends React.Component<Props> {
     if (kv === DEFAULT_KV) return template!(args);
     return KvTmpl(args, {
       component: Select.Option,
-      ...kv,
+      ...kv
     });
   };
 
@@ -73,6 +73,7 @@ export class AcSelect extends React.Component<Props> {
     const { value: _value } = this.state;
     return (
       <ReactList
+        allowEmpty
         as={Select}
         onChange={this.handleChange}
         className={cx(CLASS_NAME, className)}
