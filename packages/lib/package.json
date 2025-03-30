@@ -1,6 +1,6 @@
 {
   "name": "@jswork/antd-components",
-  "version": "1.0.92",
+  "version": "1.0.93",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsup",
     "postbuild": "postsass -s src/style.scss -d dist/style.css -c",
-    "release": "release-it --ci"
+    "release": "release-it"
   },
   "devDependencies": {
     "@jswork/harmony-events": "^1.2.11",
