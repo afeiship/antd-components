@@ -65,7 +65,7 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
         value={stateValue}
         onChange={this.handleChange}
         {...props}>
-        <ReactList items={items} template={template} />
+        <ReactList items={items || []} template={template} />
       </Checkbox.Group>
     );
   }

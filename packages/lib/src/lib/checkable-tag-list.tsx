@@ -89,7 +89,7 @@ export class AcCheckableTagList extends React.Component<Props> {
           {label}
         </Button>
         <ReactList
-          items={items}
+          items={items || []}
           template={({ item, index }) => {
             const _value = this.state.value as any[];
             const isChecked = _value?.includes(item.value);

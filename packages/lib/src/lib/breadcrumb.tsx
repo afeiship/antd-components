@@ -33,7 +33,7 @@ export class AcBreadcrumb extends React.Component<Props> {
     const { className, value, items, template, onChange, ...props } = this.props;
     return (
       <Breadcrumb className={cx(className, CLASS_NAME)} {...props}>
-        <ReactList items={items} template={template} />
+        <ReactList items={items || []} template={template} />
       </Breadcrumb>
     );
   }

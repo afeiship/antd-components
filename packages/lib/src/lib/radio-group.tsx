@@ -60,7 +60,7 @@ export class AcRadioGroup extends React.Component<Props> {
 
     return (
       <Radio.Group className={cx(CLASS_NAME, className)} onChange={this.handleChange} {...props}>
-        <ReactList items={items} template={this.templateCallback} />
+        <ReactList items={items || []} template={this.templateCallback} />
       </Radio.Group>
     );
   }
