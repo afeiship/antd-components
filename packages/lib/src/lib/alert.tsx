@@ -4,16 +4,16 @@ import { Input, InputProps, Modal } from 'antd';
 
 declare global {
   interface NxStatic {
-    alert: typeof alert;
-    confirm: typeof confirm;
-    prompt: typeof prompt;
+    alert: (inMessage: string, inTitle?: String) => any;
+    confirm: (inMessage: string, inTitle?: String) => any;
+    prompt: (inMessage: string, inOptions?: InputProps) => any;
   }
 }
 
 export const alert = (inMessage: string, inTitle?: String) => {
   return Modal.info({
     title: inTitle || 'Tips',
-    content: inMessage
+    content: inMessage,
   });
 };
 
@@ -23,7 +23,7 @@ export const confirm = (inMessage: string, inTitle?: String) => {
       title: inTitle || 'Confirm',
       content: inMessage,
       onOk: () => resolve(true),
-      onCancel: () => resolve(false)
+      onCancel: () => resolve(false),
     });
   });
 };
@@ -43,7 +43,7 @@ export const prompt = (inMessage: string, inOptions?: InputProps) => {
         />
       ),
       onOk: () => resolve(value),
-      onCancel: () => resolve(null)
+      onCancel: () => resolve(null),
     });
   });
 };
