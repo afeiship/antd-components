@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import ReactList from '@jswork/react-list';
 import noop from '@jswork/noop';
-import { Radio } from 'antd';
+import { Radio, RadioGroupProps } from 'antd';
 import cx from 'classnames';
 import { radioKv } from '../tpls/kv';
 
@@ -20,7 +20,7 @@ type Props = {
   template?: TemplateCallback;
   templateOptions?: any;
   buttonStyle?: 'solid' | 'outline';
-} & HTMLAttributes<any>;
+} & RadioGroupProps & HTMLAttributes<any>;
 
 export class AcRadioGroup extends React.Component<Props> {
   static displayName = CLASS_NAME;
@@ -29,7 +29,7 @@ export class AcRadioGroup extends React.Component<Props> {
     items: [],
     template: radioKv,
     onChange: noop,
-    onSearch: noop
+    onSearch: noop,
   };
 
   get templateCallback() {
