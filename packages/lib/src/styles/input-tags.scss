@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .ac-input-tags {
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +19,8 @@
   //not disabled
   &:not([data-disabled="true"]) {
     border-color: #4096ff;
-    outline-color: lighten(#4096ff, 10%);
+    //outline-color: lighten(#4096ff, 10%);
+    outline-color: color.adjust(#4096ff, $lightness: 10%);
   }
 
   &__tag {

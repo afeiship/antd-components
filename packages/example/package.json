@@ -20,13 +20,14 @@
     ]
   },
   "dependencies": {
+    "@jswork/antd-components": "file:../lib",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@jswork/style-guide": "^1.0.4",
     "@jswork/presets-tailwind": "^1.2.2",
+    "@jswork/style-guide": "^1.0.4",
     "@tailwindcss/vite": "^4.0.6",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",

@@ -29,6 +29,7 @@ export * from './lib/select';
 export * from './lib/slider';
 export * from './lib/slider-range';
 export * from './lib/switch';
+export * from './lib/table';
 export * from './lib/textarea';
 export * from './lib/time-picker';
 export * from './lib/transfer';

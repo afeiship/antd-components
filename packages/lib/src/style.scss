@@ -1,6 +1,6 @@
-@import './styles/override';
-@import './styles/input-tags';
-@import '@jswork/react-codeflask/dist/style.scss';
+@use './styles/override';
+@use './styles/input-tags';
+@use '@jswork/react-codeflask/dist/style.scss';
 
 .ac-checkable-tag {
   user-select: none;
