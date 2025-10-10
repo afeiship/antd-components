@@ -12,15 +12,34 @@ const Anonymous: FC = () => {
     return { data, total: 100 };
   };
 
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',
+    },
+    {
+      title: 'Body',
+      dataIndex: 'body',
+      key: 'body',
+    },
+  ];
+
   useEffect(() => {
     fetchData({ current: 1, pageSize: 10 }).then((data) => {
+      console.log('data: ', data);
       setDataSource(data.data);
     });
   }, []);
 
   return (
     <div className="text-red-100">
-      <AcTable rowKey="id" dataSource={dataSource} />
+      <AcTable rowKey="id" dataSource={dataSource} columns={columns} pagination={{  total: 100 }} />
     </div>
   );
 };
