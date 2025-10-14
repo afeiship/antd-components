@@ -1,60 +1,70 @@
+// RemoteTable.tsx
 import { AcTable } from '@jswork/antd-components';
 import { FC, useEffect, useState } from 'react';
 
-const Anonymous: FC = () => {
-  // GET https://jsonplaceholder.typicode.com/posts?_page=1&_limit=10
-  const [dataSource, setDataSource] = useState([]);
+interface RemoteTableProps {
+  api: string; // 基础 API 地址，如 'https://jsonplaceholder.typicode.com/posts'
+  columns: any[];
+  rowKey?: string;
+  pageParam?: string;   // 默认 '_page'
+  limitParam?: string;  // 默认 '_limit'
+  total?: number;       // 可选：如果后端不返回 total，可手动指定
+  defaultPageSize?: number;
+}
+
+const RemoteTable: FC<RemoteTableProps> = ({
+                                             api,
+                                             columns,
+                                             rowKey = 'id',
+                                             pageParam = '_page',
+                                             limitParam = '_limit',
+                                             total = 100,
+                                             defaultPageSize = 5,
+                                           }) => {
+  const [dataSource, setDataSource] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [current, setCurrent] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  const fetchData = async (params) => {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?_page=${params.current}&_limit=${params.pageSize}`,
-    );
-    const data = await response.json();
-    return { data, total: 100 };
+  const [pageSize, setPageSize] = useState(defaultPageSize);
+
+  const fetchData = async (page: number, size: number) => {
+    setIsLoading(true);
+    try {
+      const url = new URL(api);
+      url.searchParams.set(pageParam, String(page));
+      url.searchParams.set(limitParam, String(size));
+
+      const response = await fetch(url.toString());
+      const data = await response.json();
+      setDataSource(data);
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+      setDataSource([]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
-    },
-    {
-      title: 'Body',
-      dataIndex: 'body',
-      key: 'body',
-    },
-  ];
-
   useEffect(() => {
-    setIsLoading(true);
-    fetchData({ current, pageSize }).then((data) => {
-      console.log('data: ', data);
-      setDataSource(data.data);
-      setIsLoading(false);
-    });
-  }, [current, pageSize]);
+    fetchData(current, pageSize);
+  }, [current, pageSize, api, pageParam, limitParam]);
 
   return (
-    <div className="text-red-100">
-      <AcTable rowKey="id" loading={isLoading} dataSource={dataSource} columns={columns} pagination={{
-        total: 100,
+    <AcTable
+      rowKey={rowKey}
+      loading={isLoading}
+      dataSource={dataSource}
+      columns={columns}
+      pagination={{
+        total,
         current,
         pageSize,
-        onChange: (page, pageSize) => {
+        onChange: (page, size) => {
           setCurrent(page);
-          setPageSize(pageSize);
+          setPageSize(size);
         },
-      }} />
-    </div>
+      }}
+    />
   );
 };
 
-export default Anonymous;
+export default RemoteTable;
