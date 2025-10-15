@@ -1,25 +1,10 @@
-import RemoteTable from '@/components/TableDemo.tsx';
+import { AcTable } from '@jswork/antd-components';
 
 export default function App() {
   const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-      width: 100,
-    },
-    {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
-      width: 200,
-    },
-    {
-      title: 'Body',
-      dataIndex: 'body',
-      key: 'body',
-      width: 300,
-    },
+    { title: 'ID', dataIndex: 'id', key: 'id', width: 100, },
+    { title: 'Title', dataIndex: 'title', key: 'title', width: 200, },
+    { title: 'Body', dataIndex: 'body', key: 'body', width: 300 },
   ];
 
   const fetcher = async ({ current, pageSize }) => {
@@ -33,7 +18,7 @@ export default function App() {
 
   return (
     <div className="border border-solid container mx-auto my-10 bg-gray-200 p-5" data-role="app-container">
-      <RemoteTable
+      <AcTable
         fetcher={fetcher}
         columns={columns}
         // 可选：如果后端用 page/size 而不是 _page/_limit

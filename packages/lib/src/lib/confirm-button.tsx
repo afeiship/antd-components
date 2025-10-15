@@ -22,6 +22,7 @@ export interface AcConfirmButtonProps extends Omit<PopconfirmProps, 'title'> {
   type?: ButtonProps['type'] | 'raw' | 'anchor';
   childProps?: ButtonProps;
   onClick?: React.MouseEventHandler<HTMLElement>;
+  children?: React.ReactNode;
 }
 
 export class AcConfirmButton extends Component<AcConfirmButtonProps> {
