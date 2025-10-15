@@ -17,6 +17,7 @@ type AcTableProps = TableProps & {
    * @returns Promise<{ data: any[]; total: number }>
    */
   fetcher: (params: { current: number; pageSize: number }) => Promise<{ data: any[]; total: number }>;
+  onPageChange?: (current: number, size: number) => void;
   rowKey?: string;
   defaultCurrent?: number;
   defaultPageSize?: number;
@@ -76,7 +77,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
   };
 
   render() {
-    const { className, pagination, ...rest } = this.props;
+    const { className, pagination, onPageChange, ...rest } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
     return (
       <Table
@@ -87,6 +88,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
           current,
           pageSize,
           onChange: (page, size) => {
+            onPageChange?.(page, size);
             this.setState({ current: page, pageSize: size }, () => {
               void this.fetchData(page, size);
             });
