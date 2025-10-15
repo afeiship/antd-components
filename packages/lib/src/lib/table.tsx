@@ -76,7 +76,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
   };
 
   render() {
-    const { className, ...rest } = this.props;
+    const { className, pagination, ...rest } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
     return (
       <Table
@@ -91,6 +91,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
               void this.fetchData(page, size);
             });
           },
+          ...pagination,
         }}
         {...rest}
       />
