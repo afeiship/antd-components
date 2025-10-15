@@ -7,10 +7,17 @@
 import React from 'react';
 import { Table, TableProps } from 'antd';
 import cx from 'classnames';
+import type { EventMittNamespace } from '@jswork/event-mitt';
+import { ReactHarmonyEvents } from '@jswork/harmony-events';
 
 const CLASS_NAME = 'ac-table';
 
 type AcTableProps = TableProps & {
+  /**
+   * The identity name.
+   * @default '@'
+   */
+  name?: string;
   /**
    * 自定义数据获取函数
    * @param params { current: number; pageSize: number }
@@ -27,11 +34,21 @@ type AcTableProps = TableProps & {
 export class AcTable extends React.Component<AcTableProps, any> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
+  private harmonyEvents: ReactHarmonyEvents | null = null;
+  static event: EventMittNamespace.EventMitt;
+  static events = [
+    'refetch',
+    'reset',
+  ];
+
   static defaultProps = {
+    name: '@',
     rowKey: 'id',
     defaultCurrent: 1,
     defaultPageSize: 10,
   };
+
+  public eventBus: EventMittNamespace.EventMitt = AcTable.event;
 
   constructor(props) {
     super(props);
@@ -47,7 +64,13 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
   async componentDidMount() {
     const { current, pageSize } = this.state;
+    this.harmonyEvents = ReactHarmonyEvents.create(this);
+    this.eventBus = AcTable.event;
     await this.fetchData(current, pageSize);
+  }
+
+  componentWillUnmount() {
+    this.harmonyEvents?.destroy();
   }
 
   fetchData = async (page: number, size: number) => {
@@ -75,6 +98,23 @@ export class AcTable extends React.Component<AcTableProps, any> {
       }
     }
   };
+
+  /* ----- public eventBus methods start ----- */
+  refetch = async () => {
+    const { current, pageSize } = this.state;
+    await this.fetchData(current, pageSize);
+  };
+
+  reset = async () => {
+    const { defaultCurrent, defaultPageSize } = this.props;
+    this.setState({
+      current: defaultCurrent,
+      pageSize: defaultPageSize,
+    }, () => {
+      void this.fetchData(defaultCurrent!, defaultPageSize!);
+    });
+  };
+  /* ----- public eventBus methods end  ----- */
 
   render() {
     const { className, pagination, onPageChange, ...rest } = this.props;

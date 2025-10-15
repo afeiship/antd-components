@@ -648,7 +648,7 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@jswork/antd-components@file:packages/lib":
-  version "1.0.96"
+  version "1.0.100"
   dependencies:
     "@jswork/antd-form-builder" "^1.1.27"
     "@jswork/loadkit" "^1.0.6"
@@ -686,6 +686,13 @@
   dependencies:
     "@types/prismjs" "^1.26.4"
     prismjs "^1.29.0"
+
+"@jswork/event-mitt@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.npmmirror.com/@jswork/event-mitt/-/event-mitt-2.0.17.tgz#29757da309fdd50d43900fc71d85c1002b8df024"
+  integrity sha512-mll4TZinjS1yZkF/cw3fE67Yb+u5sv9Uic0DUkyiJjTHNMpP68nzWxoiQ9YEB2DqFvjeQP9FgDqXI53vHOm+rg==
+  dependencies:
+    "@jswork/wildcard-match" "^1.0.1"
 
 "@jswork/harmony-events@^1.2.11":
   version "1.2.11"
@@ -827,6 +834,11 @@
   version "1.0.4"
   resolved "https://registry.npmmirror.com/@jswork/weibo2res/-/weibo2res-1.0.4.tgz#988ea8ba28bd9f72781966bb670e92771148971a"
   integrity sha512-nwz7Z5i/Hvh1JTKM7GKpT7EBTUmschzL5/fjpg6rFolVarpHIhbtQXsxp51iv1z1M9irDRNH6WYtnhyeQk0ciA==
+
+"@jswork/wildcard-match@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/@jswork/wildcard-match/-/wildcard-match-1.0.1.tgz#0f850690705e0bd57cf0077745542e6ad7fd9c6f"
+  integrity sha512-b6PHQHmU/XDGzJMeEuIcqXQHS4ZK+mqUOcwz9RBpidTkNwrZ2r9+60dooxUwirAAvWDbaVfiE0pVxehB+B/FyA==
 
 "@napi-rs/wasm-runtime@^1.0.5":
   version "1.0.5"
