@@ -41,6 +41,10 @@ export * from './lib/upload-picture-card';
 export * from './lib/upload';
 
 
+// commands
+import useTableCommand from './lib/use-table-command';
+
+
 // export all templates
 export {
   // breadcrumb
@@ -59,4 +63,7 @@ export {
   selectRaw,
   // transfer
   transferLabel,
+
+  // ---- commands ----
+  useTableCommand,
 };
