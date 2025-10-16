@@ -1,11 +1,11 @@
 /**
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
- * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-03 07:13:49
+ * @LastEditors: aric.zheng 1290657123@qq.com
+ * @LastEditTime: 2025-10-16 08:20:55
  */
 import React from 'react';
-import { Table, TableProps } from 'antd';
+import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -50,7 +50,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
   public eventBus: EventMittNamespace.EventMitt = AcTable.event;
 
-  constructor(props) {
+  constructor(props: AcTableProps) {
     super(props);
     const { defaultCurrent, defaultPageSize } = this.props;
     this.state = {
@@ -92,6 +92,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
           total: 0,
         });
       }
+      void message.error(error.message || error.toString());
     } finally {
       if (!abortController.signal.aborted) {
         this.setState({ isLoading: false });
@@ -114,6 +115,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
       void this.fetchData(defaultCurrent!, defaultPageSize!);
     });
   };
+
   /* ----- public eventBus methods end  ----- */
 
   render() {
