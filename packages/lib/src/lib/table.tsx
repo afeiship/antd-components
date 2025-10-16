@@ -12,7 +12,7 @@ import { ReactHarmonyEvents } from '@jswork/harmony-events';
 
 const CLASS_NAME = 'ac-table';
 
-type AcTableProps = TableProps & {
+export type AcTableProps = TableProps & {
   /**
    * The identity name.
    * @default '@'
