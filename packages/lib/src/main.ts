@@ -2,44 +2,42 @@ import { breadcrumbDefault } from './tpls/breadcrumb';
 import { kv, checkboxKv, radioKv, treeKv, selectKv, treeSelectKv } from './tpls/kv';
 import { raw, checkboxRaw, radioRaw, selectRaw } from './tpls/raw';
 import { transferLabel } from './tpls/transfer';
+import { AcBreadcrumb } from './lib/breadcrumb';
+import { AcCheckableDropdown } from './lib/checkable-dropdown';
+import { AcCheckableTag } from './lib/checkable-tag';
+import { AcCheckableTagList } from './lib/checkable-tag-list';
+import { AcCheckbox } from './lib/checkbox';
+import { AcCheckboxGroup } from './lib/checkbox-group';
+import { AcCodeFlask } from './lib/codeflask';
+import { AcConfirmButton } from './lib/confirm-button';
+import { AcDatePicker } from './lib/date-picker';
+import { AcEditableTagGroup } from './lib/editable-tag-group';
+import { AcInput } from './lib/input';
+import { AcInputHidden } from './lib/input-hidden';
+import { AcInputNumber } from './lib/input-number';
+import { AcInputTags } from './lib/input-tags';
+import { AcInputToken } from './lib/input-token';
+import { AcPreSelect } from './lib/pre-select';
+import { AcRadioGroup } from './lib/radio-group';
+import { AcRangePicker } from './lib/range-picker';
+import { AcRate } from './lib/rate';
+import { AcSearch } from './lib/search';
+import { AcSelect } from './lib/select';
+import { AcSlider } from './lib/slider';
+import { AcSliderRange } from './lib/slider-range';
+import { AcSwitch } from './lib/switch';
+import { AcTable } from './lib/table';
+import { AcTextarea } from './lib/textarea';
+import { AcTimePicker } from './lib/time-picker';
+import { AcTransfer } from './lib/transfer';
+import { AcTree } from './lib/tree';
+import { AcTreeSelect } from './lib/tree-select';
+import { AcUploadDragger } from './lib/upload-dragger';
+import { AcUploadPicture } from './lib/upload-picture';
+import { AcUploadPictureCard } from './lib/upload-picture-card';
+import { AcUpload } from './lib/upload';
 
-
-export * from './lib/alert';
-export * from './lib/breadcrumb';
-export * from './lib/checkable-dropdown';
-export * from './lib/checkable-tag';
-export * from './lib/checkable-tag-list';
-export * from './lib/checkbox';
-export * from './lib/checkbox-group';
-export * from './lib/codeflask';
-export * from './lib/confirm-button';
-export * from './lib/date-picker';
-export * from './lib/editable-tag-group';
-export * from './lib/input';
-export * from './lib/input-hidden';
-export * from './lib/input-number';
-export * from './lib/input-tags';
-export * from './lib/input-token';
-export * from './lib/pre-select';
-export * from './lib/radio-group';
-export * from './lib/range-picker';
-export * from './lib/rate';
-export * from './lib/search';
-export * from './lib/select';
-export * from './lib/slider';
-export * from './lib/slider-range';
-export * from './lib/switch';
-export * from './lib/table';
-export * from './lib/textarea';
-export * from './lib/time-picker';
-export * from './lib/transfer';
-export * from './lib/tree';
-export * from './lib/tree-select';
-export * from './lib/upload-dragger';
-export * from './lib/upload-picture';
-export * from './lib/upload-picture-card';
-export * from './lib/upload';
-
+import './lib/alert';
 
 // commands
 import useTableCommand from './lib/use-table-command';
@@ -63,6 +61,42 @@ export {
   selectRaw,
   // transfer
   transferLabel,
+
+  // --- components ---
+  AcBreadcrumb,
+  AcCheckableDropdown,
+  AcCheckableTag,
+  AcCheckableTagList,
+  AcCheckbox,
+  AcCheckboxGroup,
+  AcCodeFlask,
+  AcConfirmButton,
+  AcDatePicker,
+  AcEditableTagGroup,
+  AcInput,
+  AcInputHidden,
+  AcInputNumber,
+  AcInputTags,
+  AcInputToken,
+  AcPreSelect,
+  AcRadioGroup,
+  AcRangePicker,
+  AcRate,
+  AcSearch,
+  AcSelect,
+  AcSlider,
+  AcSliderRange,
+  AcSwitch,
+  AcTable,
+  AcTextarea,
+  AcTimePicker,
+  AcTransfer,
+  AcTree,
+  AcTreeSelect,
+  AcUploadDragger,
+  AcUploadPicture,
+  AcUploadPictureCard,
+  AcUpload,
 
   // ---- commands ----
   useTableCommand,
