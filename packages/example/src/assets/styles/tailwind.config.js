@@ -9,8 +9,11 @@ import jswPresets from '@jswork/presets-tailwind';
 /** @type {import('tailwindcss').Config} */
 export default {
   presets: [jswPresets()],
+  // corePlugins: {
+  //   preflight: false, // 禁用 Tailwind 的 base 样式（即移除 base 层）
+  // },
   theme: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };

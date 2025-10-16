@@ -4,11 +4,12 @@
  * @LastEditors: aric.zheng 1290657123@qq.com
  * @LastEditTime: 2025-10-16 08:20:55
  */
-import React from 'react';
+import React, { FC } from 'react';
 import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
+import '@jswork/next-create-fetcher';
 
 const CLASS_NAME = 'ac-table';
 
@@ -142,3 +143,28 @@ export class AcTable extends React.Component<AcTableProps, any> {
     );
   }
 }
+
+export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
+  name: string;
+  dataPath?: string
+  totalPath?: string;
+};
+
+export const AcTableMain: FC<AcTableMainProps> = (props) => {
+  const { name, dataPath, totalPath, ...rest } = { dataPath: 'rows', totalPath: 'total', ...props };
+  const resourceId = `${name}_index`;
+  const fetcher = nx.createFetcher(resourceId, { dataPath, totalPath });
+
+  return (
+    <AcTable
+      size="middle"
+      rowKey="id"
+      bordered
+      name={name}
+      fetcher={fetcher}
+      pagination={{ showSizeChanger: true }}
+      {...rest}
+    />
+  );
+};
+

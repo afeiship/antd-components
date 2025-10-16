@@ -26,7 +26,7 @@ import { AcSelect, AcSelectFc } from './lib/select';
 import { AcSlider, AcSliderFc } from './lib/slider';
 import { AcSliderRange, AcSliderRangeFc } from './lib/slider-range';
 import { AcSwitch, AcSwitchFc } from './lib/switch';
-import { AcTable } from './lib/table';
+import { AcTable, AcTableMain } from './lib/table';
 import { AcTextarea, AcTextareaFc } from './lib/textarea';
 import { AcTimePicker, AcTimePickerFc } from './lib/time-picker';
 import { AcTransfer, AcTransferFc } from './lib/transfer';
@@ -88,6 +88,7 @@ export {
   AcSliderRange,
   AcSwitch,
   AcTable,
+  AcTableMain,
   AcTextarea,
   AcTimePicker,
   AcTransfer,
