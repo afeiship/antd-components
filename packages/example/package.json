@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "@jswork/antd-components": "file:../lib",
+    "@jswork/antd-components": "^1.0.106",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

@@ -98,7 +98,7 @@ export {
   AcUploadPictureCard,
   AcUpload,
 
-  // --- fc ---
+  // --- fc components ---
   AcCheckableTagFc,
   AcCheckableTagListFc,
   AcCheckboxFc,
