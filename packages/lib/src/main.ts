@@ -4,38 +4,38 @@ import { raw, checkboxRaw, radioRaw, selectRaw } from './tpls/raw';
 import { transferLabel } from './tpls/transfer';
 import { AcBreadcrumb } from './lib/breadcrumb';
 import { AcCheckableDropdown } from './lib/checkable-dropdown';
-import { AcCheckableTag } from './lib/checkable-tag';
-import { AcCheckableTagList } from './lib/checkable-tag-list';
-import { AcCheckbox } from './lib/checkbox';
-import { AcCheckboxGroup } from './lib/checkbox-group';
-import { AcCodeFlask } from './lib/codeflask';
+import { AcCheckableTag, AcCheckableTagFc } from './lib/checkable-tag';
+import { AcCheckableTagList, AcCheckableTagListFc } from './lib/checkable-tag-list';
+import { AcCheckbox, AcCheckboxFc } from './lib/checkbox';
+import { AcCheckboxGroup, AcCheckboxGroupFc } from './lib/checkbox-group';
+import { AcCodeFlask, AcCodeFlaskFc } from './lib/codeflask';
 import { AcConfirmButton } from './lib/confirm-button';
-import { AcDatePicker } from './lib/date-picker';
-import { AcEditableTagGroup } from './lib/editable-tag-group';
-import { AcInput } from './lib/input';
-import { AcInputHidden } from './lib/input-hidden';
-import { AcInputNumber } from './lib/input-number';
-import { AcInputTags } from './lib/input-tags';
-import { AcInputToken } from './lib/input-token';
-import { AcPreSelect } from './lib/pre-select';
-import { AcRadioGroup } from './lib/radio-group';
-import { AcRangePicker } from './lib/range-picker';
-import { AcRate } from './lib/rate';
-import { AcSearch } from './lib/search';
-import { AcSelect } from './lib/select';
-import { AcSlider } from './lib/slider';
-import { AcSliderRange } from './lib/slider-range';
-import { AcSwitch } from './lib/switch';
+import { AcDatePicker, AcDatePickerFc } from './lib/date-picker';
+import { AcEditableTagGroup, AcEditableTagGroupFc } from './lib/editable-tag-group';
+import { AcInput, AcInputFc } from './lib/input';
+import { AcInputHidden, AcInputHiddenFc } from './lib/input-hidden';
+import { AcInputNumber, AcInputNumberFc } from './lib/input-number';
+import { AcInputTags, AcInputTagsFc } from './lib/input-tags';
+import { AcInputToken, AcInputTokenFc } from './lib/input-token';
+import { AcPreSelect, AcPreSelectFc } from './lib/pre-select';
+import { AcRadioGroup, AcRadioGroupFc } from './lib/radio-group';
+import { AcRangePicker, AcRangePickerFc } from './lib/range-picker';
+import { AcRate, AcRateFc } from './lib/rate';
+import { AcSearch, AcSearchFc } from './lib/search';
+import { AcSelect, AcSelectFc } from './lib/select';
+import { AcSlider, AcSliderFc } from './lib/slider';
+import { AcSliderRange, AcSliderRangeFc } from './lib/slider-range';
+import { AcSwitch, AcSwitchFc } from './lib/switch';
 import { AcTable } from './lib/table';
-import { AcTextarea } from './lib/textarea';
-import { AcTimePicker } from './lib/time-picker';
-import { AcTransfer } from './lib/transfer';
+import { AcTextarea, AcTextareaFc } from './lib/textarea';
+import { AcTimePicker, AcTimePickerFc } from './lib/time-picker';
+import { AcTransfer, AcTransferFc } from './lib/transfer';
 import { AcTree } from './lib/tree';
-import { AcTreeSelect } from './lib/tree-select';
-import { AcUploadDragger } from './lib/upload-dragger';
-import { AcUploadPicture } from './lib/upload-picture';
-import { AcUploadPictureCard } from './lib/upload-picture-card';
-import { AcUpload } from './lib/upload';
+import { AcTreeSelect, AcTreeSelectFc } from './lib/tree-select';
+import { AcUploadDragger, AcUploadDraggerFc } from './lib/upload-dragger';
+import { AcUploadPicture, AcUploadPictureFc } from './lib/upload-picture';
+import { AcUploadPictureCard, AcUploadPictureCardFc } from './lib/upload-picture-card';
+import { AcUpload, AcUploadFc } from './lib/upload';
 
 import './lib/alert';
 
@@ -97,6 +97,37 @@ export {
   AcUploadPicture,
   AcUploadPictureCard,
   AcUpload,
+
+  // --- fc ---
+  AcCheckableTagFc,
+  AcCheckableTagListFc,
+  AcCheckboxFc,
+  AcCheckboxGroupFc,
+  AcCodeFlaskFc,
+  AcDatePickerFc,
+  AcEditableTagGroupFc,
+  AcInputFc,
+  AcInputHiddenFc,
+  AcInputNumberFc,
+  AcInputTagsFc,
+  AcInputTokenFc,
+  AcPreSelectFc,
+  AcRadioGroupFc,
+  AcRangePickerFc,
+  AcRateFc,
+  AcSearchFc,
+  AcSelectFc,
+  AcSliderFc,
+  AcSliderRangeFc,
+  AcSwitchFc,
+  AcTextareaFc,
+  AcTimePickerFc,
+  AcTransferFc,
+  AcTreeSelectFc,
+  AcUploadDraggerFc,
+  AcUploadPictureFc,
+  AcUploadPictureCardFc,
+  AcUploadFc,
 
   // ---- commands ----
   useTableCommand,

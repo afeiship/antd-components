@@ -7,13 +7,13 @@ const CLASS_NAME = 'ac-switch';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcSwitchProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;
 } & SwitchProps;
 
-export class AcSwitch extends React.Component<Props> {
+export class AcSwitch extends React.Component<AcSwitchProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -24,7 +24,7 @@ export class AcSwitch extends React.Component<Props> {
     value: Boolean(this.props.value)
   };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcSwitchProps>): boolean {
     const { value } = nextProps;
     if (value !== this.props.value) this.setState({ value });
     return true;
@@ -50,3 +50,8 @@ export class AcSwitch extends React.Component<Props> {
     );
   }
 }
+
+export const AcSwitchFc = (props: AcSwitchProps) => {
+  return <AcSwitch {...props} />;
+};
+

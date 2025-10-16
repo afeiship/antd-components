@@ -8,13 +8,13 @@ const CLASS_NAME = 'ac-slider-range';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcSliderRangeProps = {
   className?: string;
   range?: true;
   onChange?: StdCallback;
 } & Omit<SliderRangeProps, 'range'>;
 
-export class AcSliderRange extends React.Component<Props> {
+export class AcSliderRange extends React.Component<AcSliderRangeProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -38,3 +38,9 @@ export class AcSliderRange extends React.Component<Props> {
     );
   }
 }
+
+export const AcSliderRangeFc = (props: AcSliderRangeProps) => {
+  return <AcSliderRange {...props} />;
+};
+
+

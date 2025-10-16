@@ -28,11 +28,11 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
     value: [],
     template: checkboxKv,
     onChange: noop,
-    onSearch: noop
+    onSearch: noop,
   };
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
   shouldComponentUpdate(nextProps: Readonly<AcCheckboxGroupProps>): boolean {
@@ -70,3 +70,8 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
     );
   }
 }
+
+export const AcCheckboxGroupFc = (props: AcCheckboxGroupProps) => {
+  return <AcCheckboxGroup {...props} />;
+};
+

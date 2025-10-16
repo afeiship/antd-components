@@ -9,19 +9,19 @@ const STD_FORMAT = 'HH:mm:ss';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcTimePickerProps = {
   className?: string;
   value?: string | dayjs.Dayjs;
   defaultValue?: string | dayjs.Dayjs;
   onChange?: StdCallback;
-} & Omit<TimePickerProps, 'value' | 'defaultValue'>;
+} & Omit<TimePickerProps, 'value' | 'defaultValue' | 'onChange' | 'ref'>;
 
-export class AcTimePicker extends React.Component<Props> {
+export class AcTimePicker extends React.Component<AcTimePickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
-    format: STD_FORMAT
+    format: STD_FORMAT,
   };
 
   handleChange = (inEvent) => {
@@ -64,3 +64,8 @@ export class AcTimePicker extends React.Component<Props> {
     );
   }
 }
+
+export const AcTimePickerFc = (props: AcTimePickerProps) => {
+  return <AcTimePicker {...props} />;
+};
+

@@ -8,11 +8,12 @@ import { AcCheckableTag } from './checkable-tag';
 const CLASS_NAME = 'ac-checkable-tag-list';
 const locales = {
   'zh-CN': { selectAll: '全部' },
-  'en-US': { selectAll: 'All' }
+  'en-US': { selectAll: 'All' },
 };
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
-type Props = {
+
+export type AcCheckableTagListProps = {
   /**
    * Main className.
    */
@@ -39,17 +40,17 @@ type Props = {
   disabled?: boolean;
 };
 
-export class AcCheckableTagList extends React.Component<Props> {
+export class AcCheckableTagList extends React.Component<AcCheckableTagListProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     lang: 'zh-CN',
     value: [],
-    onChange: noop
+    onChange: noop,
   };
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
   t = (inKey: string) => {
@@ -57,7 +58,7 @@ export class AcCheckableTagList extends React.Component<Props> {
     return locales[lang!][inKey] || inKey;
   };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcCheckableTagListProps>): boolean {
     const { value } = nextProps;
     if (value !== this.props.value) this.setState({ value });
     return true;
@@ -120,3 +121,8 @@ export class AcCheckableTagList extends React.Component<Props> {
     );
   }
 }
+
+
+export const AcCheckableTagListFc = (props: AcCheckableTagListProps) => {
+  return <AcCheckableTagList {...props} />;
+};

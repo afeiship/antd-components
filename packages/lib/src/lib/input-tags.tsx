@@ -11,7 +11,7 @@ const TRIGGER_KEYS = ['Tab', 'Enter', 'Space'];
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcInputTagsProps = {
   className?: string;
   items?: string[];
   disabled?: boolean;
@@ -24,13 +24,13 @@ type State = {
   isComposite: boolean;
 };
 
-export class AcInputTags extends React.Component<Props, State> {
+export class AcInputTags extends React.Component<AcInputTagsProps, State> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     items: [],
     disabled: false,
-    onChange: noop
+    onChange: noop,
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -41,11 +41,11 @@ export class AcInputTags extends React.Component<Props, State> {
     this.state = {
       items,
       isComposite: false,
-      inputValue: ''
+      inputValue: '',
     };
   }
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcInputTagsProps>): boolean {
     const { items } = nextProps;
     if (!fde(items, this.props.items)) {
       this.setState({ items });
@@ -138,3 +138,8 @@ export class AcInputTags extends React.Component<Props, State> {
     );
   }
 }
+
+export const AcInputTagsFc = (props: AcInputTagsProps) => {
+  return <AcInputTags {...props} />;
+};
+

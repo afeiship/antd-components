@@ -7,24 +7,24 @@ const CLASS_NAME = 'ac-input-number';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcInputNumberProps = {
   className?: string;
   value?: number;
   onChange?: StdCallback;
 } & InputNumberProps;
 
-export class AcInputNumber extends React.Component<Props> {
+export class AcInputNumber extends React.Component<AcInputNumberProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop
+    onChange: noop,
   };
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
-  shouldComponentUpdate(inProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(inProps: Readonly<AcInputNumberProps>): boolean {
     const { value } = inProps;
     if (value !== this.props.value) this.setState({ value });
     return true;
@@ -50,3 +50,9 @@ export class AcInputNumber extends React.Component<Props> {
     );
   }
 }
+
+export const AcInputNumberFc = (props: AcInputNumberProps) => {
+  return <AcInputNumber {...props} />;
+};
+
+

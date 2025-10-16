@@ -14,7 +14,7 @@ type StdCallback = (inEvent: StdEventTarget) => void;
  * @see https://ant.design/components/tag-cn/#Tag.CheckableTag
  */
 
-type Props = {
+export type AcCheckableTagProps = {
   className?: string;
   value?: boolean;
   disabled?: boolean;
@@ -25,7 +25,7 @@ type Props = {
   onCloseClick?: StdCallback;
 } & Omit<CheckableTagProps, 'checked'>;
 
-export class AcCheckableTag extends React.Component<Props> {
+export class AcCheckableTag extends React.Component<AcCheckableTagProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -35,11 +35,11 @@ export class AcCheckableTag extends React.Component<Props> {
     toggleable: false,
     propagation: false,
     onChange: noop,
-    onCloseClick: noop
+    onCloseClick: noop,
   };
 
   state = {
-    value: Boolean(this.props.value)
+    value: Boolean(this.props.value),
   };
 
   get closeIcon() {
@@ -51,7 +51,7 @@ export class AcCheckableTag extends React.Component<Props> {
     return view;
   }
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcCheckableTagProps>): boolean {
     const { value } = nextProps;
     if (value !== this.state.value) {
       this.setState({ value });
@@ -99,3 +99,7 @@ export class AcCheckableTag extends React.Component<Props> {
     );
   }
 }
+
+export const AcCheckableTagFc = (props: AcCheckableTagProps) => {
+  return <AcCheckableTag {...props} />;
+};

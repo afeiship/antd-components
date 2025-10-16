@@ -9,7 +9,7 @@ const CLASS_NAME = 'ac-input-token';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcInputTokenProps = {
   className?: string;
   value?: string;
   onChange?: StdCallback;
@@ -18,20 +18,20 @@ type Props = {
   labelRemove?: string;
 } & InputProps;
 
-export class AcInputToken extends React.Component<Props> {
+export class AcInputToken extends React.Component<AcInputTokenProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
     autoComplete: false,
     labelCreate: '生成Token',
-    labelRemove: '去掉Token'
+    labelRemove: '去掉Token',
   };
 
   private rootRef = React.createRef<any>();
   state = { value: this.props.value };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcInputTokenProps>): boolean {
     const { value } = nextProps;
     if (value !== this.props.value) this.setState({ value });
     return true;
@@ -100,3 +100,8 @@ export class AcInputToken extends React.Component<Props> {
     );
   }
 }
+
+export const AcInputTokenFc = (props: AcInputTokenProps) => {
+  return <AcInputToken {...props} />;
+};
+

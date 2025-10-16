@@ -7,25 +7,25 @@ const CLASS_NAME = 'ac-checkbox';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcCheckboxProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;
 } & CheckboxProps &
   HTMLAttributes<any>;
 
-export class AcCheckbox extends React.Component<Props> {
+export class AcCheckbox extends React.Component<AcCheckboxProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop
+    onChange: noop,
   };
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcCheckboxProps>): boolean {
     const { value } = nextProps;
     if (value !== this.state.value) {
       this.setState({ value });
@@ -57,3 +57,9 @@ export class AcCheckbox extends React.Component<Props> {
     );
   }
 }
+
+
+export const AcCheckboxFc = (props: AcCheckboxProps) => {
+  return <AcCheckbox {...props} />;
+};
+

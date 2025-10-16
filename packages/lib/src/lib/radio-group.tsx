@@ -10,7 +10,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any; index: number }, opts?: any) => React.ReactNode;
 
-type Props = {
+type AcRadioGroupProps = {
   className?: string;
   value?: any;
   defaultValue?: any;
@@ -22,7 +22,7 @@ type Props = {
   buttonStyle?: 'solid' | 'outline';
 } & RadioGroupProps & HTMLAttributes<any>;
 
-export class AcRadioGroup extends React.Component<Props> {
+export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -39,7 +39,7 @@ export class AcRadioGroup extends React.Component<Props> {
 
   state = { value: this.props.value };
 
-  static getDerivedStateFromProps(inProps: Readonly<Props>, inState: any) {
+  static getDerivedStateFromProps(inProps: Readonly<AcRadioGroupProps>, inState: any) {
     const { value } = inProps;
     if (value !== inState.value) return { value };
     return null;
@@ -65,3 +65,8 @@ export class AcRadioGroup extends React.Component<Props> {
     );
   }
 }
+
+export const AcRadioGroupFc = (props: AcRadioGroupProps) => {
+  return <AcRadioGroup {...props} />;
+};
+

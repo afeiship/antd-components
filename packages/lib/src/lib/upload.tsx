@@ -11,7 +11,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
-type Props = {
+type AcUploadProps = {
   className?: string;
   value?: number;
   onChange?: StdCallback;
@@ -19,7 +19,7 @@ type Props = {
   btnProps?: ButtonProps;
 } & UploadProps;
 
-export class AcUpload extends React.Component<Props> {
+export class AcUpload extends React.Component<AcUploadProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -53,3 +53,8 @@ export class AcUpload extends React.Component<Props> {
     );
   }
 }
+
+export const AcUploadFc = (props: AcUploadProps) => {
+  return <AcUpload {...props} />;
+};
+

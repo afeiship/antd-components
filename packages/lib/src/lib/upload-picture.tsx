@@ -20,7 +20,7 @@ export class AcUploadPicture extends AcAbstractUpload {
       return inFileList.map((item) => {
         return item.uid || item.pid || nx.gpid(item.url);
       });
-    }
+    },
   };
 
   render() {
@@ -45,3 +45,8 @@ export class AcUploadPicture extends AcAbstractUpload {
     );
   }
 }
+
+export const AcUploadPictureFc = (props) => {
+  return <AcUploadPicture {...props} />;
+};
+

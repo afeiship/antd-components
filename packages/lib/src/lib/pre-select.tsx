@@ -55,7 +55,7 @@ export class AcPreSelect extends React.Component<AcPreSelectProps> {
   static defaultProps = {
     onChange: noop,
     onSearch: noop,
-    searchable: false
+    searchable: false,
   };
 
   state = { value: this.props.value };
@@ -126,3 +126,9 @@ export class AcPreSelect extends React.Component<AcPreSelectProps> {
     );
   }
 }
+
+
+export const AcPreSelectFc = (props: AcPreSelectProps) => {
+  return <AcPreSelect {...props} />;
+};
+

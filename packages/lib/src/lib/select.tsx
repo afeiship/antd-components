@@ -15,7 +15,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any; index: number }) => React.ReactNode;
 
-type Props = {
+type AcSelectProps = {
   className?: string;
   items?: any[];
   kv?: Record<string, string>;
@@ -24,7 +24,7 @@ type Props = {
   template?: TemplateCallback;
 } & Omit<SelectProps, 'options'>;
 
-export class AcSelect extends React.Component<Props> {
+export class AcSelect extends React.Component<AcSelectProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -40,7 +40,7 @@ export class AcSelect extends React.Component<Props> {
     value: this.props.value,
   };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcSelectProps>): boolean {
     const { value } = nextProps;
     const isNewValue = this.props.value !== value;
     if (isNewValue && value !== this.state.value) {
@@ -88,3 +88,8 @@ export class AcSelect extends React.Component<Props> {
     );
   }
 }
+
+export const AcSelectFc = (props: AcSelectProps) => {
+  return <AcSelect {...props} />;
+};
+

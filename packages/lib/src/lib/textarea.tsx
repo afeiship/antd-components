@@ -9,17 +9,17 @@ const TextArea = Input.TextArea;
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcTextareaProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;
 } & TextAreaProps;
 
-export class AcTextarea extends React.Component<Props> {
+export class AcTextarea extends React.Component<AcTextareaProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop
+    onChange: noop,
   };
 
   render() {
@@ -27,3 +27,8 @@ export class AcTextarea extends React.Component<Props> {
     return <TextArea className={cx(CLASS_NAME, className)} {...props} />;
   }
 }
+
+export const AcTextareaFc = (props: AcTextareaProps) => {
+  return <AcTextarea {...props} />;
+};
+

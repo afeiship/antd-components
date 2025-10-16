@@ -8,11 +8,11 @@ const STD_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 type StdEventTarget = { target: { value: string } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcDatePickerProps = Omit<DatePickerProps, 'value' | 'onChange' | 'ref'> & {
   className?: string;
   value?: any;
   onChange?: StdCallback;
-} & DatePickerProps;
+};
 
 const DATA_FORMAT_HOOKS = {
   date: 'YYYY-MM-DD',
@@ -20,10 +20,10 @@ const DATA_FORMAT_HOOKS = {
   time: 'HH:mm:ss',
 };
 
-export class AcDatePicker extends React.Component<Props> {
+export class AcDatePicker extends React.Component<AcDatePickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps: Props = {
+  static defaultProps: AcDatePickerProps = {
     format: STD_FORMAT,
   };
 
@@ -56,3 +56,9 @@ export class AcDatePicker extends React.Component<Props> {
     );
   }
 }
+
+export const AcDatePickerFc = (props: AcDatePickerProps) => {
+  return <AcDatePicker {...props} />;
+};
+
+

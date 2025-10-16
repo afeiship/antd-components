@@ -7,23 +7,23 @@ const CLASS_NAME = 'ac-input';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcInputProps = {
   className?: string;
   onChange?: StdCallback;
   autoComplete?: boolean;
 } & InputProps;
 
-export class AcInput extends React.Component<Props> {
+export class AcInput extends React.Component<AcInputProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
-    autoComplete: false
+    autoComplete: false,
   };
 
   state = { value: this.props.value };
 
-  shouldComponentUpdate(inProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(inProps: Readonly<AcInputProps>): boolean {
     const { value } = inProps;
     if (value !== this.props.value) this.setState({ value });
     return true;
@@ -56,3 +56,8 @@ export class AcInput extends React.Component<Props> {
     );
   }
 }
+
+export const AcInputFc = (props: AcInputProps) => {
+  return <AcInput {...props} />;
+};
+

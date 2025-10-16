@@ -12,19 +12,19 @@ const { RangePicker } = DatePicker;
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcRangePickerProps = {
   className?: string;
   value?: any;
   defaultValue?: any;
   onChange?: StdCallback;
 } & RangePickerProps;
 
-export class AcRangePicker extends React.Component<Props> {
+export class AcRangePicker extends React.Component<AcRangePickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
-    format: STD_FORMAT
+    format: STD_FORMAT,
   };
 
   handleChange = (inEvent) => {
@@ -57,3 +57,9 @@ export class AcRangePicker extends React.Component<Props> {
     );
   }
 }
+
+export const AcRangePickerFc = (props: AcRangePickerProps) => {
+  return <AcRangePicker {...props} />;
+};
+
+

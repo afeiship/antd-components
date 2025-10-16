@@ -7,12 +7,12 @@ const CLASS_NAME = 'ac-slider';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcSliderProps = {
   className?: string;
   onChange?: StdCallback;
 } & SliderSingleProps;
 
-export class AcSlider extends React.Component<Props> {
+export class AcSlider extends React.Component<AcSliderProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -35,3 +35,9 @@ export class AcSlider extends React.Component<Props> {
     );
   }
 }
+
+export const AcSliderFc = (props: AcSliderProps) => {
+  return <AcSlider {...props} />;
+};
+
+

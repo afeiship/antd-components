@@ -9,7 +9,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any }, options?: any) => React.ReactNode;
 
-type Props = {
+type AcTransferProps = {
   className?: string;
   items?: any[];
   template: TemplateCallback;
@@ -17,7 +17,7 @@ type Props = {
   onChange?: StdCallback;
 } & TransferProps<any>;
 
-export class AcTransfer extends React.Component<Props> {
+export class AcTransfer extends React.Component<AcTransferProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -35,7 +35,7 @@ export class AcTransfer extends React.Component<Props> {
     value: this.props.value
   };
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcTransferProps>): boolean {
     const { value } = nextProps;
     const isNewValue = this.props.value !== value;
     if (isNewValue && value !== this.state.value) {
@@ -68,3 +68,8 @@ export class AcTransfer extends React.Component<Props> {
     );
   }
 }
+
+export const AcTransferFc = (props: AcTransferProps) => {
+  return <AcTransfer {...props} />;
+};
+

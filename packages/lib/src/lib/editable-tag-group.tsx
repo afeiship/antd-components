@@ -13,7 +13,7 @@ const CLASS_NAME = 'ac-editable-tag-group';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcEditableTagGroupProps = {
   /**
    * The extended className for component.
    */
@@ -48,7 +48,7 @@ type Props = {
   triggers?: string[];
 };
 
-export class AcEditableTagGroup extends React.Component<Props> {
+export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -56,7 +56,7 @@ export class AcEditableTagGroup extends React.Component<Props> {
     min: 0,
     max: 10,
     onChange: noop,
-    triggers: [' ', 'Tab']
+    triggers: [' ', 'Tab'],
   };
 
   private inputRef = createRef<HTMLInputElement>();
@@ -75,7 +75,7 @@ export class AcEditableTagGroup extends React.Component<Props> {
 
   state = {
     value: this.props.value,
-    ime: false
+    ime: false,
   };
 
   template = ({ item, index }, cb) => {
@@ -203,7 +203,7 @@ export class AcEditableTagGroup extends React.Component<Props> {
     this.imeEndRes.destroy();
   }
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcEditableTagGroupProps>): boolean {
     const { value } = nextProps;
     if (!deepEqual(value, this.props.value)) {
       this.setState({ value: value!.slice() });
@@ -232,3 +232,8 @@ export class AcEditableTagGroup extends React.Component<Props> {
     );
   }
 }
+
+export const AcEditableTagGroupFc = (props: AcEditableTagGroupProps) => {
+  return <AcEditableTagGroup {...props} />;
+};
+

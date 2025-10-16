@@ -8,7 +8,7 @@ const CLASS_NAME = 'ac-search';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+type AcSearchProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;
@@ -16,14 +16,14 @@ type Props = {
   autoComplete?: boolean;
 } & SearchProps;
 
-export class AcSearch extends React.Component<Props> {
+export class AcSearch extends React.Component<AcSearchProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
     onSearch: noop,
     autoComplete: false,
-    placeholder: '输入关键字搜索'
+    placeholder: '输入关键字搜索',
   };
 
   get complete() {
@@ -47,3 +47,9 @@ export class AcSearch extends React.Component<Props> {
     );
   }
 }
+
+export const AcSearchFc = (props: AcSearchProps) => {
+  return <AcSearch {...props} />;
+};
+
+

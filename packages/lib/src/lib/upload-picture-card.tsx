@@ -54,3 +54,8 @@ export class AcUploadPictureCard extends AcAbstractUpload {
     );
   }
 }
+
+export const AcUploadPictureCardFc = (props) => {
+  return <AcUploadPictureCard {...props} />;
+};
+

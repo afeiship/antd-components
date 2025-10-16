@@ -11,7 +11,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
-type Props = {
+type AcUploadDraggerProps = {
   className?: string;
   value?: any[];
   defaultValue?: any[];
@@ -19,7 +19,7 @@ type Props = {
   onRequest?: CustomRequest;
 } & DraggerProps;
 
-export class AcUploadDragger extends React.Component<Props> {
+export class AcUploadDragger extends React.Component<AcUploadDraggerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -58,3 +58,8 @@ export class AcUploadDragger extends React.Component<Props> {
     );
   }
 }
+
+export const AcUploadDraggerFc = (props: AcUploadDraggerProps) => {
+  return <AcUploadDragger {...props} />;
+};
+

@@ -11,7 +11,7 @@ type StdCallback = (inEvent: StdEventTarget) => void;
 
 // @see: https://github.com/afeiship/react-ant-tree-select
 
-type Props = {
+type AcTreeSelectProps = {
   className?: string;
   items?: any[];
   template?: any;
@@ -19,7 +19,7 @@ type Props = {
   onChange?: StdCallback;
 } & TreeSelectProps;
 
-export class AcTreeSelect extends React.Component<Props> {
+export class AcTreeSelect extends React.Component<AcTreeSelectProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
@@ -62,3 +62,9 @@ export class AcTreeSelect extends React.Component<Props> {
     );
   }
 }
+
+export const AcTreeSelectFc = (props: AcTreeSelectProps) => {
+  return <AcTreeSelect {...props} />;
+};
+
+
