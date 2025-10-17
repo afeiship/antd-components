@@ -46,7 +46,6 @@ export class AcTree extends React.Component<Props> {
 
   render() {
     const { className, children, items, template, itemsKey, directory, ...props } = this.props;
-
     const RootComp: any = directory ? Tree.DirectoryTree : Tree;
 
     if (items?.length === 0) return null;
