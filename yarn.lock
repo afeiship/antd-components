@@ -1603,10 +1603,10 @@
   resolved "https://registry.npmmirror.com/@jswork/next-unique/-/next-unique-1.0.2.tgz#8475c8c827eff8fdc629216372347f348f68d7c4"
   integrity sha512-H1vr4OQ9sbKMw4gQfuDCFF3Y68ASnYteTXrg/JLKNm7GmCmlnM+Zh0/sfJs/P2KdHcgt0dlHIVm20FLAsFmavQ==
 
-"@jswork/next@^1.2.11":
-  version "1.4.0"
-  resolved "https://registry.npmmirror.com/@jswork/next/-/next-1.4.0.tgz#3d2b129d22d0c291f3f27b55d0cf660df75f09d6"
-  integrity sha512-O9WvG7vnDp1k/bX/FuGTTnQSZ3I7eCFFQPMjt6PeJm8CDGy6dYA0JcEyj8g9N+ESTRlAKa72NEEzzxV49Q45UA==
+"@jswork/next@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.npmmirror.com/@jswork/next/-/next-1.4.2.tgz#d9bc1eacb57b35ab1e41f0eb5b41e680f9a6e1d4"
+  integrity sha512-pt+crzxZ1gFPORImjdwnLGNCjkbC9KsOD28QidfukHVWShlUxLRagcvX0gSE5zkV8j8+HxP/IYJ6CKRbtp+iYQ==
 
 "@jswork/noop@^1.0.0":
   version "1.0.0"

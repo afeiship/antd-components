@@ -1,13 +1,24 @@
 import React from 'react';
-import { Input, InputProps, Modal } from 'antd';
+import { Input, InputProps, message, Modal } from 'antd';
 
 declare global {
   interface NxStatic {
+    err: (inMessage: string) => any;
+    msg: (inMessage: string) => any;
     alert: (inMessage: string, inTitle?: String) => any;
     confirm: (inMessage: string, inTitle?: String) => any;
     prompt: (inMessage: string, inOptions?: InputProps) => any;
   }
 }
+
+export const msg = (inMessage: string) => {
+  return message.success(inMessage);
+};
+
+export const err = (inMessage: string) => {
+  return message.error(inMessage);
+};
+
 
 export const alert = (inMessage: string, inTitle?: String) => {
   return Modal.info({
@@ -47,6 +58,8 @@ export const prompt = (inMessage: string, inOptions?: InputProps) => {
   });
 };
 
+nx.msg = msg;
+nx.err = err;
 nx.alert = alert;
 nx.confirm = confirm;
 nx.prompt = prompt;
