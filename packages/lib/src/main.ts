@@ -43,6 +43,7 @@ import './lib/alert';
 // commands
 import useTableCommand from './lib/use-table-command';
 
+export * from './lib/button';
 
 // export all templates
 export {
