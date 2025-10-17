@@ -37,6 +37,7 @@ import { AcUploadPicture, AcUploadPictureFc } from './lib/upload-picture';
 import { AcUploadPictureCard, AcUploadPictureCardFc } from './lib/upload-picture-card';
 import { AcUpload, AcUploadFc } from './lib/upload';
 
+import '@jswork/next';
 import './lib/alert';
 
 // commands

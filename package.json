@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarrn run dev:example",
+    "dev": "yarn run dev:example",
     "dev:lib": "cd packages/lib && yarn run dev",
     "dev:example": "cd packages/example && yarn run dev",
     "ln:build": "cd packages/lib && yarn run build",

@@ -6,7 +6,6 @@ import { UploadChangeParam } from 'antd/es/upload/interface';
 import { UploadFile } from 'antd';
 import { flushSync } from 'react-dom';
 
-import nx from '@jswork/next';
 import '@jswork/next-gpid';
 
 const styleOpts = { id: 'viewer-style' };
@@ -17,7 +16,7 @@ const scriptURL = 'https://unpkg.com/viewerjs@1.11.1/dist/viewer.min.js';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcAbstractUploadProps = {
   className?: string;
   value?: any[] | [];
   onChange?: StdCallback;
@@ -29,7 +28,7 @@ type State = {
   fileList: any[];
 };
 
-export class AcAbstractUpload extends React.Component<Props, State> {
+export class AcAbstractUpload extends React.Component<AcAbstractUploadProps, State> {
   protected rootRef = React.createRef<HTMLDivElement>();
   protected sortable: any = null;
   protected viewer: any = null;
@@ -43,7 +42,7 @@ export class AcAbstractUpload extends React.Component<Props, State> {
     });
   };
 
-  constructor(inProps) {
+  constructor(inProps: AcAbstractUploadProps) {
     super(inProps);
     this.state = {
       fileList: this.toFileList(inProps.value)
@@ -58,7 +57,7 @@ export class AcAbstractUpload extends React.Component<Props, State> {
     await this.mountViewer(el);
   }
 
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<AcAbstractUploadProps>): boolean {
     const { value } = nextProps;
     if (value !== this.props.value) {
       this.setState({ fileList: this.toFileList(value as any[]) });

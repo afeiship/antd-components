@@ -4,7 +4,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Upload, Button } from 'antd';
 import cx from 'classnames';
 import { AcAbstractUpload } from './_abstract-upload';
-import nx from '@jswork/next';
+import '@jswork/next-gpid';
 
 const CLASS_NAME = 'ac-upload-picture';
 

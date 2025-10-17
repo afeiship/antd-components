@@ -4,7 +4,6 @@ import { Space, Upload } from 'antd';
 import cx from 'classnames';
 import { UploadOutlined } from '@ant-design/icons';
 
-import nx from '@jswork/next';
 import weibo2res from '@jswork/weibo2res';
 import '@jswork/next-gpid';
 import { AcAbstractUpload } from './_abstract-upload';

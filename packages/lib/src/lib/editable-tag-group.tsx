@@ -4,9 +4,8 @@ import noop from '@jswork/noop';
 import AutosizeInput from 'react-input-autosize';
 import { Button, Tag } from 'antd';
 import deepEqual from 'fast-deep-equal';
-import nx from '@jswork/next';
-import _ from 'lodash';
 import '@jswork/next-dom-event';
+import '@jswork/next-unique';
 import { AcInteractiveList } from './interactive-list';
 
 const CLASS_NAME = 'ac-editable-tag-group';
@@ -155,7 +154,7 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
     let { value } = this.state;
     const len = value?.length;
     setTimeout(() => {
-      value = _.uniq(value);
+      value = nx.unique(value || []);
       if (document.activeElement !== this.latestInput) {
         value = value?.filter(Boolean);
       }

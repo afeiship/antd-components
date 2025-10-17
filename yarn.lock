@@ -717,6 +717,11 @@
   resolved "https://registry.npmmirror.com/@jswork/next-tree-walk/-/next-tree-walk-1.0.7.tgz#7b8ec1532e1a9f6c7e02f4b71e42d8fdf90d32e9"
   integrity sha512-mEFysGEUCNGd57nzAGh3SNIErZNcq92Yk0UmevnueSzUnxdVcHejR+SC5zbf3U5ik9FeyPXdkN6PdZS+gwiMuQ==
 
+"@jswork/next-unique@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/@jswork/next-unique/-/next-unique-1.0.2.tgz#8475c8c827eff8fdc629216372347f348f68d7c4"
+  integrity sha512-H1vr4OQ9sbKMw4gQfuDCFF3Y68ASnYteTXrg/JLKNm7GmCmlnM+Zh0/sfJs/P2KdHcgt0dlHIVm20FLAsFmavQ==
+
 "@jswork/next@^1.2.11":
   version "1.4.0"
   resolved "https://registry.npmmirror.com/@jswork/next/-/next-1.4.0.tgz#3d2b129d22d0c291f3f27b55d0cf660df75f09d6"

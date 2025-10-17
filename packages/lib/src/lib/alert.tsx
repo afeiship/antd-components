@@ -1,5 +1,4 @@
 import React from 'react';
-import nx from '@jswork/next';
 import { Input, InputProps, Modal } from 'antd';
 
 declare global {

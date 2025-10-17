@@ -2,7 +2,6 @@ import React from 'react';
 import noop from '@jswork/noop';
 import { Checkbox, Dropdown, Button, MenuProps } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import nx from '@jswork/next';
 import '@jswork/next-dom-event';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 
