@@ -23,7 +23,7 @@ export default () => {
       <Button
         onClick={async () => {
           const res = await nx.confirm('Are you sure?');
-          alert(`You clicked: ${res}`);
+          console.log(`You clicked: ${res}`);
         }}
       >
         Click to Confirm
@@ -31,7 +31,7 @@ export default () => {
       <Button
         onClick={async () => {
           const res = await nx.prompt('What is your name?');
-          nx.alert(`Your name is: ${res}`);
+          console.log(`Your name is: ${res}`);
         }}
       >
         Click to Prompt
