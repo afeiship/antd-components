@@ -1,5 +1,5 @@
 ---
-title: A static site based on dumi
+title: Docs for antd-components
 hero:
   title: Site
   description: Docs for antd-components.
@@ -7,5 +7,3 @@ hero:
     - text: Get Started
       link: /
 ---
-
-dumi-docs
