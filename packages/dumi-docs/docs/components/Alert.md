@@ -12,6 +12,7 @@ import React from 'react';
 import { alert } from '@jswork/antd-components';
 
 export default () => {
-  return <button onClick={() => alert('Hello Antd Components!')}>Click to Alert</button>;
+  console.log('nx.version: ', nx.VERSION);
+  return <button onClick={() => nx.alert('Hello Antd Components!')}>Click to Alert</button>;
 };
 ```
