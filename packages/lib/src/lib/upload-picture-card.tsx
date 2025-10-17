@@ -5,8 +5,8 @@ import cx from 'classnames';
 import { UploadOutlined } from '@ant-design/icons';
 
 import weibo2res from '@jswork/weibo2res';
-import '@jswork/next-gpid';
 import { AcAbstractUpload } from './_abstract-upload';
+import '@jswork/next-gpid';
 
 const CLASS_NAME = 'ac-upload-picture-card';
 const toWeiboPid = (inItem) => {
