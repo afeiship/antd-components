@@ -8,8 +8,9 @@ nav:
 > 警告提示框/消息
 
 ## msg
-- success
-- error
+> 基于 `antd` 的 `message` 实现的消息提示方法
+- success(`nx.msg`)
+- error(`nx.err`)
 
 ```jsx
 import React from 'react';
@@ -27,7 +28,8 @@ export default () => {
 ```
 
 ## alert
-> 基于 antd 的 Modal 实现的 alert 方法
+> 基于 `antd` 的 `Modal` 实现的 `nx.alert` 方法
+
 ```jsx
 import React from 'react';
 import { Button, Space } from 'antd';
@@ -43,7 +45,8 @@ export default () => {
 ```
 
 ## confirm
-> 基于 antd 的 Modal 实现的 confirm 方法
+> 基于 `antd` 的 `Modal` 实现的 `nx.confirm` 方法
+
 ```jsx
 import React from 'react';
 import { Button } from 'antd';
@@ -64,7 +67,8 @@ export default () => {
 ```
 
 ## prompt
-> 基于 antd 的 Modal + Input 实现的 prompt 方法
+> 基于 `antd` 的 `Modal + Input` 实现的 `nx.prompt` 方法
+
 ```jsx
 import React from 'react';
 import { Button } from 'antd';
