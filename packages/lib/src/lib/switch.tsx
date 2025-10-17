@@ -7,7 +7,7 @@ const CLASS_NAME = 'ac-switch';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcSwitchProps = {
+export type AcSwitchProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;

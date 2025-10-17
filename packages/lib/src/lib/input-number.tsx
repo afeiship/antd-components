@@ -7,7 +7,7 @@ const CLASS_NAME = 'ac-input-number';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcInputNumberProps = {
+export type AcInputNumberProps = {
   className?: string;
   value?: number;
   onChange?: StdCallback;

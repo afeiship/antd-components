@@ -9,7 +9,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any }, options?: any) => React.ReactNode;
 
-type AcTransferProps = {
+export type AcTransferProps = {
   className?: string;
   items?: any[];
   template: TemplateCallback;

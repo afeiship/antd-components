@@ -11,7 +11,7 @@ const TRIGGER_KEYS = ['Tab', 'Enter', 'Space'];
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcInputTagsProps = {
+export type AcInputTagsProps = {
   className?: string;
   items?: string[];
   disabled?: boolean;

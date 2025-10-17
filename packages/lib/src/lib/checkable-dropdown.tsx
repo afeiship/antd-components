@@ -10,7 +10,7 @@ const locales = { 'zh-CN': { selectAll: '全部' }, 'en-US': { selectAll: 'All' 
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcCheckableDropdownProps = {
   className?: string;
   lang?: string;
   items?: any[];
@@ -21,7 +21,7 @@ type Props = {
   onChange?: StdCallback;
 };
 
-export class AcCheckableDropdown extends React.Component<Props> {
+export class AcCheckableDropdown extends React.Component<AcCheckableDropdownProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static id = 1;

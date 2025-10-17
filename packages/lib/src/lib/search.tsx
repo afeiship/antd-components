@@ -8,7 +8,7 @@ const CLASS_NAME = 'ac-search';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcSearchProps = {
+export type AcSearchProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;

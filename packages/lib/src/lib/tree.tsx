@@ -10,7 +10,7 @@ const DEFAULT_KV = {
   value: 'value',
 };
 
-type Props = {
+export type AcTreeProps = {
   className?: string;
   items?: any[];
   kv?: Record<string, string>;
@@ -19,7 +19,7 @@ type Props = {
   directory?: boolean;
 } & TreeProps;
 
-export class AcTree extends React.Component<Props> {
+export class AcTree extends React.Component<AcTreeProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {

@@ -11,7 +11,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
-type AcUploadDraggerProps = {
+export type AcUploadDraggerProps = {
   className?: string;
   value?: any[];
   defaultValue?: any[];

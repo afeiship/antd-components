@@ -10,7 +10,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any; index: number }, opts?: any) => React.ReactNode;
 
-type AcRadioGroupProps = {
+export type AcRadioGroupProps = {
   className?: string;
   value?: any;
   defaultValue?: any;

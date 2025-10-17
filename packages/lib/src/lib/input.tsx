@@ -7,7 +7,7 @@ const CLASS_NAME = 'ac-input';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcInputProps = {
+export type AcInputProps = {
   className?: string;
   onChange?: StdCallback;
   autoComplete?: boolean;

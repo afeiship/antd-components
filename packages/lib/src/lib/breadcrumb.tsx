@@ -14,7 +14,7 @@ const CLASS_NAME = 'ac-breadcrumb';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type Props = {
+export type AcBreadcrumbProps = {
   className?: string;
   items?: any[];
   template?: (args: TemplateArgs) => React.ReactNode;
@@ -22,7 +22,7 @@ type Props = {
   onChange?: StdCallback;
 } & BreadcrumbProps;
 
-export class AcBreadcrumb extends React.Component<Props> {
+export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
   static displayName = CLASS_NAME;
   static defaultProps = {
     onChange: noop,
@@ -38,3 +38,9 @@ export class AcBreadcrumb extends React.Component<Props> {
     );
   }
 }
+
+export const AcBreadcrumbFc = (props: AcBreadcrumbProps) => {
+  return <AcBreadcrumb {...props} />;
+};
+
+

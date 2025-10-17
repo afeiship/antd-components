@@ -15,7 +15,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type TemplateCallback = (item: { item: any; index: number }) => React.ReactNode;
 
-type AcSelectProps = {
+export type AcSelectProps = {
   className?: string;
   items?: any[];
   kv?: Record<string, string>;

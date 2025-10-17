@@ -7,7 +7,7 @@ const CLASS_NAME = 'ac-rate';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcRateProps = {
+export type AcRateProps = {
   className?: string;
   value?: number;
   onChange?: StdCallback;

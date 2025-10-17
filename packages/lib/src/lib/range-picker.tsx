@@ -12,7 +12,7 @@ const { RangePicker } = DatePicker;
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcRangePickerProps = {
+export type AcRangePickerProps = {
   className?: string;
   value?: any;
   defaultValue?: any;

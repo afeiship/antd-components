@@ -7,7 +7,7 @@ const CLASS_NAME = 'ac-checkbox';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcCheckboxProps = {
+export type AcCheckboxProps = {
   className?: string;
   value?: boolean;
   onChange?: StdCallback;

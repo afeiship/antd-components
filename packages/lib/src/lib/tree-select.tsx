@@ -11,7 +11,7 @@ type StdCallback = (inEvent: StdEventTarget) => void;
 
 // @see: https://github.com/afeiship/react-ant-tree-select
 
-type AcTreeSelectProps = {
+export type AcTreeSelectProps = {
   className?: string;
   items?: any[];
   template?: any;

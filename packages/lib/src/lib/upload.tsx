@@ -11,7 +11,7 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
-type AcUploadProps = {
+export type AcUploadProps = {
   className?: string;
   value?: number;
   onChange?: StdCallback;

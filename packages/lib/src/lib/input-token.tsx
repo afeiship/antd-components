@@ -9,7 +9,7 @@ const CLASS_NAME = 'ac-input-token';
 type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
-type AcInputTokenProps = {
+export type AcInputTokenProps = {
   className?: string;
   value?: string;
   onChange?: StdCallback;
