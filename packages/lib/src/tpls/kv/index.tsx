@@ -22,12 +22,12 @@ const defaults = {
  */
 export const kv = ({ item, index }, options: Options) => {
   const opts = { ...defaults, ...options };
-  const { component: Component, value, label, ...otherProps } = opts;
+  const { component: Component, value, label, ...rest } = opts;
   const val = item[value];
   const children = item[label];
 
   return (
-    <Component key={index} value={val} {...otherProps}>
+    <Component key={index} value={val} {...rest}>
       {children}
     </Component>
   );
@@ -60,9 +60,9 @@ export const radioKv = (args, opts) => {
 };
 
 export const treeKv = ({ item }, cb) => {
-  const { value, label, ...itemProps } = item;
+  const { value, label, ...rest } = item;
   return (
-    <Tree.TreeNode key={value} title={label} {...itemProps}>
+    <Tree.TreeNode key={value} title={label} {...rest}>
       {cb()}
     </Tree.TreeNode>
   );
