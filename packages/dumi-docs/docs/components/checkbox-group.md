@@ -18,6 +18,15 @@ export default () => {
     { label: '选项二', value: '2' },
     { label: '选项三', value: '3' },
   ];
-  return <AcCheckboxGroup items={items} value={value} onChange={(e) => setValue(e.target.value)} />;
+  return (
+    <AcCheckboxGroup 
+      items={items} 
+      value={value} 
+      onChange={(e) => {
+        setValue(e.target.value);
+        console.log('🌈 value: ', e.target.value);
+      }}
+    />
+  )
 };
 ```
