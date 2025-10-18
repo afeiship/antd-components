@@ -1,8 +1,8 @@
 /**
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
- * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-16 08:20:55
+ * @LastEditors: aric 1290657123@qq.com
+ * @LastEditTime: 2025-10-18 17:16:07
  */
 import React, { FC } from 'react';
 import { Table, TableProps, message } from 'antd';
@@ -25,8 +25,11 @@ export type AcTableProps = TableProps & {
    * @returns Promise<{ data: any[]; total: number }>
    */
   fetcher: (params: { current: number; pageSize: number }) => Promise<{ data: any[]; total: number }>;
-  onPageChange?: (current: number, size: number) => void;
-  rowKey?: string;
+  /**
+   * @param page
+   * @param size
+   */
+  onPageChange?: (page: number, size: number) => void;
   defaultCurrent?: number;
   defaultPageSize?: number;
   total?: number; // 如果 fetcher 不返回 total，可在此固定（不推荐）
