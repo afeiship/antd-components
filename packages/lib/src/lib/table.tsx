@@ -160,7 +160,7 @@ export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
 };
 
 export const AcTableMain: FC<AcTableMainProps> = (props) => {
-  const { name, dataPath, totalPath, params, ...rest } = {
+  const { name, dataPath, totalPath, ...rest } = {
     dataPath: 'rows',
     totalPath: 'total',
     ...props,
