@@ -37,6 +37,37 @@ import { AcUploadPicture, AcUploadPictureFc } from './lib/upload-picture';
 import { AcUploadPictureCard, AcUploadPictureCardFc } from './lib/upload-picture-card';
 import { AcUpload, AcUploadFc } from './lib/upload';
 
+import type { AcBreadcrumbProps } from './lib/breadcrumb';
+import type { AcCheckableDropdownProps } from './lib/checkable-dropdown';
+import type { AcCheckableTagProps } from './lib/checkable-tag';
+import type { AcCheckableTagListProps } from './lib/checkable-tag-list';
+import type { AcCheckboxProps } from './lib/checkbox';
+import type { AcCheckboxGroupProps } from './lib/checkbox-group';
+import type { AcConfirmButtonProps } from './lib/confirm-button';
+import type { AcDatePickerProps } from './lib/date-picker';
+import type { AcEditableTagGroupProps } from './lib/editable-tag-group';
+import type { AcInputProps } from './lib/input';
+import type { AcInputNumberProps } from './lib/input-number';
+import type { AcInputTagsProps } from './lib/input-tags';
+import type { AcInputTokenProps } from './lib/input-token';
+import type { AcPreSelectProps } from './lib/pre-select';
+import type { AcRadioGroupProps } from './lib/radio-group';
+import type { AcRangePickerProps } from './lib/range-picker';
+import type { AcRateProps } from './lib/rate';
+import type { AcSearchProps } from './lib/search';
+import type { AcSelectProps } from './lib/select';
+import type { AcSliderProps } from './lib/slider';
+import type { AcSliderRangeProps } from './lib/slider-range';
+import type { AcSwitchProps } from './lib/switch';
+import type { AcTextareaProps } from './lib/textarea';
+import type { AcTimePickerProps } from './lib/time-picker';
+import type { AcTransferProps } from './lib/transfer';
+import type { AcTreeProps } from './lib/tree';
+import type { AcTreeSelectProps } from './lib/tree-select';
+import type { AcUploadDraggerProps } from './lib/upload-dragger';
+import type { AcUploadProps } from './lib/upload';
+import type { AcTableProps, AcTableMainProps } from './lib/table';
+
 import '@jswork/next';
 import './lib/alert';
 
@@ -134,4 +165,37 @@ export {
 
   // ---- commands ----
   useTableCommand,
+
+  // ---- types ----
+  AcBreadcrumbProps,
+  AcCheckableDropdownProps,
+  AcCheckableTagProps,
+  AcCheckableTagListProps,
+  AcCheckboxProps,
+  AcCheckboxGroupProps,
+  AcConfirmButtonProps,
+  AcDatePickerProps,
+  AcEditableTagGroupProps,
+  AcInputProps,
+  AcInputNumberProps,
+  AcInputTagsProps,
+  AcInputTokenProps,
+  AcPreSelectProps,
+  AcRadioGroupProps,
+  AcRangePickerProps,
+  AcRateProps,
+  AcSearchProps,
+  AcSelectProps,
+  AcSliderProps,
+  AcSliderRangeProps,
+  AcSwitchProps,
+  AcTableProps,
+  AcTableMainProps,
+  AcTextareaProps,
+  AcTimePickerProps,
+  AcTransferProps,
+  AcTreeProps,
+  AcTreeSelectProps,
+  AcUploadDraggerProps,
+  AcUploadProps,
 };
