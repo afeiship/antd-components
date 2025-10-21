@@ -1578,10 +1578,10 @@
   resolved "https://registry.npmmirror.com/@jswork/loadkit/-/loadkit-1.0.6.tgz#0e384a650088abf2df5eab29e5a04de627764301"
   integrity sha512-ggR1wjzB1bb/bPphCQiRej7W/MmULEdtEVM//fFityvX+3yQV8CNuyAHzukGmbkgP5zIQOU56mbBfrtHqtM5rw==
 
-"@jswork/next-create-fetcher@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npmmirror.com/@jswork/next-create-fetcher/-/next-create-fetcher-1.0.5.tgz#59357367158f9cfadaaf5dcd09950739437f455d"
-  integrity sha512-xQhcFHvQSgtbJIAP4jUyeZIC9z25D2AGs0miZBK0ucpkGuNdFm+sCjOhO05HMIQhDqIzA+olgorFFMpvF3qw7Q==
+"@jswork/next-create-fetcher@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/@jswork/next-create-fetcher/-/next-create-fetcher-1.0.6.tgz#869159e709118caea6b72cb8727c84e567d991d8"
+  integrity sha512-7611+nMdMdBdYe8hj/smxtvaTxxLEyxNpGAzlEjERPvi53j6umtY9Q4tYWhvb9NpVxCZOsngwhJlEeVPBg9d9A==
 
 "@jswork/next-dom-event@^1.0.8":
   version "1.0.8"

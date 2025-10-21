@@ -44,7 +44,7 @@
     "@jswork/event-mitt": "^2.0.17",
     "@jswork/harmony-events": "^1.2.11",
     "@jswork/loadkit": "^1.0.6",
-    "@jswork/next-create-fetcher": "^1.0.5",
+    "@jswork/next-create-fetcher": "^1.0.6",
     "@jswork/next-dom-event": "^1.0.8",
     "@jswork/next-gpid": "^1.0.4",
     "@jswork/next-tree-walk": "^1.0.7",
