@@ -10,7 +10,7 @@ type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcSearchProps = {
   className?: string;
-  value?: boolean;
+  value?: string;
   onChange?: StdCallback;
   onSearch?: StdCallback;
   autoComplete?: boolean;
