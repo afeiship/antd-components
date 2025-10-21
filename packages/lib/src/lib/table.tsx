@@ -4,12 +4,12 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-18 17:16:07
  */
-import React, { FC } from 'react';
-import { Table, TableProps, message } from 'antd';
-import cx from 'classnames';
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
 import '@jswork/next-create-fetcher';
+import { Table, TableProps, message } from 'antd';
+import cx from 'classnames';
+import React, { FC } from 'react';
 
 const CLASS_NAME = 'ac-table';
 
@@ -19,12 +19,17 @@ export type AcTableProps = TableProps & {
    * @default '@'
    */
   name?: string;
+  params?: Record<string, any>;
   /**
    * 自定义数据获取函数
    * @param params { current: number; pageSize: number }
    * @returns Promise<{ data: any[]; total: number }>
    */
-  fetcher: (params: { current: number; pageSize: number }) => Promise<{ data: any[]; total: number }>;
+  fetcher: (params: {
+    current: number;
+    pageSize: number;
+    params?: Record<string, any>;
+  }) => Promise<{ data: any[]; total: number }>;
   /**
    * @param page
    * @param size
@@ -40,10 +45,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
-  static events = [
-    'refetch',
-    'reset',
-  ];
+  static events = ['refetch', 'reset'];
 
   static defaultProps = {
     name: '@',
@@ -79,10 +81,10 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
   fetchData = async (page: number, size: number) => {
     const abortController = new AbortController();
-    const { fetcher } = this.props;
+    const { fetcher, params } = this.props;
     this.setState({ isLoading: true });
     try {
-      const result = await fetcher({ current: page, pageSize: size });
+      const result = await fetcher({ current: page, pageSize: size, params });
       if (!abortController.signal.aborted) {
         this.setState({
           dataSource: result.data || [],
@@ -112,22 +114,26 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
   reset = async () => {
     const { defaultCurrent, defaultPageSize } = this.props;
-    this.setState({
-      current: defaultCurrent,
-      pageSize: defaultPageSize,
-    }, () => {
-      void this.fetchData(defaultCurrent!, defaultPageSize!);
-    });
+    this.setState(
+      {
+        current: defaultCurrent,
+        pageSize: defaultPageSize,
+      },
+      () => {
+        void this.fetchData(defaultCurrent!, defaultPageSize!);
+      }
+    );
   };
 
   /* ----- public eventBus methods end  ----- */
 
   render() {
-    const { className, pagination, onPageChange, ...rest } = this.props;
+    const { className, pagination, onPageChange, params, ...rest } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
     return (
       <Table
-        className={cx(className, CLASS_NAME)} loading={isLoading}
+        className={cx(className, CLASS_NAME)}
+        loading={isLoading}
         dataSource={dataSource}
         pagination={{
           total,
@@ -149,12 +155,16 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
 export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
   name: string;
-  dataPath?: string
+  dataPath?: string;
   totalPath?: string;
 };
 
 export const AcTableMain: FC<AcTableMainProps> = (props) => {
-  const { name, dataPath, totalPath, ...rest } = { dataPath: 'rows', totalPath: 'total', ...props };
+  const { name, dataPath, totalPath, params, ...rest } = {
+    dataPath: 'rows',
+    totalPath: 'total',
+    ...props,
+  };
   const resourceId = `${name}_index`;
   const fetcher = nx.createFetcher(resourceId, { dataPath, totalPath });
 
@@ -170,4 +180,3 @@ export const AcTableMain: FC<AcTableMainProps> = (props) => {
     />
   );
 };
-
