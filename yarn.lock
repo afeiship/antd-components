@@ -1714,6 +1714,11 @@
   resolved "https://registry.npmmirror.com/@jswork/tailwind-width/-/tailwind-width-1.0.7.tgz#5058165ed91a6e4bef1649cd832fbf11888f82e0"
   integrity sha512-VsQV5TP3a5SyEg4X5xOrod0Jp1IuI+SkzvaXfNDS7WNC9E38O/lQdP/jjZR7G1wU6thFoc/yPG6KUgyn/gsl+g==
 
+"@jswork/url-sync-flat@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmmirror.com/@jswork/url-sync-flat/-/url-sync-flat-1.0.4.tgz#0c23ceaedeb789b60915445c63c6fab7081faa6d"
+  integrity sha512-LBKvIRFijO9s/mA3179Xbmda3H1U+U5egzkqt4+DvQL8LJ/mHObxwKg7RKBwCUSmpE+giKfE+Clgwz8U2gXBgw==
+
 "@jswork/weibo2res@^1.0.4":
   version "1.0.4"
   resolved "https://registry.npmmirror.com/@jswork/weibo2res/-/weibo2res-1.0.4.tgz#988ea8ba28bd9f72781966bb670e92771148971a"

@@ -4,12 +4,13 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-18 17:16:07
  */
-import React, { FC } from 'react';
+import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
+import '@jswork/next-create-fetcher';
+import UrlSyncFlat from '@jswork/url-sync-flat';
 import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
-import type { EventMittNamespace } from '@jswork/event-mitt';
-import '@jswork/next-create-fetcher';
+import React, { FC } from 'react';
 
 const CLASS_NAME = 'ac-table';
 
@@ -55,15 +56,19 @@ export class AcTable extends React.Component<AcTableProps, any> {
   };
 
   public eventBus: EventMittNamespace.EventMitt = AcTable.event;
+  public sync = new UrlSyncFlat();
 
   constructor(props: AcTableProps) {
     super(props);
-    const { defaultCurrent, defaultPageSize } = this.props;
+    const { defaultCurrent, defaultPageSize, params } = this.props;
+    const defaults = { page: defaultCurrent, size: defaultPageSize, ...params };
+    const init = this.sync.readInitialState({ defaults });
+
     this.state = {
       dataSource: [],
       isLoading: false,
-      current: defaultCurrent,
-      pageSize: defaultPageSize,
+      current: init.page,
+      pageSize: init.size,
       total: 0,
     };
   }
@@ -77,12 +82,15 @@ export class AcTable extends React.Component<AcTableProps, any> {
 
   componentWillUnmount() {
     this.harmonyEvents?.destroy();
+    this.sync.cancel();
   }
 
   fetchData = async (page: number, size: number) => {
     const abortController = new AbortController();
     const { fetcher, params } = this.props;
+    const { current, pageSize } = this.state;
     this.setState({ isLoading: true });
+    this.sync.schedule({ page: current, size: pageSize, ...params });
     try {
       const result = await fetcher({ current: page, pageSize: size, params });
       if (!abortController.signal.aborted) {
