@@ -4,12 +4,12 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-18 17:16:07
  */
-import type { EventMittNamespace } from '@jswork/event-mitt';
+import React, { FC } from 'react';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
-import '@jswork/next-create-fetcher';
 import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
-import React, { FC } from 'react';
+import type { EventMittNamespace } from '@jswork/event-mitt';
+import '@jswork/next-create-fetcher';
 
 const CLASS_NAME = 'ac-table';
 
