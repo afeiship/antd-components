@@ -2,15 +2,23 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 15:34:25
+ * @LastEditTime: 2025-10-23 16:09:30
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
-import '@jswork/next-create-fetcher';
 import UrlSyncFlat from '@jswork/url-sync-flat';
 import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
 import React from 'react';
+import nx from '@jswork/next';
+import '@jswork/next-create-fetcher';
+
+declare global {
+  interface NxStatic {
+    $nav: any;
+    $api: Record<string, any>;
+  }
+}
 
 const CLASS_NAME = 'ac-table';
 
@@ -20,6 +28,7 @@ export type AcTableProps = TableProps & {
    * @default '@'
    */
   name?: string;
+  module?: string;
   params?: Record<string, any>;
   /**
    * 自定义数据获取函数
@@ -55,10 +64,11 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
-  static events = ['refetch', 'reset'];
+  static events = ['refetch', 'reset', 'toAdd', 'toEdit', 'toDestroy'];
 
   static defaultProps = {
     name: '@',
+    module: 'admin',
     rowKey: 'id',
     defaultCurrent: 1,
     defaultPageSize: 10,
@@ -141,6 +151,26 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
         void this.fetchData(defaultCurrent!, defaultPageSize!);
       },
     );
+  };
+
+  public toDestroy = (item) => {
+    const { name } = this.props;
+    this.setState({ isLoading: true });
+    nx.$api[`${name}_destroy`](item)
+      .then(this.refetch)
+      .finally(() => {
+        this.setState({ isLoading: false });
+      });
+  };
+
+  public toAdd = () => {
+    const { module, name } = this.props;
+    nx.$nav?.(`/${module}/${name}/add`);
+  };
+
+  public toEdit = (item: any) => {
+    const { module, name } = this.props;
+    nx.$nav?.(`/${module}/${name}/edit/${item.id}`);
   };
 
   /* ----- public eventBus methods end  ----- */
