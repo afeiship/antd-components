@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-18 17:16:07
+ * @LastEditTime: 2025-10-23 15:34:25
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -10,7 +10,7 @@ import '@jswork/next-create-fetcher';
 import UrlSyncFlat from '@jswork/url-sync-flat';
 import { Table, TableProps, message } from 'antd';
 import cx from 'classnames';
-import React, { FC } from 'react';
+import React from 'react';
 
 const CLASS_NAME = 'ac-table';
 
@@ -41,7 +41,16 @@ export type AcTableProps = TableProps & {
   total?: number; // 如果 fetcher 不返回 total，可在此固定（不推荐）
 };
 
-export class AcTable extends React.Component<AcTableProps, any> {
+type AcTableState = {
+  currentRowId: any;
+  dataSource: TableProps['dataSource'];
+  isLoading: boolean;
+  current: any;
+  pageSize: any;
+  total: any;
+}
+
+export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
@@ -65,6 +74,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
     const init = this.sync.readInitialState({ defaults });
 
     this.state = {
+      currentRowId: null,
       dataSource: [],
       isLoading: false,
       current: init.page,
@@ -129,11 +139,23 @@ export class AcTable extends React.Component<AcTableProps, any> {
       },
       () => {
         void this.fetchData(defaultCurrent!, defaultPageSize!);
-      }
+      },
     );
   };
 
   /* ----- public eventBus methods end  ----- */
+
+  handleOnRow = (record) => {
+    const { rowKey } = this.props;
+    return {
+      onMouseEnter: () => {
+        this.setState({ currentRowId: record[rowKey as any] });
+      },
+      onMouseLeave: () => {
+        this.setState({ currentRowId: null });
+      },
+    };
+  };
 
   render() {
     const { className, pagination, onPageChange, params, ...rest } = this.props;
@@ -143,6 +165,7 @@ export class AcTable extends React.Component<AcTableProps, any> {
         className={cx(className, CLASS_NAME)}
         loading={isLoading}
         dataSource={dataSource}
+        onRow={this.handleOnRow}
         pagination={{
           total,
           current,
@@ -167,24 +190,29 @@ export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
   totalPath?: string;
 };
 
-export const AcTableMain: FC<AcTableMainProps> = (props) => {
-  const { name, dataPath, totalPath, ...rest } = {
-    dataPath: 'rows',
-    totalPath: 'total',
-    ...props,
-  };
-  const resourceId = `${name}_index`;
-  const fetcher = nx.createFetcher(resourceId, { dataPath, totalPath });
+// const ReactAntdFormSchema = React.forwardRef<FormInstance, ReactAntdFormSchemaProps>(
+//   (props, ref) => {
+export const AcTableMain = React.forwardRef<any, AcTableMainProps>(
+  (props, ref) => {
+    const { name, dataPath, totalPath, ...rest } = {
+      dataPath: 'rows',
+      totalPath: 'total',
+      ...props,
+    };
+    const resourceId = `${name}_index`;
+    const fetcher = nx.createFetcher(resourceId, { dataPath, totalPath });
 
-  return (
-    <AcTable
-      size="middle"
-      rowKey="id"
-      bordered
-      name={name}
-      fetcher={fetcher}
-      pagination={{ showSizeChanger: true }}
-      {...rest}
-    />
-  );
-};
+    return (
+      <AcTable
+        ref={ref}
+        size="middle"
+        rowKey="id"
+        bordered
+        name={name}
+        fetcher={fetcher}
+        pagination={{ showSizeChanger: true }}
+        {...rest}
+      />
+    );
+  },
+);

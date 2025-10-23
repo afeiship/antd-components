@@ -11,8 +11,10 @@ import {
   BtnView, BtnSubmit, BtnCancel, BtnSync,
 } from '@jswork/antd-components';
 import { Space } from 'antd';
+import { useRef } from 'react';
 
 export default function App() {
+  const tbRef = useRef<any>(null);
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id', width: 100 },
     { title: 'Title', dataIndex: 'title', key: 'title', width: 200 },
@@ -49,7 +51,12 @@ export default function App() {
         <BtnCancel />
         <BtnSync />
       </Space>
-      <AcTableMain size="large" name="posts" columns={columns} defaultPageSize={5} />
+      <AcTableMain ref={tbRef} size="large" name="posts" columns={columns} defaultPageSize={5} />
+      <BtnSave type="primary" onClick={() => {
+        console.log(
+          'tbRef state: ', tbRef.current.state,
+        );
+      }}>Get State</BtnSave>
     </div>
   );
 }
