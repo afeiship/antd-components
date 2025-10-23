@@ -12,8 +12,6 @@ import {
 } from '@jswork/antd-components';
 import { Space } from 'antd';
 
-import React from 'react';
-
 export default function App() {
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id', width: 100 },
