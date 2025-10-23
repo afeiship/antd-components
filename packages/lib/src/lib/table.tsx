@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 16:23:20
+ * @LastEditTime: 2025-10-23 16:27:08
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -28,7 +28,14 @@ export type AcTableProps = TableProps & {
    * @default '@'
    */
   name?: string;
+  /**
+   * The platform module name.
+   * @default admin
+   */
   module?: string;
+  /**
+   * The extra params when query data.
+   */
   params?: Record<string, any>;
   /**
    * 自定义数据获取函数
@@ -45,9 +52,18 @@ export type AcTableProps = TableProps & {
    * @param size
    */
   onPageChange?: (page: number, size: number) => void;
+  /**
+   * Default page.
+   */
   defaultCurrent?: number;
+  /**
+   * Default page size.
+   */
   defaultPageSize?: number;
-  total?: number; // 如果 fetcher 不返回 total，可在此固定（不推荐）
+  /**
+   * Total data from backend.
+   */
+  total?: number;
 };
 
 type AcTableState = {
