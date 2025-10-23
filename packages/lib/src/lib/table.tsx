@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 16:28:25
+ * @LastEditTime: 2025-10-23 16:28:57
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -38,7 +38,7 @@ export type AcTableProps = TableProps & {
    */
   params?: Record<string, any>;
   /**
-   * 自定义数据获取函数
+   * Custom get standard data.
    * @param params { current: number; pageSize: number }
    * @returns Promise<{ data: any[]; total: number }>
    */
