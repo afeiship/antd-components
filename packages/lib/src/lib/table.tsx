@@ -2,17 +2,16 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 17:02:49
+ * @LastEditTime: 2025-10-23 17:07:52
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
 import UrlSyncFlat from '@jswork/url-sync-flat';
-import { message, Space, Table, TableProps } from 'antd';
+import { message, Table, TableProps } from 'antd';
 import cx from 'classnames';
-import React, { FC } from 'react';
+import React from 'react';
 import nx from '@jswork/next';
 import '@jswork/next-create-fetcher';
-import { AcConfirmButton } from './confirm-button';
 
 declare global {
   interface NxStatic {
@@ -23,17 +22,6 @@ declare global {
 }
 
 const CLASS_NAME = 'ac-table';
-
-const locales = {
-  'zh-CN': {
-    edit: '编辑',
-    destroy: '删除',
-  },
-  'en-US': {
-    edit: 'Edit',
-    destroy: 'Destroy',
-  },
-};
 
 export type AcTableProps = TableProps & {
   /**
@@ -258,24 +246,6 @@ export type AcTableLinksProps = {
   noEdit?: boolean;
   noDestroy?: boolean;
 }
-
-const defaultLinks = {
-  lang: 'zh-CN',
-  noEdit: false,
-  noDestroy: false,
-};
-
-export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
-  const { name, as, lang, noEdit, noDestroy, model } = { ...defaultLinks, ...props };
-  const t = (key: string) => locales[lang][key];
-  const AsComponent = as || Space;
-  const handleEdit = () => nx.$event.emit(`${name}:toEdit`, model);
-  const handleDestroy = () => nx.$event.emit(`${name}:toDestroy`, model);
-  return <AsComponent>
-    {!noEdit && (<a onClick={handleEdit}>{t('edit')}</a>)}
-    {!noDestroy && <AcConfirmButton onClick={handleDestroy}>{t('destroy')}</AcConfirmButton>}
-  </AsComponent>;
-};
 
 export const AcTableMain = React.forwardRef<any, AcTableMainProps>(
   (props, ref) => {

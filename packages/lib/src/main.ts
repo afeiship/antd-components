@@ -26,7 +26,7 @@ import { AcSelect, AcSelectFc } from './lib/select';
 import { AcSlider, AcSliderFc } from './lib/slider';
 import { AcSliderRange, AcSliderRangeFc } from './lib/slider-range';
 import { AcSwitch, AcSwitchFc } from './lib/switch';
-import { AcTable, AcTableMain, AcTableLinks } from './lib/table';
+import { AcTable, AcTableMain } from './lib/table';
 import { AcTextarea, AcTextareaFc } from './lib/textarea';
 import { AcTimePicker, AcTimePickerFc } from './lib/time-picker';
 import { AcTransfer, AcTransferFc } from './lib/transfer';
@@ -66,13 +66,14 @@ import type { AcTreeProps } from './lib/tree';
 import type { AcTreeSelectProps } from './lib/tree-select';
 import type { AcUploadDraggerProps } from './lib/upload-dragger';
 import type { AcUploadProps } from './lib/upload';
-import type { AcTableProps, AcTableMainProps, AcTableLinksProps } from './lib/table';
+import type { AcTableProps, AcTableMainProps } from './lib/table';
 
 import '@jswork/next';
 import './lib/alert';
 
 // commands
 import useTableCommand from './lib/use-table-command';
+import { AcTableLinks, AcTableLinksProps } from './lib/table-links';
 
 export * from './lib/button';
 
