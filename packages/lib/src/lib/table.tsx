@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 17:07:52
+ * @LastEditTime: 2025-10-23 17:41:15
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -53,6 +53,11 @@ export type AcTableProps = TableProps & {
    * @param size
    */
   onPageChange?: (page: number, size: number) => void;
+  /**
+   * When destroy success.
+   * @param model
+   */
+  onDestroySuccess?: (model: any) => void;
   /**
    * Default page.
    */
@@ -171,11 +176,12 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   public toDestroy = (item) => {
-    const { name } = this.props;
+    const { name, onDestroySuccess } = this.props;
     this.setState({ isLoading: true });
     nx.$api[`${name}_destroy`](item)
       .then(this.refetch)
       .finally(() => {
+        onDestroySuccess?.(item);
         this.setState({ isLoading: false });
       });
   };
