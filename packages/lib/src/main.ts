@@ -73,7 +73,8 @@ import './lib/alert';
 
 // commands
 import useTableCommand from './lib/use-table-command';
-import { AcTableLinks, AcTableLinksProps } from './lib/table-links';
+import { AcTableLinks } from './lib/table-links';
+import type { AcTableLinksProps } from './lib/table-links';
 
 export * from './lib/button';
 
