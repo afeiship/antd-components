@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 16:27:08
+ * @LastEditTime: 2025-10-23 16:28:25
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -236,8 +236,6 @@ export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
   totalPath?: string;
 };
 
-// const ReactAntdFormSchema = React.forwardRef<FormInstance, ReactAntdFormSchemaProps>(
-//   (props, ref) => {
 export const AcTableMain = React.forwardRef<any, AcTableMainProps>(
   (props, ref) => {
     const { name, dataPath, totalPath, ...rest } = {
