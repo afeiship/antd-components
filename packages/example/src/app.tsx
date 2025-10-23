@@ -1,4 +1,18 @@
-import { AcTableMain } from '@jswork/antd-components';
+import {
+  AcTableMain,
+  BtnCreate,
+  BtnDelete,
+  BtnEdit,
+  BtnExport,
+  BtnImport,
+  BtnRefresh,
+  BtnSave,
+  BtnBack,
+  BtnView, BtnSubmit, BtnCancel, BtnSync,
+} from '@jswork/antd-components';
+import { Space } from 'antd';
+
+import React from 'react';
 
 export default function App() {
   const columns = [
@@ -23,6 +37,20 @@ export default function App() {
 
   return (
     <div className="rounded-2xl container mx-auto my-10 bg-gray-200 p-5">
+      <Space wrap className="btns" direction="horizontal">
+        <BtnCreate />
+        <BtnEdit />
+        <BtnDelete />
+        <BtnView />
+        <BtnSave />
+        <BtnExport />
+        <BtnImport />
+        <BtnRefresh />
+        <BtnBack />
+        <BtnSubmit />
+        <BtnCancel />
+        <BtnSync />
+      </Space>
       <AcTableMain size="large" name="posts" columns={columns} defaultPageSize={5} />
     </div>
   );
