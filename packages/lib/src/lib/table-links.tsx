@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 17:22:28
+ * @LastEditTime: 2025-10-23 17:24:16
  */
 import { Space } from 'antd';
 import React, { FC } from 'react';
@@ -48,8 +48,8 @@ export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
   const handleEdit = () => nx.$event?.emit?.(`${name}:toEdit`, model);
   const handleDestroy = () => nx.$event?.emit?.(`${name}:toDestroy`, model);
   const links = {
-    edit: <a onClick={handleEdit}>{t('edit')}</a>,
-    destroy: <AcConfirmButton lang={lang} onClick={handleDestroy}>{t('destroy')}</AcConfirmButton>,
+    edit: <a key="edit" onClick={handleEdit}>{t('edit')}</a>,
+    destroy: <AcConfirmButton key="destroy" lang={lang} onClick={handleDestroy}>{t('destroy')}</AcConfirmButton>,
   };
   return <AsComponent {...asProps}>
     {actions.map(((action) => links[action]))}
