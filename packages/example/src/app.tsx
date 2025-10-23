@@ -8,7 +8,7 @@ import {
   BtnRefresh,
   BtnSave,
   BtnBack,
-  BtnView, BtnSubmit, BtnCancel, BtnSync,
+  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks,
 } from '@jswork/antd-components';
 import { Space } from 'antd';
 import { useRef } from 'react';
@@ -19,6 +19,12 @@ export default function App() {
     { title: 'ID', dataIndex: 'id', key: 'id', width: 100 },
     { title: 'Title', dataIndex: 'title', key: 'title', width: 200 },
     { title: 'Body', dataIndex: 'body', key: 'body', width: 300 },
+    {
+      title: 'Actions',
+      key: 'actions',
+      width: 100,
+      render: (_, record) => (<AcTableLinks name="versions" model={record} />),
+    },
   ];
 
   const fetcher = async ({ current, pageSize }) => {
