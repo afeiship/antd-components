@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 16:09:30
+ * @LastEditTime: 2025-10-23 16:23:20
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -169,8 +169,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   public toEdit = (item: any) => {
-    const { module, name } = this.props;
-    nx.$nav?.(`/${module}/${name}/edit/${item.id}`);
+    const { module, name, rowKey } = this.props;
+    nx.$nav?.(`/${module}/${name}/edit/${item[rowKey as string]}`);
   };
 
   /* ----- public eventBus methods end  ----- */
