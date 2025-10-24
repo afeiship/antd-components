@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-18 07:09:31
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 19:46:58
+ * @LastEditTime: 2025-10-24 19:51:34
  */
 import React, { FC } from 'react';
 import { Button, ButtonProps } from 'antd';
@@ -57,7 +57,7 @@ const t = (locale: string, key: string) => {
 };
 
 type AcButtonProps = ButtonProps & {
-  lang?: 'zh-CN' | 'en-US';
+  lang?: string;
 }
 
 export const BtnCreate: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
