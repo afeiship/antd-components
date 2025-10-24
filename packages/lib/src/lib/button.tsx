@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-18 07:09:31
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 14:30:58
+ * @LastEditTime: 2025-10-24 19:46:58
  */
 import React, { FC } from 'react';
 import { Button, ButtonProps } from 'antd';
@@ -61,73 +61,49 @@ type AcButtonProps = ButtonProps & {
 }
 
 export const BtnCreate: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<PlusOutlined />} {...props}>
-    {t(lang, 'create')}
-  </Button>;
+  return <Button size="small" icon={<PlusOutlined />} children={t(lang, 'create')} {...props} />;
 };
 
 export const BtnEdit: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<EditOutlined />} {...props}>
-    {t(lang, 'edit')}
-  </Button>;
+  return <Button size="small" icon={<EditOutlined />} children={t(lang, 'edit')} {...props} />;
 };
 
 export const BtnDelete: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<CloseOutlined />} {...props}>
-    {t(lang, 'del')}
-  </Button>;
+  return <Button size="small" icon={<CloseOutlined />} children={t(lang, 'del')} {...props} />;
 };
 
 export const BtnView: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<EyeOutlined />} {...props}>
-    {t(lang, 'view')}
-  </Button>;
+  return <Button size="small" icon={<EyeOutlined />} children={t(lang, 'view')} {...props} />;
 };
 
 export const BtnSave: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<SaveOutlined />} {...props}>
-    {t(lang, 'save')}
-  </Button>;
+  return <Button size="small" icon={<SaveOutlined />} children={t(lang, 'save')} {...props} />;
 };
 
 export const BtnExport: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<DownloadOutlined />} {...props}>
-    {t(lang, 'export')}
-  </Button>;
+  return <Button size="small" icon={<DownloadOutlined />} children={t(lang, 'export')} {...props} />;
 };
 
 export const BtnImport: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<ImportOutlined />} {...props}>
-    {t(lang, 'imp')}
-  </Button>;
+  return <Button size="small" icon={<ImportOutlined />} children={t(lang, 'imp')} {...props} />;
 };
 
 export const BtnRefresh: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<ReloadOutlined />} {...props}>
-    {t(lang, 'refresh')}
-  </Button>;
+  return <Button size="small" icon={<ReloadOutlined />} children={t(lang, 'refresh')} {...props} />;
 };
 
 export const BtnBack: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<BackwardOutlined />} {...props}>
-    {t(lang, 'back')}
-  </Button>;
+  return <Button size="small" icon={<BackwardOutlined />} children={t(lang, 'back')} {...props} />;
 };
 
 export const BtnSubmit: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<CheckOutlined />} {...props}>
-    {t(lang, 'submit')}
-  </Button>;
+  return <Button size="small" icon={<CheckOutlined />} children={t(lang, 'submit')} {...props} />;
 };
 
 export const BtnCancel: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<RedoOutlined />} {...props}>
-    {t(lang, 'cancel')}
-  </Button>;
+  return <Button size="small" icon={<RedoOutlined />} children={t(lang, 'cancel')} {...props} />;
 };
 
 export const BtnSync: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<SyncOutlined />} {...props}>
-    {t(lang, 'sync')}
-  </Button>;
+  return <Button size="small" icon={<SyncOutlined />} children={t(lang, 'sync')} {...props} />;
 };
