@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 09:33:21
+ * @LastEditTime: 2025-10-24 11:32:52
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -241,7 +241,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
           total,
           current,
           pageSize,
-          showQuickJumper: true,
+          showSizeChanger: true,
           onChange: (page, size) => {
             onPageChange?.(page, size);
             this.setState({ current: page, pageSize: size }, () => {
