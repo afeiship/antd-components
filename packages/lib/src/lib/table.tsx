@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 13:03:12
+ * @LastEditTime: 2025-10-24 21:08:28
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -168,7 +168,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
           total: 0,
         });
       }
-      void message.error(error.message || error.toString());
+      void message.error(error?.message || error?.toString?.());
     } finally {
       if (!abortController.signal.aborted) {
         this.setState({ isLoading: false });
