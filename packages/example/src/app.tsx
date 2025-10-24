@@ -8,7 +8,7 @@ import {
   BtnRefresh,
   BtnSave,
   BtnBack,
-  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks,
+  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks, AcTableExtras,
 } from '@jswork/antd-components';
 import { Space } from 'antd';
 import { useRef } from 'react';
@@ -57,6 +57,9 @@ export default function App() {
         <BtnCancel />
         <BtnSync />
       </Space>
+      <div className="debug">
+        <AcTableExtras name="posts" />
+      </div>
       <AcTable ref={tbRef} size="large" name="posts" columns={columns} defaultPageSize={5} />
       <BtnSave type="primary" onClick={() => {
         console.log(

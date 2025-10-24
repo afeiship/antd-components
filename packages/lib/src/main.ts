@@ -75,6 +75,8 @@ import './lib/alert';
 import useTableCommand from './lib/use-table-command';
 import { AcTableLinks } from './lib/table-links';
 import type { AcTableLinksProps } from './lib/table-links';
+import { AcTableExtras } from './lib/table-extras';
+import type { AcTableExtrasProps } from './lib/table-extras';
 
 export * from './lib/button';
 
@@ -124,6 +126,7 @@ export {
   AcSwitch,
   AcTable,
   AcTableLinks,
+  AcTableExtras,
   AcTextarea,
   AcTimePicker,
   AcTransfer,
@@ -193,6 +196,7 @@ export {
   AcSwitchProps,
   AcTableProps,
   AcTableLinksProps,
+  AcTableExtrasProps,
   AcTextareaProps,
   AcTimePickerProps,
   AcTransferProps,
