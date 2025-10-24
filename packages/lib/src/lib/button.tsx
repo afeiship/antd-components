@@ -2,14 +2,14 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-18 07:09:31
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 19:55:01
+ * @LastEditTime: 2025-10-25 07:32:18
  */
 import React, { FC } from 'react';
 import { Button, ButtonProps } from 'antd';
 import {
   ArrowLeftOutlined,
   CheckOutlined,
-  CloseOutlined,
+  CloseOutlined, CopyOutlined,
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
@@ -35,6 +35,7 @@ const locals = {
     submit: '提交',
     cancel: '取消',
     sync: '同步',
+    copy: '复制',
   },
   'en-US': {
     create: 'Create',
@@ -49,6 +50,7 @@ const locals = {
     submit: 'Submit',
     cancel: 'Cancel',
     sync: 'Sync',
+    copy: 'Copy',
   },
 };
 
@@ -106,4 +108,8 @@ export const BtnCancel: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
 
 export const BtnSync: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
   return <Button size="small" icon={<SyncOutlined />} children={t(lang, 'sync')} {...props} />;
+};
+
+export const BtnCopy: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
+  return <Button size="small" icon={<CopyOutlined />} children={t(lang, 'copy')} {...props} />;
 };
