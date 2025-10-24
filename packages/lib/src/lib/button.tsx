@@ -2,12 +2,12 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-18 07:09:31
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 19:51:34
+ * @LastEditTime: 2025-10-24 19:55:01
  */
 import React, { FC } from 'react';
 import { Button, ButtonProps } from 'antd';
 import {
-  BackwardOutlined,
+  ArrowLeftOutlined,
   CheckOutlined,
   CloseOutlined,
   DownloadOutlined,
@@ -93,7 +93,7 @@ export const BtnRefresh: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
 };
 
 export const BtnBack: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<BackwardOutlined />} children={t(lang, 'back')} {...props} />;
+  return <Button size="small" icon={<ArrowLeftOutlined />} children={t(lang, 'back')} {...props} />;
 };
 
 export const BtnSubmit: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
