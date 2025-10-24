@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 12:57:50
+ * @LastEditTime: 2025-10-24 13:03:12
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -13,10 +13,12 @@ import React from 'react';
 import nx from '@jswork/next';
 import '@jswork/next-create-fetcher';
 
+type NavigateFunction = import('react-router-dom').NavigateFunction;
+
 declare global {
   interface NxStatic {
     $event: any;
-    $nav: any;
+    $nav: NavigateFunction;
     $api: Record<string, any>;
   }
 }
