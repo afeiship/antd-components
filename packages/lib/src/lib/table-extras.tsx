@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-24 20:40:55
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 20:50:02
+ * @LastEditTime: 2025-10-24 21:04:29
  */
 import { Button, Space, SpaceProps } from 'antd';
 import React, { FC } from 'react';
@@ -19,7 +19,7 @@ export type AcTableExtrasProps = SpaceProps & {
   name: string;
   lang?: string;
   as?: React.ComponentType<any>;
-  asProps?: React.ComponentType<any>;
+  asProps?: any;
   actions?: string []
 }
 

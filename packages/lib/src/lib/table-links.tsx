@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 09:34:13
+ * @LastEditTime: 2025-10-24 21:04:35
  */
 import { Space } from 'antd';
 import React, { FC } from 'react';
@@ -32,7 +32,7 @@ export type AcTableLinksProps = {
   model?: any;
   lang?: string;
   as?: React.ComponentType<any>;
-  asProps?: React.ComponentType<any>;
+  asProps?: any;
   actions?: string []
 }
 
