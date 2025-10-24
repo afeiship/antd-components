@@ -1,5 +1,5 @@
 import {
-  AcTableMain,
+  AcTable,
   BtnCreate,
   BtnDelete,
   BtnEdit,
@@ -57,7 +57,7 @@ export default function App() {
         <BtnCancel />
         <BtnSync />
       </Space>
-      <AcTableMain ref={tbRef} size="large" name="posts" columns={columns} defaultPageSize={5} />
+      <AcTable ref={tbRef} size="large" name="posts" columns={columns} defaultPageSize={5} />
       <BtnSave type="primary" onClick={() => {
         console.log(
           'tbRef state: ', tbRef.current.state,

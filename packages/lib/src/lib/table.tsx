@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-23 17:41:15
+ * @LastEditTime: 2025-10-24 09:33:21
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -43,7 +43,7 @@ export type AcTableProps = TableProps & {
    * @param params { current: number; pageSize: number }
    * @returns Promise<{ data: any[]; total: number }>
    */
-  fetcher: (params: {
+  fetcher?: (params: {
     current: number;
     pageSize: number;
     params?: Record<string, any>;
@@ -70,6 +70,14 @@ export type AcTableProps = TableProps & {
    * Total data from backend.
    */
   total?: number;
+  /**
+   * The response data key.
+   */
+  dataPath?: string;
+  /**
+   * The response total key.
+   */
+  totalPath?: string;
 };
 
 type AcTableState = {
@@ -86,7 +94,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
-  static events = ['refetch', 'reset', 'toAdd', 'toEdit', 'toDestroy'];
+  static events = ['refetch', 'reset', 'add', 'edit', 'destroy'];
 
   static defaultProps = {
     name: '@',
@@ -94,10 +102,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     rowKey: 'id',
     defaultCurrent: 1,
     defaultPageSize: 10,
+    dataPath: 'rows',
+    totalPath: 'total',
   };
 
   public eventBus: EventMittNamespace.EventMitt = AcTable.event;
   public sync = new UrlSyncFlat();
+  private defaultFetcher: Function;
 
   constructor(props: AcTableProps) {
     super(props);
@@ -113,6 +124,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       pageSize: init.size,
       total: 0,
     };
+    this.initFetcher();
+  }
+
+  private initFetcher() {
+    const { name, dataPath, totalPath, fetcher } = this.props;
+    const resourceId = `${name}_index`;
+    this.defaultFetcher = fetcher || nx.createFetcher(resourceId, { dataPath, totalPath });
   }
 
   async componentDidMount() {
@@ -129,12 +147,12 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
 
   fetchData = async (page: number, size: number) => {
     const abortController = new AbortController();
-    const { fetcher, params } = this.props;
+    const { params } = this.props;
     const { current, pageSize } = this.state;
     this.setState({ isLoading: true });
     this.sync.schedule({ page: current, size: pageSize, ...params });
     try {
-      const result = await fetcher({ current: page, pageSize: size, params });
+      const result = await this.defaultFetcher({ current: page, pageSize: size, params });
       if (!abortController.signal.aborted) {
         this.setState({
           dataSource: result.data || [],
@@ -157,12 +175,12 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   /* ----- public eventBus methods start ----- */
-  refetch = async () => {
+  public refetch = async () => {
     const { current, pageSize } = this.state;
     await this.fetchData(current, pageSize);
   };
 
-  reset = async () => {
+  public reset = async () => {
     const { defaultCurrent, defaultPageSize } = this.props;
     this.setState(
       {
@@ -175,7 +193,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     );
   };
 
-  public toDestroy = (item) => {
+  public destroy = (item) => {
     const { name, onDestroySuccess } = this.props;
     this.setState({ isLoading: true });
     nx.$api[`${name}_destroy`](item)
@@ -186,12 +204,12 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       });
   };
 
-  public toAdd = () => {
+  public add = () => {
     const { module, name } = this.props;
     nx.$nav?.(`/${module}/${name}/add`);
   };
 
-  public toEdit = (item: any) => {
+  public edit = (item: any) => {
     const { module, name, rowKey } = this.props;
     nx.$nav?.(`/${module}/${name}/edit/${item[rowKey as string]}`);
   };
@@ -211,7 +229,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   render() {
-    const { className, pagination, onPageChange, params, ...rest } = this.props;
+    const { className, pagination, onPageChange, params, fetcher, dataPath, totalPath, ...rest } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
     return (
       <Table
@@ -223,6 +241,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
           total,
           current,
           pageSize,
+          showQuickJumper: true,
           onChange: (page, size) => {
             onPageChange?.(page, size);
             this.setState({ current: page, pageSize: size }, () => {
@@ -237,43 +256,3 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   }
 }
 
-export type AcTableMainProps = Omit<AcTableProps, 'fetcher'> & {
-  name: string;
-  dataPath?: string;
-  totalPath?: string;
-};
-
-
-export type AcTableLinksProps = {
-  name: string;
-  model?: any;
-  lang?: string;
-  as?: React.ComponentType<any>;
-  noEdit?: boolean;
-  noDestroy?: boolean;
-}
-
-export const AcTableMain = React.forwardRef<any, AcTableMainProps>(
-  (props, ref) => {
-    const { name, dataPath, totalPath, ...rest } = {
-      dataPath: 'rows',
-      totalPath: 'total',
-      ...props,
-    };
-    const resourceId = `${name}_index`;
-    const fetcher = nx.createFetcher(resourceId, { dataPath, totalPath });
-
-    return (
-      <AcTable
-        ref={ref}
-        size="middle"
-        rowKey="id"
-        bordered
-        name={name}
-        fetcher={fetcher}
-        pagination={{ showSizeChanger: true }}
-        {...rest}
-      />
-    );
-  },
-);

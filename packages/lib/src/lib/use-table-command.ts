@@ -11,18 +11,18 @@ const useCommand = (inName?: string) => {
   // the command repository:
   const refetch = () => execute('refetch');
   const reset = () => execute('reset');
-  const toAdd = () => execute('toAdd');
-  const toEdit = () => execute('toEdit');
-  const toDestroy = () => execute('toDestroy');
+  const add = () => execute('add');
+  const edit = () => execute('edit');
+  const destroy = () => execute('destroy');
 
   return {
     listen,
     execute,
     refetch,
     reset,
-    toAdd,
-    toEdit,
-    toDestroy,
+    add,
+    edit,
+    destroy,
   };
 };
 
