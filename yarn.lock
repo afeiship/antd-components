@@ -691,6 +691,11 @@
   resolved "https://registry.npmmirror.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
+"@ebay/nice-form-react@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmmirror.com/@ebay/nice-form-react/-/nice-form-react-2.0.3.tgz#1aea18103e86a1fc839f96964c45c1ada96c846c"
+  integrity sha512-XeRRL3bwR5GYwc6hwuiNjzFRDxG7wYeyR4kO7uRBVhzlR2iyW/JXDwgerbSWB5RtwiVULT28n3GQpJpEiBNeJg==
+
 "@emnapi/core@^1.5.0":
   version "1.5.0"
   resolved "https://registry.npmmirror.com/@emnapi/core/-/core-1.5.0.tgz#85cd84537ec989cebb2343606a1ee663ce4edaf0"

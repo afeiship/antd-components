@@ -17,12 +17,14 @@
     "release": "release-it"
   },
   "peerDependencies": {
-    "antd": "*",
     "@ant-design/icons": "*",
+    "@ebay/nice-form-react": "*",
+    "antd": "*",
     "react-router-dom": "*"
   },
   "devDependencies": {
     "@ant-design/icons": "^6.1.0",
+    "@ebay/nice-form-react": "^2.0.3",
     "@jswork/harmony-events": "^1.2.11",
     "@jswork/next": "^1.4.2",
     "@swc/core": "^1.3.93",
