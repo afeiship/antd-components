@@ -2,7 +2,11 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 09:01:26
+ * @LastEditTime: 2025-10-25 20:06:56
+ *
+ *
+ * 路由风格: /{module}/{name} eg: /admin/staff-roles
+ * API资源风格: {module}_{name}_index eg: admin_staff-roles_index
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -97,7 +101,6 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
   static events = ['refetch', 'reset', 'add', 'edit', 'destroy'];
-
   static defaultProps = {
     name: '@',
     module: 'admin',
