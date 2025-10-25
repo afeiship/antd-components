@@ -1,6 +1,6 @@
 import { AcTable } from './table';
 
-type ExecuteFn = (command: string, ...args: any[]) => void;
+type ExecuteFn = (command: string, data?: any) => void;
 type ListenFn = (command: string, callback: any) => void;
 
 const useCommand = (inName?: string) => {
