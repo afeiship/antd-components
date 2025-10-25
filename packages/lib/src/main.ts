@@ -77,6 +77,7 @@ import { AcTableLinks } from './lib/table-links';
 import type { AcTableLinksProps } from './lib/table-links';
 import { AcTableExtras } from './lib/table-extras';
 import type { AcTableExtrasProps } from './lib/table-extras';
+import { initWidgets } from './lib/init-widgets';
 
 export * from './lib/button';
 
@@ -204,4 +205,7 @@ export {
   AcTreeSelectProps,
   AcUploadDraggerProps,
   AcUploadProps,
+
+  // ---- widgets ----
+  initWidgets,
 };

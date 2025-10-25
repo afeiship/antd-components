@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-25 10:45:13
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 10:49:16
+ * @LastEditTime: 2025-10-25 18:41:04
  */
 import NiceForm from '@ebay/nice-form-react';
 import { AcCheckableTagFc } from './checkable-tag';
@@ -67,7 +67,7 @@ export const widgets = {
   'ac:upload': AcUploadFc,
 };
 
-export const defineWidgets = (names?: string[]) => {
+export const initWidgets = (names?: string[]) => {
   const keys = names?.length ? names : Object.keys(widgets);
   keys.forEach((key) => {
     const widget = widgets[key];
