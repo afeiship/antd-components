@@ -17,11 +17,11 @@ export class AcSwitch extends React.Component<AcSwitchProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop
+    onChange: noop,
   };
 
   state = {
-    value: Boolean(this.props.value)
+    value: Boolean(this.props.value),
   };
 
   shouldComponentUpdate(nextProps: Readonly<AcSwitchProps>): boolean {
@@ -51,7 +51,7 @@ export class AcSwitch extends React.Component<AcSwitchProps> {
   }
 }
 
-export const AcSwitchFc = (props: AcSwitchProps) => {
-  return <AcSwitch {...props} />;
-};
+export const AcSwitchFc = React.forwardRef<AcSwitch, AcSwitchProps>((props, ref) => {
+  return <AcSwitch {...props} ref={ref} />;
+});
 
