@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-24 21:04:35
+ * @LastEditTime: 2025-10-25 21:52:35
  */
 import { Space } from 'antd';
 import React, { FC } from 'react';
@@ -36,23 +36,23 @@ export type AcTableLinksProps = {
   actions?: string []
 }
 
-const defaultLinks = {
+const defaultProps = {
   lang: 'zh-CN',
   actions: ['edit', 'destroy'],
 };
 
 export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
-  const { name, as, lang, actions, model, asProps } = { ...defaultLinks, ...props };
+  const { name, as, lang, actions, model, asProps } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang][key];
   const AsComponent = as || Space;
   const handleEdit = () => nx.$event?.emit?.(`${name}:edit`, model);
   const handleDestroy = () => nx.$event?.emit?.(`${name}:destroy`, model);
-  const links = {
+  const items = {
     edit: <a key="edit" onClick={handleEdit}>{t('edit')}</a>,
     destroy: <AcConfirmButton key="destroy" lang={lang} onClick={handleDestroy}>{t('destroy')}</AcConfirmButton>,
   };
   return <AsComponent {...asProps}>
-    {actions.map(((action) => links[action]))}
+    {actions.map(((action) => items[action]))}
   </AsComponent>;
 };
 
