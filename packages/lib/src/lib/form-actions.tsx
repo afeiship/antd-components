@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-25 18:48:19
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 21:51:46
+ * @LastEditTime: 2025-10-25 21:53:43
  */
 import React, { RefObject } from 'react';
 import { Button, ButtonProps, Space, SpaceProps } from 'antd';
@@ -17,6 +17,8 @@ export type FormActionsProps = SpaceProps & {
   okProps?: ButtonProps;
   cancelProps?: ButtonProps;
   buttonProps?: ButtonProps;
+  as?: React.ComponentType<any>;
+  asProps?: any;
 }
 
 const defaultProps: FormActionsProps = {
@@ -38,6 +40,8 @@ const locales = {
 export const FormActions = React.forwardRef((props: FormActionsProps, ref: RefObject<HTMLDivElement>) => {
   const {
     lang,
+    as,
+    asProps,
     actions,
     okText,
     cancelText,
@@ -46,10 +50,10 @@ export const FormActions = React.forwardRef((props: FormActionsProps, ref: RefOb
     okProps,
     cancelProps,
     buttonProps,
-    ...rest
   } = { ...defaultProps, ...props };
 
   const t = (key: string) => locales[lang!][key];
+  const AsComponent = as || Space;
   const items = {
     ok: <Button
       key="ok"
@@ -71,8 +75,8 @@ export const FormActions = React.forwardRef((props: FormActionsProps, ref: RefOb
   };
 
   return (
-    <Space {...rest} ref={ref}>
+    <AsComponent {...asProps} ref={ref}>
       {actions!.map(key => items[key])}
-    </Space>
+    </AsComponent>
   );
 });
