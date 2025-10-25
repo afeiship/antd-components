@@ -78,6 +78,8 @@ import type { AcTableLinksProps } from './lib/table-links';
 import { AcTableExtras } from './lib/table-extras';
 import type { AcTableExtrasProps } from './lib/table-extras';
 import { initWidgets } from './lib/init-widgets';
+import { FormActions } from './lib/form-actions';
+import type { FormActionsProps } from './lib/form-actions';
 
 export * from './lib/button';
 
@@ -168,6 +170,7 @@ export {
   AcUploadPictureFc,
   AcUploadPictureCardFc,
   AcUploadFc,
+  FormActions,
 
   // ---- commands ----
   useTableCommand,
@@ -205,6 +208,7 @@ export {
   AcTreeSelectProps,
   AcUploadDraggerProps,
   AcUploadProps,
+  FormActionsProps,
 
   // ---- widgets ----
   initWidgets,
