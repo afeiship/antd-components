@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 08:59:09
+ * @LastEditTime: 2025-10-25 09:01:26
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
@@ -114,7 +114,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
 
   get routerKey() {
     const { name } = this.props;
-    return name!.replace(/_/g, '_');
+    return name!.replace(/_/g, '-');
   }
 
   constructor(props: AcTableProps) {
