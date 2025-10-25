@@ -14,7 +14,7 @@ const useCommand = (inName?: string) => {
   const add = () => execute('add');
   const edit = () => execute('edit');
   const destroy = () => execute('destroy');
-  const optimisticUpdate = (inId: any, inData: Record<string, any>) => execute('optimisticUpdate', inId, inData);
+  const optimisticUpdate = (inData: Record<string, any>) => execute('optimisticUpdate', inData);
 
   return {
     listen,

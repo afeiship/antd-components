@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 23:50:34
+ * @LastEditTime: 2025-10-25 23:54:58
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -202,10 +202,11 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     );
   };
 
-  public optimisticUpdate = async (inId: any, inData: Record<string, any>) => {
+  public optimisticUpdate = async (inData: Record<string, any>) => {
     const { rowKey } = this.props;
+    const id = inData[rowKey as string];
     const dataSource = this.state.dataSource!.slice();
-    const index = dataSource.findIndex((item) => item[rowKey as string] === inId);
+    const index = dataSource.findIndex((item) => item[rowKey as string] === id);
     if (index !== -1) {
       dataSource[index] = {
         ...dataSource[index],
