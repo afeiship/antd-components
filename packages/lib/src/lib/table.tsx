@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 19:06:05
+ * @LastEditTime: 2025-10-26 19:08:57
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -153,6 +153,10 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     this.defaultFetcher = fetcher || nx.createFetcher(resourceId, { dataPath, totalPath });
   }
 
+  private toQueryString(params?: Record<string, any>) {
+    return params ? `?${new URLSearchParams(params).toString()}` : '';
+  }
+
   async componentDidMount() {
     const { current, pageSize } = this.state;
     this.harmonyEvents = ReactHarmonyEvents.create(this);
@@ -239,13 +243,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
 
   public add = () => {
     const { module, paramsAdd } = this.props;
-    const qs = paramsAdd ? `?${new URLSearchParams(paramsAdd).toString()}` : '';
+    const qs = this.toQueryString(paramsAdd);
     nx.$nav?.(`/${module}/${this.routerKey}/add${qs}`);
   };
 
   public edit = (item: any) => {
     const { module, rowKey, paramsEdit } = this.props;
-    const qs = paramsEdit ? `?${new URLSearchParams(paramsEdit).toString()}` : '';
+    const qs = this.toQueryString(paramsEdit);
     nx.$nav?.(`/${module}/${this.routerKey}/${item[rowKey as string]}/edit${qs}`);
   };
 
