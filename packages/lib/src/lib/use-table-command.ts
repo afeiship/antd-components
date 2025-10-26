@@ -2,6 +2,7 @@ import { AcTable } from './table';
 
 type ExecuteFn = (command: string, data?: any) => void;
 type ListenFn = (command: string, callback: any) => void;
+type Payload = Record<string, any>;
 
 const useCommand = (inName?: string) => {
   const name = inName || '@';
@@ -14,7 +15,7 @@ const useCommand = (inName?: string) => {
   const add = () => execute('add');
   const edit = () => execute('edit');
   const destroy = () => execute('destroy');
-  const optimisticUpdate = (inData: Record<string, any>) => execute('optimisticUpdate', inData);
+  const optimistic = (payload: Payload) => execute('optimistic', payload);
 
   return {
     listen,
@@ -24,7 +25,7 @@ const useCommand = (inName?: string) => {
     add,
     edit,
     destroy,
-    optimisticUpdate,
+    optimistic,
   };
 };
 
