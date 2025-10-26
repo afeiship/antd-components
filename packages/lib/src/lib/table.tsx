@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 08:54:15
+ * @LastEditTime: 2025-10-26 08:56:31
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -100,7 +100,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
-  static events = ['refetch', 'reset', 'add', 'edit', 'destroy', 'optimistic'];
+  static events = ['refetch', 'reset', 'add', 'edit', 'destroy', 'draft'];
   static defaultProps = {
     name: '@',
     module: 'admin',
@@ -202,7 +202,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     );
   };
 
-  public optimistic = async (payload: Record<string, any>) => {
+  public draft = async (payload: Record<string, any>) => {
     const { rowKey } = this.props;
     const id = payload[rowKey as string];
     const dataSource = this.state.dataSource!.slice();

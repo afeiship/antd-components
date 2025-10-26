@@ -15,7 +15,7 @@ const useCommand = (inName?: string) => {
   const add = () => execute('add');
   const edit = () => execute('edit');
   const destroy = () => execute('destroy');
-  const optimistic = (payload: Payload) => execute('optimistic', payload);
+  const draft = (payload: Payload) => execute('draft', payload);
 
   return {
     listen,
@@ -25,7 +25,7 @@ const useCommand = (inName?: string) => {
     add,
     edit,
     destroy,
-    optimistic,
+    draft,
   };
 };
 
