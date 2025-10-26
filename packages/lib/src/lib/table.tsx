@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 19:11:01
+ * @LastEditTime: 2025-10-26 19:35:27
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -54,6 +54,12 @@ export type AcTableProps = TableProps & {
    * `paramsEdit` will merge with `paramsAdd` when redirect to edit page.
    */
   paramsEdit?: Record<string, any>;
+
+  /**
+   * The extra params when reset.
+   * `paramsReset` will merge with `params` when reset.
+   */
+  paramsReset?: Record<string, any>;
   /**
    * Custom get standard data.
    * @param params { current: number; pageSize: number }
@@ -169,14 +175,15 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     this.sync.cancel();
   }
 
-  fetchData = async (page: number, size: number) => {
+  fetchData = async (page: number, size: number, extraParams?: Record<string, any>) => {
     const abortController = new AbortController();
     const { params } = this.props;
     const { current, pageSize } = this.state;
+    const lastParams = { current, pageSize, ...params, ...extraParams };
     this.setState({ isLoading: true });
-    this.sync.schedule({ page: current, size: pageSize, ...params });
+    this.sync.schedule({ page: current, size: pageSize, ...lastParams });
     try {
-      const result = await this.defaultFetcher({ current: page, pageSize: size, params });
+      const result = await this.defaultFetcher({ current: page, pageSize: size, params: lastParams });
       if (!abortController.signal.aborted) {
         this.setState({
           dataSource: result.data || [],
@@ -198,24 +205,33 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   /* ----- public eventBus methods start ----- */
+  /**
+   * Refresh data use current state.
+   */
   public refetch = async () => {
     const { current, pageSize } = this.state;
     await this.fetchData(current, pageSize);
   };
 
+  /**
+   * Reset to default state, and fetch data.
+   */
   public reset = async () => {
-    const { defaultCurrent, defaultPageSize } = this.props;
+    const { defaultCurrent, defaultPageSize, paramsReset } = this.props;
     this.setState(
       {
         current: defaultCurrent,
         pageSize: defaultPageSize,
       },
       () => {
-        void this.fetchData(defaultCurrent!, defaultPageSize!);
+        void this.fetchData(defaultCurrent!, defaultPageSize!, paramsReset);
       },
     );
   };
 
+  /**
+   * CURD(local): optimisticUpdate data before data fetch.
+   */
   public draft = async (payload: Record<string, any>) => {
     const { rowKey } = this.props;
     const id = payload[rowKey as string];
@@ -230,6 +246,9 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     }
   };
 
+  /**
+   * CURD(action): Delete data from backend.
+   */
   public destroy = (item) => {
     const { name, onDestroyComplete } = this.props;
     this.setState({ isLoading: true });
@@ -241,12 +260,18 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       });
   };
 
+  /**
+   * CURD(page): Redirect to add page.
+   */
   public add = () => {
     const { module, paramsAdd } = this.props;
     const qs = this.toQueryString(paramsAdd);
     nx.$nav?.(`/${module}/${this.routerKey}/add${qs}`);
   };
 
+  /**
+   * CURD(page): Redirect to edit page.
+   */
   public edit = (item: any) => {
     const { module, rowKey, paramsEdit } = this.props;
     const qs = this.toQueryString(paramsEdit);
