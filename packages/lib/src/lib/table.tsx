@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 08:56:31
+ * @LastEditTime: 2025-10-26 19:06:05
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -44,6 +44,16 @@ export type AcTableProps = TableProps & {
    * The extra params when query data.
    */
   params?: Record<string, any>;
+  /**
+   * The extra params when redirect to add page.
+   * `paramsAdd` will merge with `params` when redirect to add page.
+   */
+  paramsAdd?: Record<string, any>;
+  /**
+   * The extra params when redirect to edit page.
+   * `paramsEdit` will merge with `paramsAdd` when redirect to edit page.
+   */
+  paramsEdit?: Record<string, any>;
   /**
    * Custom get standard data.
    * @param params { current: number; pageSize: number }
@@ -228,13 +238,15 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   public add = () => {
-    const { module } = this.props;
-    nx.$nav?.(`/${module}/${this.routerKey}/add`);
+    const { module, paramsAdd } = this.props;
+    const qs = paramsAdd ? `?${new URLSearchParams(paramsAdd).toString()}` : '';
+    nx.$nav?.(`/${module}/${this.routerKey}/add${qs}`);
   };
 
   public edit = (item: any) => {
-    const { module, rowKey } = this.props;
-    nx.$nav?.(`/${module}/${this.routerKey}/${item[rowKey as string]}/edit`);
+    const { module, rowKey, paramsEdit } = this.props;
+    const qs = paramsEdit ? `?${new URLSearchParams(paramsEdit).toString()}` : '';
+    nx.$nav?.(`/${module}/${this.routerKey}/${item[rowKey as string]}/edit${qs}`);
   };
 
   /* ----- public eventBus methods end  ----- */
@@ -252,8 +264,20 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   render() {
-    const { className, pagination, onPageChange, params, fetcher, dataPath, totalPath, ...rest } = this.props;
+    const {
+      className,
+      pagination,
+      onPageChange,
+      params,
+      paramsAdd,
+      paramsEdit,
+      fetcher,
+      dataPath,
+      totalPath,
+      ...rest
+    } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
+
     return (
       <Table
         className={cx(className, CLASS_NAME)}
