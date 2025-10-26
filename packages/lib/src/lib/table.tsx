@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 19:35:27
+ * @LastEditTime: 2025-10-26 19:38:13
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -300,6 +300,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       params,
       paramsAdd,
       paramsEdit,
+      paramsReset,
       fetcher,
       dataPath,
       totalPath,
