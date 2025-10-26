@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 19:08:57
+ * @LastEditTime: 2025-10-26 19:11:01
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -70,10 +70,10 @@ export type AcTableProps = TableProps & {
    */
   onPageChange?: (page: number, size: number) => void;
   /**
-   * When destroy success.
+   * When destroy complete.
    * @param model
    */
-  onDestroySuccess?: (model: any) => void;
+  onDestroyComplete?: (model: any) => void;
   /**
    * Default page.
    */
@@ -231,12 +231,12 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   public destroy = (item) => {
-    const { name, onDestroySuccess } = this.props;
+    const { name, onDestroyComplete } = this.props;
     this.setState({ isLoading: true });
     nx.$api[`${name}_destroy`](item)
       .then(this.refetch)
       .finally(() => {
-        onDestroySuccess?.(item);
+        onDestroyComplete?.(item);
         this.setState({ isLoading: false });
       });
   };
