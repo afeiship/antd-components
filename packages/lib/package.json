@@ -1,6 +1,6 @@
 {
   "name": "@jswork/antd-components",
-  "version": "1.0.153",
+  "version": "1.0.154",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
