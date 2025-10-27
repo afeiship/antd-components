@@ -19,6 +19,7 @@ export type AcTableExtrasProps = SpaceProps & {
   name: string;
   lang?: string;
   as?: React.ComponentType<any>;
+  extra?: React.ReactNode;
   asProps?: any;
   actions?: string []
 }
@@ -29,7 +30,7 @@ const defaultExtras = {
 };
 
 export const AcTableExtras: FC<AcTableExtrasProps> = (props) => {
-  const { name, lang, as, asProps, actions } = { ...defaultExtras, ...props };
+  const { name, lang, as, extra, asProps, actions } = { ...defaultExtras, ...props };
   const handleRefresh = () => nx.$event?.emit?.(`${name}:reset`);
   const handleAdd = () => nx.$event?.emit?.(`${name}:add`);
   const handleBack = () => history.back();
@@ -43,6 +44,7 @@ export const AcTableExtras: FC<AcTableExtrasProps> = (props) => {
   return (
     <AsComponent {...asProps}>
       {actions?.map((action) => <Fragment key={action}>{items[action]}</Fragment>)}
+      {extra}
     </AsComponent>
   );
 };

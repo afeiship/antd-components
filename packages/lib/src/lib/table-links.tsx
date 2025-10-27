@@ -31,6 +31,7 @@ export type AcTableLinksProps = {
   name: string;
   model?: any;
   lang?: string;
+  extra?: React.ReactNode;
   as?: React.ComponentType<any>;
   asProps?: any;
   actions?: string []
@@ -42,7 +43,7 @@ const defaultProps = {
 };
 
 export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
-  const { name, as, lang, actions, model, asProps } = { ...defaultProps, ...props };
+  const { name, as, lang, actions, model, asProps, extra } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang][key];
   const AsComponent = as || Space;
   const handleEdit = () => nx.$event?.emit?.(`${name}:edit`, model);
@@ -53,6 +54,7 @@ export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
   };
   return <AsComponent {...asProps}>
     {actions.map(((action) => items[action]))}
+    {extra}
   </AsComponent>;
 };
 
