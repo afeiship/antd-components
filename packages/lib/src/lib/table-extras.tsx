@@ -2,10 +2,10 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-24 20:40:55
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 14:48:21
+ * @LastEditTime: 2025-10-27 13:26:45
  */
 import { Space, SpaceProps } from 'antd';
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import nx from '@jswork/next';
 import { BtnBack, BtnCreate, BtnRefresh } from './button';
 
@@ -35,14 +35,14 @@ export const AcTableExtras: FC<AcTableExtrasProps> = (props) => {
   const handleBack = () => history.back();
   const AsComponent = as || Space;
   const items = {
-    reset: <BtnRefresh key="reset" lang={lang} onClick={handleRefresh} />,
-    add: <BtnCreate key="add" lang={lang} onClick={handleAdd} />,
-    back: <BtnBack key="back" lang={lang} onClick={handleBack} />,
+    reset: <BtnRefresh lang={lang} onClick={handleRefresh} />,
+    add: <BtnCreate lang={lang} onClick={handleAdd} />,
+    back: <BtnBack lang={lang} onClick={handleBack} />,
   };
 
   return (
     <AsComponent {...asProps}>
-      {actions?.map((action) => items[action])}
+      {actions?.map((action) => <Fragment key={action}>{items[action]}</Fragment>)}
     </AsComponent>
   );
 };
