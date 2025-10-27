@@ -35,9 +35,9 @@ export const AcTableExtras: FC<AcTableExtrasProps> = (props) => {
   const handleBack = () => history.back();
   const AsComponent = as || Space;
   const items = {
-    reset: <BtnRefresh lang={lang} onClick={handleRefresh} />,
-    add: <BtnCreate lang={lang} onClick={handleAdd} />,
-    back: <BtnBack lang={lang} onClick={handleBack} />,
+    reset: <BtnRefresh key="reset" lang={lang} onClick={handleRefresh} />,
+    add: <BtnCreate key="add" lang={lang} onClick={handleAdd} />,
+    back: <BtnBack key="back" lang={lang} onClick={handleBack} />,
   };
 
   return (
