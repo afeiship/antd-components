@@ -1,8 +1,8 @@
 /**
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
- * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-26 19:43:01
+ * @LastEditors: aric.zheng 1290657123@qq.com
+ * @LastEditTime: 2025-10-29 07:51:33
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -16,6 +16,7 @@ import cx from 'classnames';
 import React from 'react';
 import nx from '@jswork/next';
 import '@jswork/next-create-fetcher';
+import { tableAction } from './table-links';
 
 type NavigateFunction = import('react-router-dom').NavigateFunction;
 
@@ -34,7 +35,12 @@ export type AcTableProps = TableProps & {
    * The identity name.
    * @default '@'
    */
-  name?: string;
+  name: string;
+  /**
+   * The language.
+   * @default 'zh-CN'
+   */
+  lang?: string;
   /**
    * The platform module name.
    * @default admin
@@ -100,6 +106,23 @@ export type AcTableProps = TableProps & {
    * The response total key.
    */
   totalPath?: string;
+
+  /**
+   * Column fields for table.
+   */
+  columnsFields?: TableProps['columns'];
+  /**
+   * Column fields for table action.
+   */
+  columnsAction?: TableProps['columns'];
+  /**
+   * The table action params.
+   */
+  columnsActionParams?: Record<string, any>;
+  /**
+   * The table columns.
+   */
+  columns?: TableProps['columns'];
 };
 
 type AcTableState = {
@@ -125,6 +148,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     defaultPageSize: 10,
     dataPath: 'rows',
     totalPath: 'total',
+    columnsFields: [],
   };
 
   public eventBus: EventMittNamespace.EventMitt = AcTable.event;
@@ -133,7 +157,19 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
 
   get routerKey() {
     const { name } = this.props;
-    return name!.replace(/_/g, '-');
+    return name.replace(/_/g, '-');
+  }
+
+  get calculateColumnsAction() {
+    const { name, columnsAction, columnsActionParams, lang } = this.props;
+    if (typeof columnsAction !== 'undefined') return columnsAction;
+    return tableAction({ name, lang, ...columnsActionParams });
+  }
+
+  get calculateColumns() {
+    const { columnsFields, columns } = this.props;
+    if (columns && columns.length > 0) return columns;
+    return [...columnsFields!, this.calculateColumnsAction] as TableProps['columns'];
   }
 
   constructor(props: AcTableProps) {
@@ -303,6 +339,9 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       fetcher,
       dataPath,
       totalPath,
+      columnsFields,
+      columnsAction,
+      columns,
       ...rest
     } = this.props;
     const { dataSource, isLoading, current, pageSize, total } = this.state;
@@ -313,6 +352,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
         loading={isLoading}
         dataSource={dataSource}
         onRow={this.handleOnRow}
+        columns={this.calculateColumns}
         pagination={{
           total,
           current,

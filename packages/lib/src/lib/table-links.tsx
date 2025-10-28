@@ -1,8 +1,8 @@
 /**
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
- * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 21:52:35
+ * @LastEditors: aric.zheng 1290657123@qq.com
+ * @LastEditTime: 2025-10-29 07:47:55
  */
 import nx from '@jswork/next';
 import { Space } from 'antd';
@@ -19,10 +19,12 @@ const locales = {
   'zh-CN': {
     edit: '编辑',
     destroy: '删除',
+    action: '操作',
   },
   'en-US': {
     edit: 'Edit',
     destroy: 'Destroy',
+    action: 'Action',
   },
 };
 
@@ -35,6 +37,12 @@ export type AcTableLinksProps = {
   asProps?: any;
   actions?: string[];
 };
+
+export type TableActionArgs = {
+  name: string;
+  lang?: string;
+  [key: string]: any;
+}
 
 const defaultProps = {
   lang: 'zh-CN',
@@ -65,4 +73,17 @@ export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
       {extra}
     </AsComponent>
   );
+};
+
+export const tableAction = (args: TableActionArgs) => {
+  const { name, lang, ...rest } = args;
+  const t = (key: string) => locales[lang!][key];
+  return {
+    title: t('action'),
+    dataIndex: 'action',
+    key: 'action',
+    width: 120,
+    render: (_, record) => <AcTableLinks name={name} model={record} />,
+    ...rest,
+  };
 };
