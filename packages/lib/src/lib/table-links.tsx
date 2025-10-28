@@ -4,9 +4,9 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-25 21:52:35
  */
+import nx from '@jswork/next';
 import { Space } from 'antd';
 import React, { FC } from 'react';
-import nx from '@jswork/next';
 import { AcConfirmButton } from './confirm-button';
 
 declare global {
@@ -26,7 +26,6 @@ const locales = {
   },
 };
 
-
 export type AcTableLinksProps = {
   name: string;
   model?: any;
@@ -34,8 +33,8 @@ export type AcTableLinksProps = {
   extra?: React.ReactNode;
   as?: React.ComponentType<any>;
   asProps?: any;
-  actions?: string []
-}
+  actions?: string[];
+};
 
 const defaultProps = {
   lang: 'zh-CN',
@@ -49,12 +48,21 @@ export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
   const handleEdit = () => nx.$event?.emit?.(`${name}:edit`, model);
   const handleDestroy = () => nx.$event?.emit?.(`${name}:destroy`, model);
   const items = {
-    edit: <a key="edit" onClick={handleEdit}>{t('edit')}</a>,
-    destroy: <AcConfirmButton key="destroy" lang={lang} onClick={handleDestroy}>{t('destroy')}</AcConfirmButton>,
+    edit: (
+      <a key="edit" onClick={handleEdit}>
+        {t('edit')}
+      </a>
+    ),
+    destroy: (
+      <AcConfirmButton key="destroy" type="anchor" lang={lang} onClick={handleDestroy}>
+        {t('destroy')}
+      </AcConfirmButton>
+    ),
   };
-  return <AsComponent {...asProps}>
-    {actions.map(((action) => items[action]))}
-    {extra}
-  </AsComponent>;
+  return (
+    <AsComponent {...asProps}>
+      {actions.map((action) => items[action])}
+      {extra}
+    </AsComponent>
+  );
 };
-
