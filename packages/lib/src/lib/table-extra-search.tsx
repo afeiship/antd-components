@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 12:37:31
+ * @LastEditTime: 2025-10-29 12:59:09
  */
 import React, { FC } from 'react';
 import { AcSearch, AcSearchProps } from './search';
@@ -41,6 +41,7 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
   const t = (key: string) => locales[lang!][key];
   const [searchParams] = useSearchParams();
   const defaultQuery = searchParams.get(queryKey) || '';
+  const defaultParams = Object.fromEntries(searchParams.entries());
 
   return (
     <AcSearch
@@ -51,7 +52,7 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
       placeholder={t('placeholder')}
       onSearch={(e) => {
         const q = e.target.value;
-        nx.$event.emit(`${name}:load`, { [queryKey]: q });
+        nx.$event.emit(`${name}:load`, { ...defaultParams, [queryKey]: q });
       }}
       {...rest}
     />
