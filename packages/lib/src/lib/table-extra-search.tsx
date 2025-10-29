@@ -2,11 +2,10 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:20:16
+ * @LastEditTime: 2025-10-29 11:23:07
  */
-import React from 'react';
-import { AcSearch } from './search';
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { AcSearch, AcSearchProps } from './search';
 
 
 declare global {
@@ -16,8 +15,8 @@ declare global {
   }
 }
 
-export type AcTableExtraSearchProps = AcSearch & {
-  name?: string;
+export type AcTableExtraSearchProps = AcSearchProps & {
+  name: string;
   lang?: string;
   queryKey?: string;
 }
