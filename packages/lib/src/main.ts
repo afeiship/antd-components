@@ -82,6 +82,8 @@ import { FormActions } from './lib/form-actions';
 import type { FormActionsProps } from './lib/form-actions';
 import { AcTableExtraSearch } from './lib/table-extra-search';
 import type { AcTableExtraSearchProps } from './lib/table-extra-search';
+import { AcTableStatusSwitcher } from './lib/table-status-switcher';
+import type { AcTableStatusSwitcherProps } from './lib/table-status-switcher';
 
 export * from './lib/button';
 
@@ -174,6 +176,7 @@ export {
   AcUploadFc,
   FormActions,
   AcTableExtraSearch,
+  AcTableStatusSwitcher,
 
   // ---- commands ----
   useTableCommand,
@@ -213,6 +216,7 @@ export {
   AcUploadProps,
   FormActionsProps,
   AcTableExtraSearchProps,
+  AcTableStatusSwitcherProps,
 
   // ---- widgets ----
   initWidgets,

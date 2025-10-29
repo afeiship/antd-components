@@ -1655,6 +1655,13 @@
   dependencies:
     "@jswork/wildcard-match" "^1.0.1"
 
+"@jswork/filter-react-props@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@jswork/filter-react-props/-/filter-react-props-1.0.2.tgz#a9041c983bb4c08985601e6ac7839003f15ddbde"
+  integrity sha512-4Ykv7PNiLQYWzU+8SVPlLWjlaB22AhGLety7JO7xJgajacby6InIo9rErxW/Bxbxpm81A4uX6Upecklgn3wVWw==
+  dependencies:
+    filter-react-props "0.0.4"
+
 "@jswork/harmony-events@^1.2.11":
   version "1.2.11"
   resolved "https://registry.npmmirror.com/@jswork/harmony-events/-/harmony-events-1.2.11.tgz#792630a89fcc936118839c5a3940b887ae808864"
@@ -1730,6 +1737,51 @@
     "@jswork/tailwind-shortcuts" "^1.0.38"
     "@jswork/tailwind-width" "^1.0.7"
 
+"@jswork/rctpl-ant-radio-button@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jswork/rctpl-ant-radio-button/-/rctpl-ant-radio-button-1.0.3.tgz#5acdf7260540bea94879ce5e40d0b295307d54bb"
+  integrity sha512-FlmqNsxkMnHrMb3SdmUjPxNm9Mzs4cG0hrSA3eU6NSDNrb/QKtagNg3x3EC8n1HcCS7n2pO9/uUiBEPCaUrWUg==
+  dependencies:
+    "@jswork/filter-react-props" "^1.0.2"
+    "@jswork/noop" "^1.0.0"
+    "@jswork/rctpl-types" "^1.0.4"
+    classnames "^2.2.6"
+
+"@jswork/rctpl-ant-radio@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jswork/rctpl-ant-radio/-/rctpl-ant-radio-1.0.3.tgz#9bb368723bfde7214b00c27d9ac4b14a8c99813d"
+  integrity sha512-igBL86s5ibYVOpTah/uQT3XCCh7ShtmdaLJTaBA8rJw/UJBVP9kj1gmHRE21DtffdOIRCEj8VV/bhZZmU8fHDA==
+  dependencies:
+    "@jswork/filter-react-props" "^1.0.2"
+    "@jswork/noop" "^1.0.0"
+    "@jswork/rctpl-types" "^1.0.4"
+    classnames "^2.2.6"
+
+"@jswork/rctpl-types@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jswork/rctpl-types/-/rctpl-types-1.0.4.tgz#8b16f4cdb7b84f989843ff0ec8cac8d97d5ba257"
+  integrity sha512-kk8Qqz+wP6/xZyz+px1xgqVmkH9cwsDph/pu1PANSs3QE3Ho90UykHLiociq7nf49RwupEiSegwnBGwLaNnp2Q==
+
+"@jswork/react-ant-radio-group@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jswork/react-ant-radio-group/-/react-ant-radio-group-1.0.5.tgz#a3a9f95f8e0bb32c15f63c205dc0e8c0e4e8bbfb"
+  integrity sha512-BPsdhiQVW3Uhaf7fYZ0PdsvxcSkahtnnT1wSb5WGOXcNowrSviqJiI0FSdXXzdE433eZhgB1KM7x/DScpKCXNA==
+  dependencies:
+    "@jswork/noop" "^1.0.0"
+    "@jswork/rctpl-ant-radio" "^1.0.3"
+    "@jswork/react-list" "^1.1.3"
+    classnames "^2.2.6"
+
+"@jswork/react-ant-status-switch@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jswork/react-ant-status-switch/-/react-ant-status-switch-1.0.3.tgz#0f30a8a6d9161703167ed6c753f26d8aacc63153"
+  integrity sha512-wWhSq+u/v+oIMkQ0t89ReCp6CHKV7h2kn5ccj2pWHMTuS9/wrfWHsZFdwkx/7P/EtdM+E/1oiiSH/wc6cjDePA==
+  dependencies:
+    "@jswork/noop" "^1.0.0"
+    "@jswork/rctpl-ant-radio-button" "^1.0.3"
+    "@jswork/react-ant-radio-group" "^1.0.5"
+    classnames "^2.2.6"
+
 "@jswork/react-codeflask@^1.1.2":
   version "1.1.2"
   resolved "https://registry.npmmirror.com/@jswork/react-codeflask/-/react-codeflask-1.1.2.tgz#90600724360af3d1a18100829cfa12e376d4ed90"
@@ -1739,7 +1791,7 @@
     js-beautify "^1.15.1"
     tslib "^2.5.0"
 
-"@jswork/react-list@^1.4.3":
+"@jswork/react-list@^1.1.3", "@jswork/react-list@^1.4.3":
   version "1.4.3"
   resolved "https://registry.npmmirror.com/@jswork/react-list/-/react-list-1.4.3.tgz#f137ffb40bf3ad07c5e53f043628c1dc7ea2f4d3"
   integrity sha512-lP9C9D9xySXyunhiY/On3KB+vC7D5pN3NDTrSt3C51dCuoNw32KQWg5NV150HDIibzeByEErcndtj/q1urWfKA==
@@ -6728,6 +6780,11 @@ filter-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmmirror.com/filter-obj/-/filter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
   integrity sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==
+
+filter-react-props@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/filter-react-props/-/filter-react-props-0.0.4.tgz#d21af9ddc31a2fcc1b567684ec69b99c1bfd8344"
+  integrity sha512-f/DRNP1B6C16RxwqDUQf85ud22F4xVInqDGV9SqBbVEq2yY8GwFNiQZas5MHaYjiqcItuGYR5dEbGf9/e07rCQ==
 
 finalhandler@1.3.1:
   version "1.3.1"
