@@ -55,7 +55,7 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
 
   const handleSearch = (q: string) => {
     setValue(q);
-    nx.$event?.emit?.(`${name}:load`, { page: 1, ...defaultParams, [queryKey]: q });
+    nx.$event?.emit?.(`${name}:load`, { ...defaultParams, [queryKey]: q, page: 1 });
   };
 
   useEffect(() => {
