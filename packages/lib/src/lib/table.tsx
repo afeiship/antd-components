@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 08:14:01
+ * @LastEditTime: 2025-10-29 10:45:59
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -17,6 +17,7 @@ import React from 'react';
 import nx from '@jswork/next';
 import '@jswork/next-create-fetcher';
 import { tableAction } from './table-links';
+import deepEqual from 'fast-deep-equal';
 
 type NavigateFunction = import('react-router-dom').NavigateFunction;
 
@@ -205,6 +206,14 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     this.harmonyEvents = ReactHarmonyEvents.create(this);
     this.eventBus = AcTable.event;
     await this.fetchData(current, pageSize);
+  }
+
+  // params update
+  async componentDidUpdate(prevProps: AcTableProps) {
+    const { params } = this.props;
+    if (deepEqual(prevProps.params, params)) {
+      void this.refetch();
+    }
   }
 
   componentWillUnmount() {
