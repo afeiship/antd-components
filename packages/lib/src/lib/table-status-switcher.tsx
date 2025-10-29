@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 14:35:10
+ * @LastEditTime: 2025-10-29 14:37:56
  */
 import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
 import React, { FC } from 'react';
@@ -33,8 +33,9 @@ const defaultProps = {
 export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => {
   const { name, items, model, statusKey, rowKey, statusUpdateApi, ...rest } = { ...defaultProps, ...props };
   const _apiPath = statusUpdateApi || `${name}_update`;
+  const _currentStatus = nx.get(model, statusKey!);
   const handleStatusChange = (e) => {
-    const id = model.get(rowKey!);
+    const id = nx.get(model, rowKey!);
     const status = e.target.value;
     const payload = { id, [statusKey!]: status };
     nx.$event.emit(`${name}:draft`, { ...model, ...payload });
@@ -46,7 +47,7 @@ export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => 
   return (
     <ReactAntStatusSwitch
       items={items}
-      value={nx.get(model, statusKey!)}
+      value={_currentStatus}
       onChange={handleStatusChange}
       {...rest}
     />
