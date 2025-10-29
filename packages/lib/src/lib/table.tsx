@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:38:20
+ * @LastEditTime: 2025-10-29 15:40:02
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -84,7 +84,11 @@ export type AcTableProps = TableProps & {
    */
   onDestroyComplete?: (model: any) => void;
   /**
-   * When reset complete.
+   * When refetch called.
+   */
+  onRefetch?: () => void;
+  /**
+   * When reset called.
    */
   onReset?: () => void;
   /**
@@ -300,8 +304,10 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * Refresh data use current state.
    */
   public refetch = async () => {
+    const { onRefetch } = this.props;
     const { current, pageSize } = this.state;
     await this.fetchData(current, pageSize);
+    onRefetch?.();
   };
 
   /**
@@ -391,6 +397,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       className,
       pagination,
       onPageChange,
+      onRefetch,
+      onReset,
       params,
       paramsAdd,
       paramsEdit,
