@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:09:01
+ * @LastEditTime: 2025-10-29 11:09:50
  */
 import React from 'react';
 import { AcSearch } from './search';
@@ -17,9 +17,9 @@ declare global {
 }
 
 export type AcTableExtraSearchProps = AcSearch & {
-  name: string,
-  lang?: string,
-  queryKey?: 'keywords'
+  name: string;
+  lang?: string;
+  queryKey?: string;
 }
 
 const locales = {
@@ -33,10 +33,11 @@ const locales = {
 
 const defaultProps = {
   lang: 'zh-CN',
+  queryKey: 'keywords',
 };
 
 export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
-  const { name, lang, queryKey = 'keywords', ...rest } = { ...defaultProps, ...props };
+  const { name, lang, queryKey, ...rest } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang!][key];
 
   return (
