@@ -1,8 +1,8 @@
 /**
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
- * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 16:34:34
+ * @LastEditors: aric 1290657123@qq.com
+ * @LastEditTime: 2025-10-29 16:39:12
  */
 import React, { FC, useEffect } from 'react';
 import { readSearchString, writeSearchString } from '@jswork/url-sync-flat';
@@ -61,7 +61,8 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
   useEffect(() => {
     const res = nx.$event.on(`${name}:reset`, () => {
       setValue(EMPTY_STR);
-      writeSearchString(routerType, new URLSearchParams(EMPTY_STR), true);
+      searchParams.delete(queryKey);
+      writeSearchString(routerType, searchParams, true);
     });
     return res.destroy;
   }, []);
