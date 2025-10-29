@@ -224,13 +224,49 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
 
   fetchData = async (page: number, size: number, overrideParams?: Record<string, any>) => {
     const abortController = new AbortController();
-    const { params } = this.props;
-    const currentParams = this.sync.readInitialState();
-    const lastParams = nx.compactObject({ ...params, ...overrideParams });
-    this.setState({ isLoading: true, current: page, pageSize: size });
-    this.sync.schedule({ ...currentParams, page, size, ...lastParams });
+    const { params: propsParams } = this.props; // 将 props.params 重命名以避免与局部变量冲突
+
+    // 1. 获取当前 URL 中的所有参数作为基础
+    const currentUrlParams = this.sync.readInitialState();
+
+    // 2. 合并所有过滤/搜索参数：
+    // 优先级：overrideParams > propsParams > currentUrlParams
+    // 注意：这里不包含 page 和 size，它们将作为独立参数处理
+    const filterParams = nx.compactObject({
+      ...currentUrlParams, // 从 URL 读取的现有参数
+      ...propsParams,     // 组件 props 中定义的固定参数
+      ...overrideParams,  // 动态传入的覆盖参数（例如搜索关键字）
+    });
+
+    // 3. 确保 page 和 size 是明确的，并从 filterParams 中移除它们，
+    // 以便传递给 fetcher 的 params 字段时不会重复
+    const finalPage = page;
+    const finalSize = size;
+    const { page: _, size: __, ...fetcherFilterParams } = filterParams;
+
+
+    // 4. 更新组件状态：加载中、当前页和每页大小
+    this.setState({
+      isLoading: true,
+      current: finalPage,
+      pageSize: finalSize,
+    });
+
+    // 5. 同步 URL 参数：合并所有过滤参数，并明确设置 page 和 size
+    this.sync.schedule({
+      ...filterParams, // 所有过滤参数
+      page: finalPage,   // 明确的当前页
+      size: finalSize,   // 明确的每页大小
+    });
+
     try {
-      const result = await this.defaultFetcher({ current: page, pageSize: size, params: lastParams });
+      // 6. 调用数据获取器，传递明确的 page/size 和过滤参数
+      const result = await this.defaultFetcher({
+        current: finalPage,
+        pageSize: finalSize,
+        params: fetcherFilterParams, // 仅传递过滤参数
+      });
+
       if (!abortController.signal.aborted) {
         this.setState({
           dataSource: result.data || [],
