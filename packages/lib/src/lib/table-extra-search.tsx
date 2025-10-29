@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 13:03:38
+ * @LastEditTime: 2025-10-29 13:10:07
  */
 import React, { FC } from 'react';
 import { AcSearch, AcSearchProps } from './search';
@@ -52,7 +52,7 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
       placeholder={t('placeholder')}
       onSearch={(e) => {
         const q = e.target.value;
-        nx.$event.emit(`${name}:load`, { ...defaultParams, [queryKey]: q });
+        nx.$event.emit(`${name}:load`, { page: 1, ...defaultParams, [queryKey]: q });
       }}
       {...rest}
     />
