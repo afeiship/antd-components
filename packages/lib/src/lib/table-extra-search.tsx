@@ -2,10 +2,11 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:23:07
+ * @LastEditTime: 2025-10-29 12:37:31
  */
 import React, { FC } from 'react';
 import { AcSearch, AcSearchProps } from './search';
+import { useSearchParams } from 'react-router-dom';
 
 
 declare global {
@@ -38,12 +39,15 @@ const defaultProps = {
 export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
   const { name, lang, queryKey, ...rest } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang!][key];
+  const [searchParams] = useSearchParams();
+  const defaultQuery = searchParams.get(queryKey) || '';
 
   return (
     <AcSearch
       size="small"
       enterButton
       allowClear
+      defaultValue={defaultQuery}
       placeholder={t('placeholder')}
       onSearch={(e) => {
         const q = e.target.value;
