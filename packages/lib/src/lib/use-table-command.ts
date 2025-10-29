@@ -10,7 +10,7 @@ const useCommand = (inName?: string) => {
   const listen: ListenFn = (cmd, callback) => AcTable.event?.on(`${name}:${cmd}`, callback);
 
   // the command repository:
-  const load = () => execute('load');
+  const load = (payload: Payload) => execute('load', payload);
   const refetch = () => execute('refetch');
   const reset = () => execute('reset');
   const add = () => execute('add');
