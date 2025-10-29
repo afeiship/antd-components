@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-25 10:45:13
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-25 18:41:04
+ * @LastEditTime: 2025-10-29 17:49:27
  */
 import NiceForm from '@ebay/nice-form-react';
 import { AcCheckableTagFc } from './checkable-tag';
@@ -67,7 +67,7 @@ export const widgets = {
   'ac:upload': AcUploadFc,
 };
 
-export const initWidgets = (names?: string[]) => {
+export const initWidgets = (names?: string[], externalWidgets?: any) => {
   const keys = names?.length ? names : Object.keys(widgets);
   keys.forEach((key) => {
     const widget = widgets[key];
@@ -77,4 +77,11 @@ export const initWidgets = (names?: string[]) => {
       console.warn(`[defineWidgets] widget ${key} not found!`);
     }
   });
+
+  if (externalWidgets) {
+    Object.keys(externalWidgets).forEach((key) => {
+      const widget = externalWidgets[key];
+      NiceForm.defineWidget(key, widget);
+    });
+  }
 };
