@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:09:50
+ * @LastEditTime: 2025-10-29 11:11:33
  */
 import React from 'react';
 import { AcSearch } from './search';
@@ -44,6 +44,7 @@ export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
     <AcSearch
       size="small"
       enterButton
+      allowClear
       placeholder={t('placeholder')}
       onSearch={(e) => {
         const q = e.target.value;
