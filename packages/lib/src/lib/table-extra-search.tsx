@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:07:07
+ * @LastEditTime: 2025-10-29 11:09:01
  */
 import React from 'react';
 import { AcSearch } from './search';
@@ -18,13 +18,32 @@ declare global {
 
 export type AcTableExtraSearchProps = AcSearch & {
   name: string,
+  lang?: string,
   queryKey?: 'keywords'
 }
 
+const locales = {
+  'zh-CN': {
+    placeholder: '请输入关键字搜索',
+  },
+  'en-US': {
+    placeholder: 'Please enter keywords to search',
+  },
+};
+
+const defaultProps = {
+  lang: 'zh-CN',
+};
+
 export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
-  const { name, queryKey = 'keywords', ...rest } = props;
+  const { name, lang, queryKey = 'keywords', ...rest } = { ...defaultProps, ...props };
+  const t = (key: string) => locales[lang!][key];
+
   return (
     <AcSearch
+      size="small"
+      enterButton
+      placeholder={t('placeholder')}
       onSearch={(e) => {
         const q = e.target.value;
         nx.$event.emit(`${name}:load`, { [queryKey]: q });
