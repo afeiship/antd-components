@@ -7,7 +7,7 @@
 import React, { FC } from 'react';
 import { Button, ButtonProps } from 'antd';
 import {
-  ArrowLeftOutlined,
+  ArrowLeftOutlined, BulbOutlined,
   CheckOutlined,
   CloseOutlined, CopyOutlined,
   DownloadOutlined,
@@ -27,6 +27,7 @@ const locals = {
     edit: '编辑',
     del: '删除',
     view: '查看',
+    preview: '预览',
     save: '保存',
     export: '导出',
     imp: '导入',
@@ -42,6 +43,7 @@ const locals = {
     edit: 'Edit',
     del: 'Delete',
     view: 'View',
+    preview: 'Preview',
     save: 'Save',
     export: 'Export',
     imp: 'Import',
@@ -76,6 +78,10 @@ export const BtnDelete: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
 
 export const BtnView: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
   return <Button size="small" icon={<EyeOutlined />} children={t(lang, 'view')} {...props} />;
+};
+
+export const BtnPreview: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
+  return <Button size="small" icon={<BulbOutlined />} children={t(lang, 'preview')} {...props} />;
 };
 
 export const BtnSave: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
