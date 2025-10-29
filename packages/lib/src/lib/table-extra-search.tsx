@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:11:33
+ * @LastEditTime: 2025-10-29 11:20:16
  */
 import React from 'react';
 import { AcSearch } from './search';
@@ -17,17 +17,17 @@ declare global {
 }
 
 export type AcTableExtraSearchProps = AcSearch & {
-  name: string;
+  name?: string;
   lang?: string;
   queryKey?: string;
 }
 
 const locales = {
   'zh-CN': {
-    placeholder: '请输入关键字搜索',
+    placeholder: '搜索',
   },
   'en-US': {
-    placeholder: 'Please enter keywords to search',
+    placeholder: 'Search',
   },
 };
 

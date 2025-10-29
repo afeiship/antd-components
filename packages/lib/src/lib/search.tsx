@@ -9,7 +9,6 @@ type StdEventTarget = { target: { value: any } };
 type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcSearchProps = {
-  className?: string;
   value?: string;
   onChange?: StdCallback;
   onSearch?: StdCallback;
