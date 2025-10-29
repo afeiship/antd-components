@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:42:04
+ * @LastEditTime: 2025-10-29 15:51:14
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -83,14 +83,6 @@ export type AcTableProps = TableProps & {
    * @param model
    */
   onDestroyComplete?: (model: any) => void;
-  /**
-   * When refetch called.
-   */
-  onRefetch?: () => void;
-  /**
-   * When reset called.
-   */
-  onReset?: () => void;
   /**
    * Default page.
    */
@@ -306,17 +298,15 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * Refresh data use current state.
    */
   public refetch = async () => {
-    const { onRefetch } = this.props;
     const { current, pageSize } = this.state;
     await this.fetchData(current, pageSize);
-    onRefetch?.();
   };
 
   /**
    * Reset to default state, and fetch data.
    */
   public reset = async () => {
-    const { defaultCurrent, defaultPageSize, onReset } = this.props;
+    const { defaultCurrent, defaultPageSize } = this.props;
     this.setState(
       {
         current: defaultCurrent,
@@ -326,7 +316,6 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       },
       () => {
         void this.fetchData(defaultCurrent!, defaultPageSize!, null);
-        onReset?.();
       },
     );
   };
@@ -399,8 +388,6 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       className,
       pagination,
       onPageChange,
-      onRefetch,
-      onReset,
       params,
       paramsAdd,
       paramsEdit,
