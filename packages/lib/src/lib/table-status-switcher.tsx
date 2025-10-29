@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 14:43:35
+ * @LastEditTime: 2025-10-29 14:45:17
  */
 import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
 import React, { FC } from 'react';
@@ -45,17 +45,14 @@ export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => 
     ...rest
   } = { ...defaultProps, ...props };
   const _apiPath = statusUpdateApi || `${name}_update`;
+  const _onSuccess = onSuccess || (() => nx.$event.emit(`${name}:refetch`));
   const _currentStatus = nx.get(model, statusKey!);
   const handleStatusChange = (e) => {
     const id = nx.get(model, rowKey!);
     const status = e.target.value;
     const payload = { id, [statusKey!]: status, ...params };
     nx.$event.emit(`${name}:draft`, { ...model, ...payload });
-    nx.$api[_apiPath](payload)
-      .then(() => {
-        nx.$event.emit(`${name}:refetch`);
-        onSuccess?.();
-      });
+    nx.$api[_apiPath](payload).then(_onSuccess);
   };
 
   return (
