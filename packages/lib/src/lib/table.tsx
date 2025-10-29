@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 13:17:17
+ * @LastEditTime: 2025-10-29 15:31:38
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -63,11 +63,6 @@ export type AcTableProps = TableProps & {
    */
   paramsEdit?: Record<string, any>;
 
-  /**
-   * The extra params when reset.
-   * `paramsReset` will merge with `params` when reset.
-   */
-  paramsReset?: Record<string, any>;
   /**
    * Custom get standard data.
    * @param params { current: number; pageSize: number }
@@ -152,6 +147,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     dataPath: 'rows',
     totalPath: 'total',
     columnsFields: [],
+    params: {},
   };
 
   public eventBus: EventMittNamespace.EventMitt = AcTable.event;
@@ -222,7 +218,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     this.sync.cancel();
   }
 
-  fetchData = async (page: number, size: number, overrideParams?: Record<string, any>) => {
+  fetchData = async (page: number, size: number, overrideParams?: Record<string, any> | null) => {
     const abortController = new AbortController();
     const { params: propsParams } = this.props; // 将 props.params 重命名以避免与局部变量冲突
 
@@ -232,17 +228,17 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     // 2. 合并所有过滤/搜索参数：
     // 优先级：overrideParams > propsParams > currentUrlParams
     // 注意：这里不包含 page 和 size，它们将作为独立参数处理
-    const filterParams = nx.compactObject({
+    const filterParams = overrideParams === null ? propsParams : {
       ...currentUrlParams, // 从 URL 读取的现有参数
       ...propsParams,     // 组件 props 中定义的固定参数
       ...overrideParams,  // 动态传入的覆盖参数（例如搜索关键字）
-    });
+    };
 
     // 3. 确保 page 和 size 是明确的，并从 filterParams 中移除它们，
     // 以便传递给 fetcher 的 params 字段时不会重复
     const finalPage = page;
     const finalSize = size;
-    const { page: _, size: __, ...fetcherFilterParams } = filterParams;
+    const { page: _, size: __, ...fetcherFilterParams } = filterParams as Record<string, any>;
 
 
     // 4. 更新组件状态：加载中、当前页和每页大小
@@ -309,7 +305,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * Reset to default state, and fetch data.
    */
   public reset = async () => {
-    const { defaultCurrent, defaultPageSize, paramsReset } = this.props;
+    const { defaultCurrent, defaultPageSize } = this.props;
     this.setState(
       {
         current: defaultCurrent,
@@ -318,7 +314,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
         dataSource: [],
       },
       () => {
-        void this.fetchData(defaultCurrent!, defaultPageSize!, paramsReset);
+        void this.fetchData(defaultCurrent!, defaultPageSize!, null);
       },
     );
   };
@@ -394,7 +390,6 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       params,
       paramsAdd,
       paramsEdit,
-      paramsReset,
       fetcher,
       dataPath,
       totalPath,
