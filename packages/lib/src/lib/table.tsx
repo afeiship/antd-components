@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:40:02
+ * @LastEditTime: 2025-10-29 15:42:04
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -235,11 +235,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     // 2. 合并所有过滤/搜索参数：
     // 优先级：overrideParams > propsParams > currentUrlParams
     // 注意：这里不包含 page 和 size，它们将作为独立参数处理
-    const filterParams = overrideParams === null ? propsParams : {
-      ...currentUrlParams, // 从 URL 读取的现有参数
-      ...propsParams,     // 组件 props 中定义的固定参数
-      ...overrideParams,  // 动态传入的覆盖参数（例如搜索关键字）
-    };
+    const filterParams = nx.compactObject(
+      overrideParams === null ? propsParams : {
+        ...currentUrlParams, // 从 URL 读取的现有参数
+        ...propsParams,     // 组件 props 中定义的固定参数
+        ...overrideParams,  // 动态传入的覆盖参数（例如搜索关键字）
+      },
+    );
 
     // 3. 确保 page 和 size 是明确的，并从 filterParams 中移除它们，
     // 以便传递给 fetcher 的 params 字段时不会重复
