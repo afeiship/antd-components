@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 12:48:23
+ * @LastEditTime: 2025-10-29 12:52:20
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -275,6 +275,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       {
         current: defaultCurrent,
         pageSize: defaultPageSize,
+        total: 0,
+        dataSource: [],
       },
       () => {
         void this.fetchData(defaultCurrent!, defaultPageSize!, paramsReset);
