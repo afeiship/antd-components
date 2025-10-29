@@ -2,11 +2,11 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 13:31:47
+ * @LastEditTime: 2025-10-29 14:03:38
  */
 import React, { FC } from 'react';
 import { AcSearch, AcSearchProps } from './search';
-import { useSearchParams } from 'react-router-dom';
+import { readSearchString } from '@jswork/url-sync-flat';
 
 
 declare global {
@@ -20,6 +20,7 @@ export type AcTableExtraSearchProps = AcSearchProps & {
   name: string;
   lang?: string;
   queryKey?: string;
+  routerType?: 'hash' | 'browser';
 }
 
 const locales = {
@@ -34,12 +35,13 @@ const locales = {
 const defaultProps = {
   lang: 'zh-CN',
   queryKey: 'keywords',
+  routerType: 'hash' as const,
 };
 
 export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
-  const { name, lang, queryKey, ...rest } = { ...defaultProps, ...props };
+  const { name, lang, queryKey, routerType, ...rest } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang!][key];
-  const [searchParams] = useSearchParams();
+  const searchParams = readSearchString(routerType);
   const defaultQuery = searchParams.get(queryKey) || '';
   const defaultParams = Object.fromEntries(searchParams.entries());
 
