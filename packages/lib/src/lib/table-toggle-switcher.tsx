@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:13:34
+ * @LastEditTime: 2025-10-29 15:13:56
  */
 import React, { FC } from 'react';
 import nx from '@jswork/next';
@@ -47,6 +47,7 @@ export const AcTableToggleSwitcher: FC<AcTableToggleSwitcherProps> = (props) => 
   const handleStatusChange = (value) => {
     const id = nx.get(model, idKey!);
     const payload = { id, [updateKey]: value, ...params };
+    nx.$event.emit(`${name}:draft`, { ...model, ...payload });
     nx.$api[_apiPath](payload).then(_onSuccess);
   };
 
