@@ -2,13 +2,13 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:50:45
+ * @LastEditTime: 2025-10-29 16:34:34
  */
 import React, { FC, useEffect } from 'react';
-import { AcSearch, AcSearchProps } from './search';
-import { readSearchString } from '@jswork/url-sync-flat';
+import { readSearchString, writeSearchString } from '@jswork/url-sync-flat';
 import nx from '@jswork/next';
-
+import { Input } from 'antd';
+import { SearchProps } from 'antd/es/input';
 
 declare global {
   interface NxStatic {
@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-export type AcTableExtraSearchProps = AcSearchProps & {
+export type AcTableExtraSearchProps = SearchProps & {
   name: string;
   lang?: string;
   queryKey?: string;
@@ -39,38 +39,42 @@ const defaultProps = {
   routerType: 'hash' as const,
 };
 
+const EMPTY_STR = '';
+
 export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
   const { name, lang, queryKey, routerType, ...rest } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang!][key];
-  const [value, setValue] = React.useState('');
   const searchParams = readSearchString(routerType);
   const defaultQuery = searchParams.get(queryKey) || '';
+  const [value, setValue] = React.useState(defaultQuery);
   const defaultParams = Object.fromEntries(searchParams.entries());
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const q = e.target.value;
     setValue(q);
   };
 
+  const handleSearch = (q: string) => {
+    setValue(q);
+    nx.$event?.emit?.(`${name}:load`, { page: 1, ...defaultParams, [queryKey]: q });
+  };
+
   useEffect(() => {
     const res = nx.$event.on(`${name}:reset`, () => {
-      setValue('');
+      setValue(EMPTY_STR);
+      writeSearchString(routerType, new URLSearchParams(EMPTY_STR), true);
     });
     return res.destroy;
   }, []);
 
   return (
-    <AcSearch
+    <Input.Search
       size="small"
       enterButton
       allowClear
-      defaultValue={defaultQuery}
       value={value}
       placeholder={t('placeholder')}
       onChange={handleSearchChange}
-      onSearch={(e) => {
-        const q = e.target.value;
-        nx.$event?.emit?.(`${name}:load`, { page: 1, ...defaultParams, [queryKey]: q });
-      }}
+      onSearch={handleSearch}
       {...rest}
     />
   );
