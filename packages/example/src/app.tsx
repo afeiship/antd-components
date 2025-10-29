@@ -8,7 +8,7 @@ import {
   BtnRefresh,
   BtnSave,
   BtnBack,
-  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks, AcTableExtras,
+  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks, AcTableExtras, AcTableExtraSearch,
 } from '@jswork/antd-components';
 import { Space } from 'antd';
 import { useRef } from 'react';
@@ -43,24 +43,13 @@ export default function App() {
 
   return (
     <div className="rounded-2xl container mx-auto my-10 bg-gray-200 p-5">
-      <Space wrap className="btns" direction="horizontal">
-        <BtnCreate />
-        <BtnEdit />
-        <BtnDelete />
-        <BtnView />
-        <BtnSave />
-        <BtnExport />
-        <BtnImport />
-        <BtnRefresh />
-        <BtnBack />
-        <BtnSubmit />
-        <BtnCancel />
-        <BtnSync />
-      </Space>
       <div className="debug">
         <AcTableExtras name="posts" />
       </div>
-      <AcTable ref={tbRef} size="large" name="posts" columnsFields={columns} defaultPageSize={5} />
+      <nav className="debug-green">
+        {/*<AcTableExtraSearch name="posts" />*/}
+      </nav>
+      <AcTable ref={tbRef} size="large" name="posts" columnsFields={columns} defaultPageSize={5}/>
       <BtnSave type="primary" onClick={() => {
         console.log(
           'tbRef state: ', tbRef.current.state,
