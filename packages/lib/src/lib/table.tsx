@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 12:52:20
+ * @LastEditTime: 2025-10-29 13:04:10
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -256,7 +256,9 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    */
   public load = async (payload: Record<string, any>) => {
     const { page, size, ...rest } = payload;
-    await this.fetchData(page, size, rest);
+    const _page = page || this.state.current;
+    const _size = size || this.state.pageSize;
+    await this.fetchData(_page, _size, rest);
   };
   /**
    * Refresh data use current state.
