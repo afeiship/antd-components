@@ -211,7 +211,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   // params update
   async componentDidUpdate(prevProps: AcTableProps) {
     const { params } = this.props;
-    if (deepEqual(prevProps.params, params)) {
+    if (!deepEqual(prevProps.params, params)) {
       void this.refetch();
     }
   }
