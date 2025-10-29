@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 13:04:10
+ * @LastEditTime: 2025-10-29 13:08:01
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -225,7 +225,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   fetchData = async (page: number, size: number, overrideParams?: Record<string, any>) => {
     const abortController = new AbortController();
     const { params } = this.props;
-    const lastParams = nx.compactObject({ ...params, ...overrideParams });
+    const currentParams = this.sync.readInitialState();
+    const lastParams = nx.compactObject({ ...params, ...currentParams, ...overrideParams });
     this.setState({ isLoading: true });
     this.sync.schedule({ page, size, ...lastParams });
     try {
