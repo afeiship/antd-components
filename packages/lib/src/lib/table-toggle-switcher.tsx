@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:13:56
+ * @LastEditTime: 2025-10-29 15:14:28
  */
 import React, { FC } from 'react';
 import nx from '@jswork/next';
@@ -53,6 +53,7 @@ export const AcTableToggleSwitcher: FC<AcTableToggleSwitcherProps> = (props) => 
 
   return (
     <Switch
+      size="small"
       defaultChecked={_currentValue}
       onChange={handleStatusChange}
       {...rest}
