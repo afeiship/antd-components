@@ -80,6 +80,8 @@ import type { AcTableExtrasProps } from './lib/table-extras';
 import { initWidgets } from './lib/init-widgets';
 import { FormActions } from './lib/form-actions';
 import type { FormActionsProps } from './lib/form-actions';
+import { AcTableExtraSearch } from './lib/table-extra-search';
+import type { AcTableExtraSearchProps } from './lib/table-extra-search';
 
 export * from './lib/button';
 
@@ -171,6 +173,7 @@ export {
   AcUploadPictureCardFc,
   AcUploadFc,
   FormActions,
+  AcTableExtraSearch,
 
   // ---- commands ----
   useTableCommand,
@@ -209,6 +212,7 @@ export {
   AcUploadDraggerProps,
   AcUploadProps,
   FormActionsProps,
+  AcTableExtraSearchProps,
 
   // ---- widgets ----
   initWidgets,

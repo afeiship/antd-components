@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 10:45:59
+ * @LastEditTime: 2025-10-29 11:00:08
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -140,7 +140,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static formSchema = CLASS_NAME;
   private harmonyEvents: ReactHarmonyEvents | null = null;
   static event: EventMittNamespace.EventMitt;
-  static events = ['refetch', 'reset', 'add', 'edit', 'destroy', 'draft'];
+  static events = ['load', 'refetch', 'reset', 'add', 'edit', 'destroy', 'draft'];
   static defaultProps = {
     name: '@',
     lang: 'zh-CN',
@@ -250,6 +250,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   };
 
   /* ----- public eventBus methods start ----- */
+  /**
+   * Load data from backend.
+   */
+  public load = async (payload: Record<string, any>) => {
+    const { page, size, ...rest } = payload;
+    await this.fetchData(page, size, rest);
+  };
   /**
    * Refresh data use current state.
    */
