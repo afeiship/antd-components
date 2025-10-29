@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 14:31:47
+ * @LastEditTime: 2025-10-29 14:35:10
  */
 import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
 import React, { FC } from 'react';
@@ -27,7 +27,7 @@ export type AcTableStatusSwitcherProps = ReactAntStatusSwitchProps & {
 const defaultProps = {
   items: [],
   rowKey: 'id',
-  status: 'status',
+  statusKey: 'status',
 };
 
 export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => {
