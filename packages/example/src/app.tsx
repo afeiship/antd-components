@@ -60,7 +60,7 @@ export default function App() {
       <div className="debug">
         <AcTableExtras name="posts" />
       </div>
-      <AcTable ref={tbRef} size="large" name="posts" columns={columns} defaultPageSize={5} />
+      <AcTable ref={tbRef} size="large" name="posts" columnsFields={columns} defaultPageSize={5} />
       <BtnSave type="primary" onClick={() => {
         console.log(
           'tbRef state: ', tbRef.current.state,

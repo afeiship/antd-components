@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 07:47:55
+ * @LastEditTime: 2025-10-29 08:14:20
  */
 import nx from '@jswork/next';
 import { Space } from 'antd';
@@ -80,8 +80,8 @@ export const tableAction = (args: TableActionArgs) => {
   const t = (key: string) => locales[lang!][key];
   return {
     title: t('action'),
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: '__action__',
+    key: '__action__',
     width: 120,
     render: (_, record) => <AcTableLinks name={name} model={record} />,
     ...rest,

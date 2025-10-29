@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 07:51:33
+ * @LastEditTime: 2025-10-29 08:14:01
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -142,6 +142,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static events = ['refetch', 'reset', 'add', 'edit', 'destroy', 'draft'];
   static defaultProps = {
     name: '@',
+    lang: 'zh-CN',
     module: 'admin',
     rowKey: 'id',
     defaultCurrent: 1,
