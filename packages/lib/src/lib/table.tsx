@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 11:00:08
+ * @LastEditTime: 2025-10-29 12:48:23
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -16,6 +16,7 @@ import cx from 'classnames';
 import React from 'react';
 import nx from '@jswork/next';
 import '@jswork/next-create-fetcher';
+import '@jswork/next-compact-object';
 import { tableAction } from './table-links';
 import deepEqual from 'fast-deep-equal';
 
@@ -224,7 +225,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   fetchData = async (page: number, size: number, overrideParams?: Record<string, any>) => {
     const abortController = new AbortController();
     const { params } = this.props;
-    const lastParams = { ...params, ...overrideParams };
+    const lastParams = nx.compactObject({ ...params, ...overrideParams });
     this.setState({ isLoading: true });
     this.sync.schedule({ page, size, ...lastParams });
     try {

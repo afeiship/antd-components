@@ -1605,6 +1605,11 @@
   resolved "https://registry.npmmirror.com/@jswork/loadkit/-/loadkit-1.0.6.tgz#0e384a650088abf2df5eab29e5a04de627764301"
   integrity sha512-ggR1wjzB1bb/bPphCQiRej7W/MmULEdtEVM//fFityvX+3yQV8CNuyAHzukGmbkgP5zIQOU56mbBfrtHqtM5rw==
 
+"@jswork/next-compact-object@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@jswork/next-compact-object/-/next-compact-object-1.0.6.tgz#caf128068a5b4ac9fa6879b48e99bc4e3ed7688f"
+  integrity sha512-IJEiGzLVbzoMzsSBaYIbIz/Iq70StsoOMkWdhyrHgzbVkOzgfUiFhpcnBcPV71xQcumgnmMPFpHDl/WngLoU4g==
+
 "@jswork/next-create-fetcher@^1.0.6":
   version "1.0.6"
   resolved "https://registry.npmmirror.com/@jswork/next-create-fetcher/-/next-create-fetcher-1.0.6.tgz#869159e709118caea6b72cb8727c84e567d991d8"
