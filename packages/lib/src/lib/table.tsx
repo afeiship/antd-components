@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:31:38
+ * @LastEditTime: 2025-10-29 15:38:20
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -84,6 +84,10 @@ export type AcTableProps = TableProps & {
    */
   onDestroyComplete?: (model: any) => void;
   /**
+   * When reset complete.
+   */
+  onReset?: () => void;
+  /**
    * Default page.
    */
   defaultCurrent?: number;
@@ -103,7 +107,6 @@ export type AcTableProps = TableProps & {
    * The response total key.
    */
   totalPath?: string;
-
   /**
    * Column fields for table.
    */
@@ -305,7 +308,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * Reset to default state, and fetch data.
    */
   public reset = async () => {
-    const { defaultCurrent, defaultPageSize } = this.props;
+    const { defaultCurrent, defaultPageSize, onReset } = this.props;
     this.setState(
       {
         current: defaultCurrent,
@@ -315,6 +318,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       },
       () => {
         void this.fetchData(defaultCurrent!, defaultPageSize!, null);
+        onReset?.();
       },
     );
   };
