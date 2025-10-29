@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 14:41:20
+ * @LastEditTime: 2025-10-29 14:43:35
  */
 import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
 import React, { FC } from 'react';
@@ -53,7 +53,7 @@ export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => 
     nx.$event.emit(`${name}:draft`, { ...model, ...payload });
     nx.$api[_apiPath](payload)
       .then(() => {
-        nx.$event.emit(`${name}:refresh`);
+        nx.$event.emit(`${name}:refetch`);
         onSuccess?.();
       });
   };
