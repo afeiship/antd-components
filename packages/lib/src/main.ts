@@ -84,6 +84,8 @@ import { AcTableExtraSearch } from './lib/table-extra-search';
 import type { AcTableExtraSearchProps } from './lib/table-extra-search';
 import { AcTableStatusSwitcher } from './lib/table-status-switcher';
 import type { AcTableStatusSwitcherProps } from './lib/table-status-switcher';
+import { AcTableToggleSwitcher } from './lib/table-toggle-switcher';
+import type { AcTableToggleSwitcherProps } from './lib/table-toggle-switcher';
 
 export * from './lib/button';
 
@@ -177,6 +179,7 @@ export {
   FormActions,
   AcTableExtraSearch,
   AcTableStatusSwitcher,
+  AcTableToggleSwitcher,
 
   // ---- commands ----
   useTableCommand,
@@ -217,6 +220,7 @@ export {
   FormActionsProps,
   AcTableExtraSearchProps,
   AcTableStatusSwitcherProps,
+  AcTableToggleSwitcherProps,
 
   // ---- widgets ----
   initWidgets,

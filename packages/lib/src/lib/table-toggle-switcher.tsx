@@ -2,12 +2,11 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 14:09:01
  * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:08:25
+ * @LastEditTime: 2025-10-29 15:08:59
  */
-import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
 import React, { FC } from 'react';
-import { ReactAntStatusSwitchProps } from '@jswork/react-ant-status-switch/dist/components';
 import nx from '@jswork/next';
+import { Switch, SwitchProps } from 'antd';
 
 declare global {
   interface NxStatic {
@@ -15,13 +14,12 @@ declare global {
   }
 }
 
-export type AcTableStatusSwitcherProps = ReactAntStatusSwitchProps & {
+export type AcTableToggleSwitcherProps = SwitchProps & {
   name: string;
-  items: any[];
   model: any;
+  updateKey: string;
   params?: any;
   idKey?: string;
-  updateKey?: string;
   updateApi?: string;
   onSuccess?: () => void;
 };
@@ -29,10 +27,9 @@ export type AcTableStatusSwitcherProps = ReactAntStatusSwitchProps & {
 const defaultProps = {
   items: [],
   idKey: 'id',
-  updateKey: 'status',
 };
 
-export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => {
+export const AcTableToggleSwitcher: FC<AcTableToggleSwitcherProps> = (props) => {
   const {
     name,
     items,
@@ -46,19 +43,18 @@ export const AcTableStatusSwitcher: FC<AcTableStatusSwitcherProps> = (props) => 
   } = { ...defaultProps, ...props };
   const _apiPath = updateApi || `${name}_update`;
   const _onSuccess = onSuccess || (() => nx.$event.emit(`${name}:refetch`));
-  const _currentStatus = nx.get(model, updateKey!);
+  const _currentValue = nx.get(model, updateKey);
   const handleStatusChange = (e) => {
     const id = nx.get(model, idKey!);
     const { value } = e.target;
-    const payload = { id, [updateKey!]: value, ...params };
+    const payload = { id, [updateKey]: value, ...params };
     nx.$event.emit(`${name}:draft`, { ...model, ...payload });
     nx.$api[_apiPath](payload).then(_onSuccess);
   };
 
   return (
-    <ReactAntStatusSwitch
-      items={items}
-      value={_currentStatus}
+    <Switch
+      defaultChecked={_currentValue}
       onChange={handleStatusChange}
       {...rest}
     />
