@@ -63,12 +63,12 @@ export const treeKv = ({ item }, cb) => {
   const { value, label, ...rest } = item;
   return (
     <Tree.TreeNode key={value} title={label} {...rest}>
-      {cb()}
+      {cb?.()}
     </Tree.TreeNode>
   );
 };
 
 export const treeSelectKv = ({ item }, cb) => {
   const { value, label } = item;
-  return <TreeSelect.TreeNode key={value} value={value} title={label} children={cb()} />;
+  return <TreeSelect.TreeNode key={value} value={value} title={label} children={cb?.()} />;
 };
