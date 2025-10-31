@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-31 08:33:59
+ * @LastEditTime: 2025-10-31 15:09:46
  */
 import nx from '@jswork/next';
 import { Space } from 'antd';
@@ -32,7 +32,8 @@ export type AcTableLinksProps = {
   name: string;
   model?: any;
   lang?: string;
-  extra?: React.ReactNode;
+  extraBefore?: React.ReactNode;
+  extraAfter?: React.ReactNode;
   as?: React.ComponentType<any>;
   asProps?: any;
   actions?: string[];
@@ -50,7 +51,7 @@ const defaultProps = {
 };
 
 export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
-  const { name, as, lang, actions, model, asProps, extra } = { ...defaultProps, ...props };
+  const { name, as, lang, actions, model, asProps, extraBefore, extraAfter } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang][key];
   const AsComponent = as || Space;
   const handleEdit = () => nx.$event?.emit?.(`${name}:edit`, model);
@@ -69,8 +70,9 @@ export const AcTableLinks: FC<AcTableLinksProps> = (props) => {
   };
   return (
     <AsComponent {...asProps}>
+      {extraBefore}
       {actions.map((action) => items[action])}
-      {extra}
+      {extraAfter}
     </AsComponent>
   );
 };
