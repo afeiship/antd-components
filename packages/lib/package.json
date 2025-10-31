@@ -1,6 +1,6 @@
 {
   "name": "@jswork/antd-components",
-  "version": "1.0.199",
+  "version": "1.0.201",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -20,6 +20,7 @@
     "@ant-design/icons": "*",
     "@ebay/nice-form-react": "*",
     "@jswork/react-ant-status-switch": "*",
+    "@jswork/next": "*",
     "antd": "*",
     "react-router-dom": "*"
   },
@@ -55,7 +56,7 @@
     "@jswork/event-mitt": "^2.0.17",
     "@jswork/harmony-events": "^1.2.11",
     "@jswork/loadkit": "^1.0.6",
-    "@jswork/next-compact-object": "^1.0.6",
+    "@jswork/next-compact-object": "^1.0.7",
     "@jswork/next-create-fetcher": "^1.0.6",
     "@jswork/next-dom-event": "^1.0.8",
     "@jswork/next-gpid": "^1.0.4",
