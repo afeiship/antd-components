@@ -1,16 +1,4 @@
-import {
-  AcTable,
-  BtnCreate,
-  BtnDelete,
-  BtnEdit,
-  BtnExport,
-  BtnImport,
-  BtnRefresh,
-  BtnSave,
-  BtnBack,
-  BtnView, BtnSubmit, BtnCancel, BtnSync, AcTableLinks, AcTableExtras, AcTableExtraSearch,
-} from '@jswork/antd-components';
-import { Space } from 'antd';
+import { AcCardExtras, AcInputToken, AcTable, AcTableLinks, BtnSave } from '@jswork/antd-components';
 import { useRef } from 'react';
 
 export default function App() {
@@ -44,17 +32,18 @@ export default function App() {
   return (
     <div className="rounded-2xl container mx-auto my-10 bg-gray-200 p-5">
       <div className="debug">
-        <AcTableExtras name="posts" />
+        <AcCardExtras name="posts" />
       </div>
       <nav className="debug-green">
-        {/*<AcTableExtraSearch name="posts" />*/}
+        {/*<AcExtraSearch name="posts" />*/}
       </nav>
-      <AcTable ref={tbRef} size="large" name="posts" columnsFields={columns} defaultPageSize={5}/>
+      <AcTable ref={tbRef} size="large" name="posts" columnsFields={columns} defaultPageSize={5} />
       <BtnSave type="primary" onClick={() => {
         console.log(
           'tbRef state: ', tbRef.current.state,
         );
       }}>Get State</BtnSave>
+      <AcInputToken />
     </div>
   );
 }

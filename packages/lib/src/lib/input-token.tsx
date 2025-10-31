@@ -1,6 +1,6 @@
 import React from 'react';
 import noop from '@jswork/noop';
-import { Button, Input, InputProps } from 'antd';
+import { Space, Button, Input, InputProps } from 'antd';
 import { UnlockOutlined, LockOutlined } from '@ant-design/icons';
 import { nanoid } from 'nanoid';
 import cx from 'classnames';
@@ -44,7 +44,7 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
   get tokenView() {
     const { labelCreate, labelRemove } = this.props;
     return (
-      <Button.Group>
+      <Space.Compact>
         <Button
           size="small"
           icon={<LockOutlined />}
@@ -59,7 +59,7 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
           onClick={this.handleTokenRemove}>
           {labelRemove}
         </Button>
-      </Button.Group>
+      </Space.Compact>
     );
   }
 
