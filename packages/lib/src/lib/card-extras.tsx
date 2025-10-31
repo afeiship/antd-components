@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-24 20:40:55
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-31 13:56:09
+ * @LastEditTime: 2025-10-31 14:01:13
  */
 import { Space, SpaceProps } from 'antd';
 import React, { FC, Fragment } from 'react';
@@ -32,7 +32,7 @@ const defaultExtras = {
 
 export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
   const { name, lang, as, extraBefore, extraAfter, asProps, actions } = { ...defaultExtras, ...props };
-  const handleRefresh = () => nx.$event?.emit?.(`${name}:refresh`);
+  const handleRefresh = () => nx.$event?.emit?.(`${name}:refetch`);
   const handleReset = () => nx.$event?.emit?.(`${name}:reset`);
   const handleAdd = () => nx.$event?.emit?.(`${name}:add`);
   const handleBack = () => history.back();
