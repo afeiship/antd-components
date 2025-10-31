@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-24 20:40:55
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-31 14:01:13
+ * @LastEditTime: 2025-10-31 14:07:56
  */
 import { Space, SpaceProps } from 'antd';
 import React, { FC, Fragment } from 'react';
@@ -27,7 +27,7 @@ export type AcCardExtrasProps = SpaceProps & {
 
 const defaultExtras = {
   lang: 'zh-CN',
-  actions: ['refresh', 'add'],
+  actions: ['refetch', 'add'],
 };
 
 export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
@@ -38,7 +38,7 @@ export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
   const handleBack = () => history.back();
   const AsComponent = as || Space;
   const items = {
-    refresh: <BtnRefresh lang={lang} onClick={handleRefresh} />,
+    refetch: <BtnRefresh lang={lang} onClick={handleRefresh} />,
     reset: <BtnRefresh lang={lang} onClick={handleReset} />,
     add: <BtnCreate lang={lang} onClick={handleAdd} />,
     back: <BtnBack lang={lang} onClick={handleBack} />,
