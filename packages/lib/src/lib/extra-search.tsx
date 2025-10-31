@@ -2,7 +2,7 @@
  * @Author: aric.zheng 1290657123@qq.com
  * @Date: 2025-10-29 10:54:41
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-29 16:39:12
+ * @LastEditTime: 2025-10-31 08:32:21
  */
 import React, { FC, useEffect } from 'react';
 import { readSearchString, writeSearchString } from '@jswork/url-sync-flat';
@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-export type AcTableExtraSearchProps = SearchProps & {
+export type AcExtraSearchProps = SearchProps & {
   name: string;
   lang?: string;
   queryKey?: string;
@@ -41,7 +41,7 @@ const defaultProps = {
 
 const EMPTY_STR = '';
 
-export const AcTableExtraSearch: FC<AcTableExtraSearchProps> = (props) => {
+export const AcExtraSearch: FC<AcExtraSearchProps> = (props) => {
   const { name, lang, queryKey, routerType, ...rest } = { ...defaultProps, ...props };
   const t = (key: string) => locales[lang!][key];
   const searchParams = readSearchString(routerType);

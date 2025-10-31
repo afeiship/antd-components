@@ -75,13 +75,13 @@ import './lib/alert';
 import useTableCommand from './lib/use-table-command';
 import { AcTableLinks } from './lib/table-links';
 import type { AcTableLinksProps } from './lib/table-links';
-import { AcTableExtras } from './lib/table-extras';
-import type { AcTableExtrasProps } from './lib/table-extras';
+import { AcCardExtras } from './lib/card-extras';
+import type { AcCardExtrasProps } from './lib/card-extras';
 import { initWidgets } from './lib/init-widgets';
 import { FormActions } from './lib/form-actions';
 import type { FormActionsProps } from './lib/form-actions';
-import { AcTableExtraSearch } from './lib/table-extra-search';
-import type { AcTableExtraSearchProps } from './lib/table-extra-search';
+import { AcExtraSearch } from './lib/extra-search';
+import type { AcExtraSearchProps } from './lib/extra-search';
 import { AcTableStatusSwitcher } from './lib/table-status-switcher';
 import type { AcTableStatusSwitcherProps } from './lib/table-status-switcher';
 import { AcTableToggleSwitcher } from './lib/table-toggle-switcher';
@@ -135,7 +135,7 @@ export {
   AcSwitch,
   AcTable,
   AcTableLinks,
-  AcTableExtras,
+  AcCardExtras,
   AcTextarea,
   AcTimePicker,
   AcTransfer,
@@ -177,7 +177,7 @@ export {
   AcUploadPictureCardFc,
   AcUploadFc,
   FormActions,
-  AcTableExtraSearch,
+  AcExtraSearch,
   AcTableStatusSwitcher,
   AcTableToggleSwitcher,
 
@@ -209,7 +209,7 @@ export {
   AcSwitchProps,
   AcTableProps,
   AcTableLinksProps,
-  AcTableExtrasProps,
+  AcCardExtrasProps,
   AcTextareaProps,
   AcTimePickerProps,
   AcTransferProps,
@@ -218,7 +218,7 @@ export {
   AcUploadDraggerProps,
   AcUploadProps,
   FormActionsProps,
-  AcTableExtraSearchProps,
+  AcExtraSearchProps,
   AcTableStatusSwitcherProps,
   AcTableToggleSwitcherProps,
 

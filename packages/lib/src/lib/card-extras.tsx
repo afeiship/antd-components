@@ -2,7 +2,7 @@
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-24 20:40:55
  * @LastEditors: aric 1290657123@qq.com
- * @LastEditTime: 2025-10-27 13:26:45
+ * @LastEditTime: 2025-10-31 08:32:21
  */
 import { Space, SpaceProps } from 'antd';
 import React, { FC, Fragment } from 'react';
@@ -15,36 +15,38 @@ declare global {
   }
 }
 
-export type AcTableExtrasProps = SpaceProps & {
+export type AcCardExtrasProps = SpaceProps & {
   name: string;
   lang?: string;
   as?: React.ComponentType<any>;
-  extra?: React.ReactNode;
+  extraBefore?: React.ReactNode;
+  extraAfter?: React.ReactNode;
   asProps?: any;
   actions?: string []
 }
 
 const defaultExtras = {
   lang: 'zh-CN',
-  actions: ['reset', 'add'],
+  actions: ['refresh', 'add'],
 };
 
-export const AcTableExtras: FC<AcTableExtrasProps> = (props) => {
-  const { name, lang, as, extra, asProps, actions } = { ...defaultExtras, ...props };
+export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
+  const { name, lang, as, extraBefore, extraAfter, asProps, actions } = { ...defaultExtras, ...props };
   const handleRefresh = () => nx.$event?.emit?.(`${name}:reset`);
   const handleAdd = () => nx.$event?.emit?.(`${name}:add`);
   const handleBack = () => history.back();
   const AsComponent = as || Space;
   const items = {
-    reset: <BtnRefresh lang={lang} onClick={handleRefresh} />,
+    refresh: <BtnRefresh lang={lang} onClick={handleRefresh} />,
     add: <BtnCreate lang={lang} onClick={handleAdd} />,
     back: <BtnBack lang={lang} onClick={handleBack} />,
   };
 
   return (
     <AsComponent {...asProps}>
+      {extraBefore}
       {actions?.map((action) => <Fragment key={action}>{items[action]}</Fragment>)}
-      {extra}
+      {extraAfter}
     </AsComponent>
   );
 };
