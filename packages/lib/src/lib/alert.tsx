@@ -5,6 +5,7 @@ declare global {
   interface NxStatic {
     err: (inMessage: string) => any;
     msg: (inMessage: string) => any;
+    info: (inMessage: string) => any;
     alert: (inMessage: string, inTitle?: String) => any;
     confirm: (inMessage: string, inTitle?: String) => any;
     prompt: (inMessage: string, inOptions?: InputProps) => any;
@@ -13,6 +14,10 @@ declare global {
 
 export const msg = (inMessage: string) => {
   return message.success(inMessage);
+};
+
+export const info = (inMessage: string) => {
+  return message.info(inMessage);
 };
 
 export const err = (inMessage: string) => {
@@ -59,6 +64,7 @@ export const prompt = (inMessage: string, inOptions?: InputProps) => {
 };
 
 nx.msg = msg;
+nx.info = info;
 nx.err = err;
 nx.alert = alert;
 nx.confirm = confirm;
