@@ -1,8 +1,8 @@
 /**
  * @Author: aric 1290657123@qq.com
  * @Date: 2025-10-03 07:11:26
- * @LastEditors: aric.zheng 1290657123@qq.com
- * @LastEditTime: 2025-10-29 15:51:14
+ * @LastEditors: aric 1290657123@qq.com
+ * @LastEditTime: 2025-11-01 10:44:40
  *
  *
  * 路由风格: /{module}/{name} eg: /admin/staff-roles
@@ -19,6 +19,7 @@ import '@jswork/next-create-fetcher';
 import '@jswork/next-compact-object';
 import { tableAction } from './table-links';
 import deepEqual from 'fast-deep-equal';
+import { ColumnsType } from 'antd/es/table';
 
 type NavigateFunction = import('react-router-dom').NavigateFunction;
 
@@ -110,7 +111,7 @@ export type AcTableProps = TableProps & {
   /**
    * Column fields for table action.
    */
-  columnsAction?: TableProps['columns'];
+  columnsAction?: ColumnsType<any>;
   /**
    * The table action params.
    */
