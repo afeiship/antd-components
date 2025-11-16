@@ -10,16 +10,16 @@
  */
 import type { EventMittNamespace } from '@jswork/event-mitt';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
+import nx from '@jswork/next';
+import '@jswork/next-compact-object';
+import '@jswork/next-create-fetcher';
 import UrlSyncFlat from '@jswork/url-sync-flat';
 import { Table, TableProps } from 'antd';
-import cx from 'classnames';
-import React from 'react';
-import nx from '@jswork/next';
-import '@jswork/next-create-fetcher';
-import '@jswork/next-compact-object';
-import { tableAction } from './table-links';
-import deepEqual from 'fast-deep-equal';
 import { ColumnsType } from 'antd/es/table';
+import cx from 'classnames';
+import deepEqual from 'fast-deep-equal';
+import React from 'react';
+import { tableAction } from './table-links';
 
 type NavigateFunction = import('react-router-dom').NavigateFunction;
 
@@ -63,7 +63,10 @@ export type AcTableProps = TableProps & {
    * `paramsEdit` will merge with `paramsAdd` when redirect to edit page.
    */
   paramsEdit?: Record<string, any>;
-
+  /**
+   * The extra params when reset the page.
+   */
+  paramsReset?: Record<string, any>;
   /**
    * Custom get standard data.
    * @param params { current: number; pageSize: number }
@@ -129,7 +132,7 @@ type AcTableState = {
   current: any;
   pageSize: any;
   total: any;
-}
+};
 
 export class AcTable extends React.Component<AcTableProps, AcTableState> {
   static displayName = CLASS_NAME;
@@ -229,11 +232,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     // 优先级：overrideParams > propsParams > currentUrlParams
     // 注意：这里不包含 page 和 size，它们将作为独立参数处理
     const filterParams = nx.compactObject(
-      overrideParams === null ? propsParams : {
-        ...currentUrlParams, // 从 URL 读取的现有参数
-        ...propsParams,     // 组件 props 中定义的固定参数
-        ...overrideParams,  // 动态传入的覆盖参数（例如搜索关键字）
-      },
+      overrideParams === null
+        ? propsParams
+        : {
+            ...currentUrlParams, // 从 URL 读取的现有参数
+            ...propsParams, // 组件 props 中定义的固定参数
+            ...overrideParams, // 动态传入的覆盖参数（例如搜索关键字）
+          }
     );
 
     // 3. 确保 page 和 size 是明确的，并从 filterParams 中移除它们，
@@ -241,7 +246,6 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     const finalPage = page;
     const finalSize = size;
     const { page: _, size: __, ...fetcherFilterParams } = filterParams as Record<string, any>;
-
 
     // 4. 更新组件状态：加载中、当前页和每页大小
     this.setState({
@@ -253,8 +257,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     // 5. 同步 URL 参数：合并所有过滤参数，并明确设置 page 和 size
     this.sync.schedule({
       ...filterParams, // 所有过滤参数
-      page: finalPage,   // 明确的当前页
-      size: finalSize,   // 明确的每页大小
+      page: finalPage, // 明确的当前页
+      size: finalSize, // 明确的每页大小
     });
 
     try {
@@ -307,7 +311,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * Reset to default state, and fetch data.
    */
   public reset = async () => {
-    const { defaultCurrent, defaultPageSize } = this.props;
+    const { defaultCurrent, defaultPageSize, paramsReset } = this.props;
     this.setState(
       {
         current: defaultCurrent,
@@ -316,8 +320,8 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
         dataSource: [],
       },
       () => {
-        void this.fetchData(defaultCurrent!, defaultPageSize!, null);
-      },
+        void this.fetchData(defaultCurrent!, defaultPageSize!, paramsReset);
+      }
     );
   };
 
@@ -392,6 +396,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
       params,
       paramsAdd,
       paramsEdit,
+      paramsReset,
       fetcher,
       dataPath,
       totalPath,
@@ -427,4 +432,3 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
     );
   }
 }
-
