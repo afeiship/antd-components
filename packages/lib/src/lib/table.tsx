@@ -68,6 +68,14 @@ export type AcTableProps = TableProps & {
    */
   paramsReset?: Record<string, any>;
   /**
+   * Use custom router path for add page.
+   */
+  pathAdd?: string;
+  /**
+   * Use custom router path for edit page.
+   */
+  pathEdit?: string;
+  /**
    * Custom get standard data.
    * @param params { current: number; pageSize: number }
    * @returns Promise<{ data: any[]; total: number }>
@@ -360,8 +368,9 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * CURD(page): Redirect to add page.
    */
   public add = () => {
-    const { module, paramsAdd } = this.props;
+    const { module, paramsAdd, pathAdd } = this.props;
     const qs = this.toQueryString(paramsAdd);
+    if(pathAdd) return nx.$nav?.(pathAdd);
     nx.$nav?.(`/${module}/${this.routerKey}/add${qs}`);
   };
 
@@ -369,8 +378,9 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
    * CURD(page): Redirect to edit page.
    */
   public edit = (item: any) => {
-    const { module, rowKey, paramsEdit } = this.props;
+    const { module, rowKey, paramsEdit, pathEdit } = this.props;
     const qs = this.toQueryString(paramsEdit);
+    if(pathEdit) return nx.$nav?.(pathEdit);
     nx.$nav?.(`/${module}/${this.routerKey}/${item[rowKey as string]}/edit${qs}`);
   };
 
