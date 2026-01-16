@@ -1,4 +1,4 @@
-import { Space, Typography } from 'antd';
+import { Typography } from 'antd';
 import { ValueType } from 'rc-input/lib/interface';
 import React from 'react';
 import { AcInput, AcInputProps } from './input';
@@ -41,12 +41,7 @@ export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyab
 
   render() {
     const { onChange, ...rest } = this.props;
-    return (
-      <Space.Compact direction="horizontal">
-        <AcInput onChange={this.handleInputChange} {...rest} />
-        {this.copyView}
-      </Space.Compact>
-    );
+    return <AcInput onChange={this.handleInputChange} {...rest} addonAfter={this.copyView} />;
   }
 }
 
