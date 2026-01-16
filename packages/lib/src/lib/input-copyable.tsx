@@ -1,11 +1,12 @@
 import { Typography } from 'antd';
+import { ValueType } from 'rc-input/lib/interface';
 import React from 'react';
 import { AcInput, AcInputProps } from './input';
 
 const CLASS_NAME = 'ac-input-copyable';
 
 interface AcInputCopyableState {
-  value?: string;
+  value?: ValueType;
 }
 
 export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyableState> {
@@ -22,7 +23,13 @@ export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyab
 
   get copyView() {
     const { value } = this.state;
-    return <Typography.Text copyable={{ text: value }} />;
+    return <Typography.Text copyable={{ text: String(value) }} />;
+  }
+
+  shouldComponentUpdate(props: Readonly<AcInputProps>): boolean {
+    const { value } = props;
+    if (value !== this.props.value) this.setState({ value });
+    return true;
   }
 
   handleInputChange = (e) => {
