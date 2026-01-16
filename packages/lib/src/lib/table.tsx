@@ -13,6 +13,7 @@ import { ReactHarmonyEvents } from '@jswork/harmony-events';
 import nx from '@jswork/next';
 import '@jswork/next-compact-object';
 import '@jswork/next-create-fetcher';
+import '@jswork/next-tmpl';
 import UrlSyncFlat from '@jswork/url-sync-flat';
 import { Table, TableProps } from 'antd';
 import { ColumnsType } from 'antd/es/table';
@@ -370,7 +371,7 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   public add = () => {
     const { module, paramsAdd, pathAdd } = this.props;
     const qs = this.toQueryString(paramsAdd);
-    if(pathAdd) return nx.$nav?.(pathAdd);
+    if (pathAdd) return nx.$nav?.(pathAdd);
     nx.$nav?.(`/${module}/${this.routerKey}/add${qs}`);
   };
 
@@ -380,7 +381,10 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   public edit = (item: any) => {
     const { module, rowKey, paramsEdit, pathEdit } = this.props;
     const qs = this.toQueryString(paramsEdit);
-    if(pathEdit) return nx.$nav?.(pathEdit);
+    if (pathEdit) {
+      const _editPath = nx.tmpl(pathEdit, item);
+      return nx.$nav?.(nx.tmpl(_editPath, item));
+    }
     nx.$nav?.(`/${module}/${this.routerKey}/${item[rowKey as string]}/edit${qs}`);
   };
 

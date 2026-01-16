@@ -19,8 +19,8 @@
   "peerDependencies": {
     "@ant-design/icons": "*",
     "@ebay/nice-form-react": "*",
-    "@jswork/react-ant-status-switch": "*",
     "@jswork/next": "*",
+    "@jswork/react-ant-status-switch": "*",
     "antd": "*",
     "react-router-dom": "*"
   },
@@ -60,6 +60,7 @@
     "@jswork/next-create-fetcher": "^1.0.6",
     "@jswork/next-dom-event": "^1.0.8",
     "@jswork/next-gpid": "^1.0.4",
+    "@jswork/next-tmpl": "^1.0.7",
     "@jswork/next-tree-walk": "^1.0.7",
     "@jswork/next-unique": "^1.0.2",
     "@jswork/noop": "^1.0.0",

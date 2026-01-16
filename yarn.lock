@@ -1699,6 +1699,11 @@
   resolved "https://registry.npmmirror.com/@jswork/next-gpid/-/next-gpid-1.0.4.tgz#2aaebc279210815d233236bf2ef2f049bd194284"
   integrity sha512-DyEeCIOreYAfVcQ3bhaCBap6SHGRhnkp1SgN3MTgyyOW3KoGPCtFdPSS0SzxVss8LLJY63OyTmGVkOx/NXCvUg==
 
+"@jswork/next-tmpl@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/@jswork/next-tmpl/-/next-tmpl-1.0.7.tgz#7849e43f43782479329b740e0b93b40e3719a63f"
+  integrity sha512-PASVF+ak3RArfyJ9r7uDICLBYkko3MZwOkn9ORXU9malXdiUl/Eog2sELNIo+wPqWCn0sLpC2DoZTiTBmeQ7YA==
+
 "@jswork/next-tree-walk@^1.0.7":
   version "1.0.7"
   resolved "https://registry.npmmirror.com/@jswork/next-tree-walk/-/next-tree-walk-1.0.7.tgz#7b8ec1532e1a9f6c7e02f4b71e42d8fdf90d32e9"
