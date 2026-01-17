@@ -56,6 +56,7 @@
 
   &__input {
     flex: 1;
+
     input {
       border-color: transparent;
       background: none;
@@ -188,4 +189,8 @@
     user-select: none;
     cursor: pointer;
   }
+}
+
+.ac-input-copyable {
+  display: flex;
 }
