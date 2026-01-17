@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "@jswork/antd-components": "^1.0.108",
-    "antd": "^5.27.5"
+    "antd": "^5.29.2"
   }
 }
