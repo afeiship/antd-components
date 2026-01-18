@@ -13,6 +13,7 @@ import { AcCodeFlaskFc } from './codeflask';
 import { AcDatePickerFc } from './date-picker';
 import { AcEditableTagGroupFc } from './editable-tag-group';
 import { AcInputFc } from './input';
+import { AcInputCopyableFc } from './input-copyable';
 import { AcInputHiddenFc } from './input-hidden';
 import { AcInputNumberFc } from './input-number';
 import { AcInputTagsFc } from './input-tags';
@@ -30,10 +31,10 @@ import { AcTextareaFc } from './textarea';
 import { AcTimePickerFc } from './time-picker';
 import { AcTransferFc } from './transfer';
 import { AcTreeSelectFc } from './tree-select';
+import { AcUploadFc } from './upload';
 import { AcUploadDraggerFc } from './upload-dragger';
 import { AcUploadPictureFc } from './upload-picture';
 import { AcUploadPictureCardFc } from './upload-picture-card';
-import { AcUploadFc } from './upload';
 
 export const widgets = {
   'ac:checkable-tag': AcCheckableTagFc,
@@ -44,6 +45,7 @@ export const widgets = {
   'ac:date-picker': AcDatePickerFc,
   'ac:editable-tag-group': AcEditableTagGroupFc,
   'ac:input': AcInputFc,
+  'ac:input-copyable': AcInputCopyableFc,
   'ac:input-hidden': AcInputHiddenFc,
   'ac:input-number': AcInputNumberFc,
   'ac:input-tags': AcInputTagsFc,
@@ -67,7 +69,10 @@ export const widgets = {
   'ac:upload': AcUploadFc,
 };
 
-export const initWidgets = (names?: string[] | null, externalWidgets?: Record<string, ReactComponent>) => {
+export const initWidgets = (
+  names?: string[] | null,
+  externalWidgets?: Record<string, ReactComponent>
+) => {
   const keys = names?.length ? names : Object.keys(widgets);
   keys.forEach((key) => {
     const widget = widgets[key];
