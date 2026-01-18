@@ -1,6 +1,7 @@
-import { AcCardExtras, AcInputToken, AcTable, AcTableLinks, BtnSave, AcInputCopyable } from "@jswork/antd-components";
+import { AcCardExtras, AcInputCopyable, AcInputToken, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
 import { useRef } from "react";
-import '@jswork/antd-components/dist/style.css';
+
+import "@jswork/antd-components/dist/style.css";
 
 export default function App() {
   const tbRef = useRef<any>(null);
