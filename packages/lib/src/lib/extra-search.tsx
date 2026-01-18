@@ -71,6 +71,7 @@ export const AcExtraSearch: FC<AcExtraSearchProps> = (props) => {
     <Input.Search
       size="small"
       enterButton
+      autoFocus
       allowClear
       value={value}
       placeholder={t('placeholder')}
