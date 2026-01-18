@@ -1,9 +1,9 @@
-import React from 'react';
+import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
 import noop from '@jswork/noop';
-import { Space, Button, Input, InputProps } from 'antd';
-import { UnlockOutlined, LockOutlined } from '@ant-design/icons';
-import { nanoid } from 'nanoid';
+import { Button, Input, InputProps, Space } from 'antd';
 import cx from 'classnames';
+import { nanoid } from 'nanoid';
+import React from 'react';
 
 const CLASS_NAME = 'ac-input-token';
 type StdEventTarget = { target: { value: any } };
@@ -87,16 +87,19 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
   render() {
     const { className, value, autoComplete, onChange, labelCreate, labelRemove, ...props } =
       this.props;
+
     return (
-      <Input
-        ref={this.rootRef}
-        value={this.state.value}
-        onChange={this.handleChange}
-        addonAfter={this.tokenView}
-        className={cx(CLASS_NAME, className)}
-        autoComplete={this.complete}
-        {...props}
-      />
+      <Space.Compact className={cx(CLASS_NAME, className)}>
+        <Input
+          ref={this.rootRef}
+          value={this.state.value}
+          onChange={this.handleChange}
+          className={cx(CLASS_NAME, className)}
+          autoComplete={this.complete}
+          {...props}
+        />
+        <Space.Addon>{this.tokenView}</Space.Addon>
+      </Space.Compact>
     );
   }
 }
@@ -104,4 +107,3 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
 export const AcInputTokenFc = (props: AcInputTokenProps) => {
   return <AcInputToken {...props} />;
 };
-
