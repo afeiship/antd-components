@@ -1,0 +1,651 @@
+# antd-components
+> antd-components is a collection of wrapped and enhanced Ant Design (antd) components for React applications. It provides production-ready components with additional features such as state management, form integration, and improved UX patterns.
+
+All components are written in TypeScript and built on top of Ant Design 5.x. The library includes form components, data display components, upload solutions, and specialized UI elements optimized for real-world applications.
+
+**Important notes for agents:**
+- antd-components wraps Ant Design components with enhanced functionality
+- All component names are prefixed with `Ac` (e.g., `AcInput`, `AcDatePicker`)
+- Components support both class-based and functional component variants (e.g., `AcInputFc`)
+- Form components integrate with `@ebay/nice-form-react` for schema-based form generation
+- Components are located at `./packages/lib/src/lib/`
+- The library is actively maintained with regular updates
+
+## Documentation
+- [Homepage](https://js.work): Official project homepage
+- [Live Preview](https://afeiship.github.io/antd-components/): Interactive component showcase
+- [GitHub Repository](https://github.com/afeiship/antd-components): Source code and issues
+- [NPM Package](https://www.npmjs.org/package/@jswork/antd-components): Package information
+
+## Key Features
+- **Enhanced Ant Design Components:** Wrapper components with added functionality
+- **State Management:** Built-in controlled component state handling
+- **Form Integration:** Compatible with `@ebay/nice-form-react` for declarative forms
+- **TypeScript Support:** Full type definitions with exported prop types
+- **Multiple Variants:** Many components provide both class and functional variants
+- **Upload Solutions:** Specialized upload components (dragger, picture, picture-card)
+- **Table Utilities:** Enhanced table components with links and status switchers
+
+## Installation
+
+### Basic Installation
+```bash
+npm install -S @jswork/antd-components
+```
+
+### Dependencies
+The library requires these peer dependencies:
+- `antd` (Ant Design 5.x)
+- `@ant-design/icons`
+- `@ebay/nice-form-react`
+- `react`
+- `react-dom`
+- `react-router-dom`
+
+### Setup
+
+1. **Import Styles:**
+```scss
+// CSS
+@import "~@jswork/antd-components/dist/style.css";
+
+// or SCSS
+@import "~@jswork/antd-components/dist/style.scss";
+```
+
+2. **Import Components:**
+```js
+import { AcDatePicker, AcInput, AcButton } from '@jswork/antd-components/main';
+import '@jswork/antd-components/dist/style.scss';
+
+function App() {
+  return (
+    <div>
+      <AcInput placeholder="Enter text..." />
+      <AcDatePicker />
+    </div>
+  );
+}
+```
+
+3. **Individual Component Import:**
+```js
+import { AcInput } from '@jswork/antd-components/dist/input';
+```
+
+## Component Reference
+
+### Form Input Components
+
+#### `AcInput`
+Enhanced input component with controlled state and autoComplete handling.
+```tsx
+import { AcInput } from '@jswork/antd-components/main';
+
+<AcInput
+  value={text}
+  onChange={({ target }) => setText(target.value)}
+  autoComplete={true}
+  placeholder="Enter text..."
+/>
+```
+
+#### `AcTextarea`
+Textarea component with auto-resize support.
+```tsx
+import { AcTextarea } from '@jswork/antd-components/main';
+
+<AcTextarea
+  value={content}
+  onChange={({ target }) => setContent(target.value)}
+  rows={4}
+/>
+```
+
+#### `AcInputNumber`
+Number input with validation and formatting.
+```tsx
+import { AcInputNumber } from '@jswork/antd-components/main';
+
+<AcInputNumber
+  value={number}
+  onChange={({ target }) => setNumber(target.value)}
+  min={0}
+  max={100}
+/>
+```
+
+#### `AcInputCopyable`
+Input component with copy-to-clipboard functionality.
+```tsx
+import { AcInputCopyable } from '@jswork/antd-components/main';
+
+<AcInputCopyable
+  value={text}
+  onChange={({ target }) => setText(target.value)}
+/>
+```
+
+#### `AcInputToken`
+Token-based input for managing tags/keywords.
+```tsx
+import { AcInputToken } from '@jswork/antd-components/main';
+
+<AcInputToken
+  value={tokens}
+  onChange={(value) => setTokens(value)}
+  placeholder="Add tags..."
+/>
+```
+
+#### `AcInputHidden`
+Hidden input component for form data.
+```tsx
+import { AcInputHidden } from '@jswork/antd-components/main';
+
+<AcInputHidden
+  value={hiddenValue}
+  onChange={({ target }) => setHiddenValue(target.value)}
+/>
+```
+
+#### `AcInputTags`
+Tag input component for managing multiple tags.
+```tsx
+import { AcInputTags } from '@jswork/antd-components/main';
+
+<AcInputTags
+  value={tags}
+  onChange={(value) => setTags(value)}
+/>
+```
+
+### Selection Components
+
+#### `AcSelect`
+Enhanced select dropdown with async support.
+```tsx
+import { AcSelect } from '@jswork/antd-components/main';
+
+<AcSelect
+  value={selected}
+  onChange={({ target }) => setSelected(target.value)}
+  options={[
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' }
+  ]}
+/>
+```
+
+#### `AcTreeSelect`
+Tree-structured select component.
+```tsx
+import { AcTreeSelect } from '@jswork/antd-components/main';
+
+<AcTreeSelect
+  value={selected}
+  onChange={(value) => setSelected(value)}
+  treeData={treeData}
+/>
+```
+
+#### `AcRadioGroup`
+Radio button group component.
+```tsx
+import { AcRadioGroup } from '@jswork/antd-components/main';
+
+<AcRadioGroup
+  value={selected}
+  onChange={({ target }) => setSelected(target.value)}
+  options={[
+    { value: 'a', label: 'Option A' },
+    { value: 'b', label: 'Option B' }
+  ]}
+/>
+```
+
+#### `AcCheckbox` / `AcCheckboxGroup`
+Checkbox and checkbox group components.
+```tsx
+import { AcCheckbox, AcCheckboxGroup } from '@jswork/antd-components/main';
+
+<AcCheckboxGroup
+  value={checkedValues}
+  onChange={(value) => setCheckedValues(value)}
+  options={[
+    { value: '1', label: 'Check 1' },
+    { value: '2', label: 'Check 2' }
+  ]}
+/>
+```
+
+#### `AcSwitch`
+Toggle switch component.
+```tsx
+import { AcSwitch } from '@jswork/antd-components/main';
+
+<AcSwitch
+  value={enabled}
+  onChange={({ target }) => setEnabled(target.value)}
+/>
+```
+
+#### `AcSlider` / `AcSliderRange`
+Slider and range slider components.
+```tsx
+import { AcSlider, AcSliderRange } from '@jswork/antd-components/main';
+
+<AcSlider
+  value={value}
+  onChange={({ target }) => setValue(target.value)}
+  min={0}
+  max={100}
+/>
+
+<AcSliderRange
+  value={[min, max]}
+  onChange={(value) => setRange(value)}
+/>
+```
+
+#### `AcRate`
+Star rating component.
+```tsx
+import { AcRate } from '@jswork/antd-components/main';
+
+<AcRate
+  value={rating}
+  onChange={({ target }) => setRating(target.value)}
+/>
+```
+
+#### `AcTransfer`
+Transfer list component for moving items between lists.
+```tsx
+import { AcTransfer } from '@jswork/antd-components/main';
+
+<AcTransfer
+  value={targetKeys}
+  onChange={(value) => setTargetKeys(value)}
+  dataSource={items}
+/>
+```
+
+### Date & Time Components
+
+#### `AcDatePicker`
+Date picker component with various formats.
+```tsx
+import { AcDatePicker } from '@jswork/antd-components/main';
+
+<AcDatePicker
+  value={date}
+  onChange={(date) => setSelectedDate(date)}
+  format="YYYY-MM-DD"
+/>
+```
+
+#### `AcTimePicker`
+Time picker component.
+```tsx
+import { AcTimePicker } from '@jswork/antd-components/main';
+
+<AcTimePicker
+  value={time}
+  onChange={(time) => setSelectedTime(time)}
+  format="HH:mm"
+/>
+```
+
+#### `AcRangePicker`
+Date range picker component.
+```tsx
+import { AcRangePicker } from '@jswork/antd-components/main';
+
+<AcRangePicker
+  value={[start, end]}
+  onChange={(dates) => setDateRange(dates)}
+/>
+```
+
+### Upload Components
+
+#### `AcUpload`
+Base upload component with enhanced features.
+```tsx
+import { AcUpload } from '@jswork/antd-components/main';
+
+<AcUpload
+  value={files}
+  onChange={(files) => setFiles(files)}
+  action="/api/upload"
+/>
+```
+
+#### `AcUploadDragger`
+Drag-and-drop upload zone.
+```tsx
+import { AcUploadDragger } from '@jswork/antd-components/main';
+
+<AcUploadDragger
+  value={files}
+  onChange={(files) => setFiles(files)}
+  action="/api/upload"
+/>
+```
+
+#### `AcUploadPicture`
+Picture upload component with preview.
+```tsx
+import { AcUploadPicture } from '@jswork/antd-components/main';
+
+<AcUploadPicture
+  value={imageUrl}
+  onChange={(url) => setImageUrl(url)}
+  action="/api/upload"
+/>
+```
+
+#### `AcUploadPictureCard`
+Card-style picture upload component.
+```tsx
+import { AcUploadPictureCard } from '@jswork/antd-components/main';
+
+<AcUploadPictureCard
+  value={images}
+  onChange={(images) => setImages(images)}
+  action="/api/upload"
+/>
+```
+
+### Data Display Components
+
+#### `AcTable` / `AcTableLinks` / `AcTableStatusSwitcher` / `AcTableToggleSwitcher`
+Enhanced table components with additional features.
+```tsx
+import {
+  AcTable,
+  AcTableLinks,
+  AcTableStatusSwitcher,
+  AcTableToggleSwitcher
+} from '@jswork/antd-components/main';
+
+<AcTable
+  columns={columns}
+  dataSource={data}
+  pagination={false}
+/>
+
+<AcTableLinks
+  columns={columns}
+  dataSource={data}
+  linkField="url"
+/>
+
+<AcTableStatusSwitcher
+  columns={columns}
+  dataSource={data}
+  statusField="status"
+  onStatusChange={(record, status) => handleStatusChange(record, status)}
+/>
+```
+
+#### `AcTree`
+Tree component for hierarchical data.
+```tsx
+import { AcTree } from '@jswork/antd-components/main';
+
+<AcTree
+  treeData={treeData}
+  onSelect={(keys) => setSelectedKeys(keys)}
+/>
+```
+
+#### `AcCardExtras`
+Card component with extra actions and features.
+```tsx
+import { AcCardExtras } from '@jswork/antd-components/main';
+
+<AcCardExtras
+  title="Card Title"
+  extra={<ActionButtons />}
+>
+  Card content
+</AcCardExtras>
+```
+
+### Tag Components
+
+#### `AcCheckableTag` / `AcCheckableTagList` / `AcEditableTagGroup`
+Tag components with various interaction patterns.
+```tsx
+import {
+  AcCheckableTag,
+  AcCheckableTagList,
+  AcEditableTagGroup
+} from '@jswork/antd-components/main';
+
+<AcCheckableTag
+  checked={checked}
+  onChange={(checked) => setChecked(checked)}
+>
+  Tag Label
+</AcCheckableTag>
+
+<AcCheckableTagList
+  value={selectedTags}
+  onChange={(tags) => setSelectedTags(tags)}
+  tags={['Tag1', 'Tag2', 'Tag3']}
+/>
+
+<AcEditableTagGroup
+  value={tags}
+  onChange={(tags) => setTags(tags)}
+/>
+```
+
+### Other Components
+
+#### `AcButton` / `AcConfirmButton`
+Button components with confirmation support.
+```tsx
+import { AcButton, AcConfirmButton } from '@jswork/antd-components/main';
+
+<AcButton
+  type="primary"
+  onClick={handleClick}
+>
+  Click Me
+</AcButton>
+
+<AcConfirmButton
+  onConfirm={handleDelete}
+  confirmTitle="Are you sure?"
+>
+  Delete
+</AcConfirmButton>
+```
+
+#### `AcSearch`
+Search input component with enhanced features.
+```tsx
+import { AcSearch } from '@jswork/antd-components/main';
+
+<AcSearch
+  value={searchTerm}
+  onChange={({ target }) => setSearchTerm(target.value)}
+  onSearch={(value) => handleSearch(value)}
+  placeholder="Search..."
+/>
+```
+
+#### `AcExtraSearch`
+Extended search component with additional filters.
+```tsx
+import { AcExtraSearch } from '@jswork/antd-components/main';
+
+<AcExtraSearch
+  value={searchParams}
+  onChange={(params) => setSearchParams(params)}
+  fields={searchFields}
+/>
+```
+
+#### `AcAlert`
+Alert notification component.
+```tsx
+import { AcAlert } from '@jswork/antd-components/main';
+
+<AcAlert
+  type="info"
+  message="Alert message"
+  description="Detailed description"
+/>
+```
+
+#### `AcBreadcrumb`
+Breadcrumb navigation component.
+```tsx
+import { AcBreadcrumb } from '@jswork/antd-components/main';
+
+<AcBreadcrumb
+  items={[
+    { title: 'Home', path: '/' },
+    { title: 'Page', path: '/page' }
+  ]}
+/>
+```
+
+#### `AcCodeFlask`
+Code editor component based on CodeFlask.
+```tsx
+import { AcCodeFlask } from '@jswork/antd-components/main';
+
+<AcCodeFlask
+  value={code}
+  onChange={(code) => setCode(code)}
+  language="javascript"
+/>
+```
+
+#### `AcInteractiveList`
+Interactive list component with actions.
+```tsx
+import { AcInteractiveList } from '@jswork/antd-components/main';
+
+<AcInteractiveList
+  items={items}
+  renderItem={(item) => (
+    <div>
+      <span>{item.title}</span>
+      <button onClick={() => handleAction(item)}>Action</button>
+    </div>
+  )}
+/>
+```
+
+#### `AcCheckableDropdown`
+Dropdown with checkable options.
+```tsx
+import { AcCheckableDropdown } from '@jswork/antd-components/main';
+
+<AcCheckableDropdown
+  value={selectedItems}
+  onChange={(items) => setSelectedItems(items)}
+  options={dropdownOptions}
+/>
+```
+
+#### `AcFormActions`
+Form action buttons component.
+```tsx
+import { AcFormActions } from '@jswork/antd-components/main';
+
+<AcFormActions
+  onSubmit={handleSubmit}
+  onCancel={handleCancel}
+/>
+```
+
+#### `AcPreSelect`
+Pre-selection component for advanced selection patterns.
+```tsx
+import { AcPreSelect } from '@jswork/antd-components/main';
+
+<AcPreSelect
+  value={selection}
+  onChange={(selection) => setSelection(selection)}
+  options={availableOptions}
+/>
+```
+
+## Template Components
+
+Located in `./packages/lib/src/tpls/`, these are higher-level templates for common patterns:
+
+- `breadcrumb/index.tsx` - Breadcrumb template
+- `kv/index.tsx` - Key-value display template
+- `raw/index.tsx` - Raw content template
+- `transfer/index.tsx` - Transfer template
+
+## Usage Notes for Agents
+
+### Component Naming Convention
+- All components use the `Ac` prefix (e.g., `AcInput`, `AcDatePicker`)
+- Functional variants use `Fc` suffix (e.g., `AcInputFc`)
+- Prop types are exported as `Ac[ComponentName]Props` (e.g., `AcInputProps`)
+
+### Import Patterns
+```js
+// Import all components
+import { AcInput, AcDatePicker } from '@jswork/antd-components/main';
+
+// Import individual component
+import { AcInput } from '@jswork/antd-components/dist/input';
+
+// Import prop types
+import type { AcInputProps } from '@jswork/antd-components/dist/input';
+```
+
+### Form Integration
+Components integrate with `@ebay/nice-form-react` using static `formSchema` property:
+```js
+AcInput.formSchema = 'ac-input';  // Component identifier
+```
+
+### Event Handling Pattern
+Most components use a standardized event pattern:
+```tsx
+// onChange receives { target: { value } }
+onChange={({ target }) => {
+  console.log(target.value);  // New value
+}}
+```
+
+### State Management
+Components maintain internal state and support controlled/uncontrolled modes:
+```tsx
+// Controlled mode
+<AcInput value={value} onChange={handleChange} />
+
+// Uncontrolled mode (initial value only)
+<AcInput defaultValue="initial" />
+```
+
+### Development
+```bash
+# Install dependencies
+npm install
+
+# Build library
+npm run build
+
+# Run examples
+npm run dev:example
+
+# Publish release
+npm run release
+```
+
+## License
+MIT License - See [LICENSE.txt](https://github.com/afeiship/antd-components/blob/master/LICENSE.txt) for details.
