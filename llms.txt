@@ -25,6 +25,7 @@ All components are written in TypeScript and built on top of Ant Design 5.x. The
 - **Multiple Variants:** Many components provide both class and functional variants
 - **Upload Solutions:** Specialized upload components (dragger, picture, picture-card)
 - **Table Utilities:** Enhanced table components with links and status switchers
+- **Color Picker:** Returns hex color values (#ffcc00) for easy storage and display
 
 ## Installation
 
@@ -158,6 +159,19 @@ import { AcInputTags } from '@jswork/antd-components/main';
   value={tags}
   onChange={(value) => setTags(value)}
 />
+```
+
+#### `AcColorPicker`
+Color picker component that returns hex color values.
+```tsx
+import { AcColorPicker } from '@jswork/antd-components/main';
+
+<AcColorPicker
+  value={color}
+  onChange={({ target }) => setColor(target.value)}
+  allowClear
+/>
+// Returns hex format: #ffcc00
 ```
 
 ### Selection Components
