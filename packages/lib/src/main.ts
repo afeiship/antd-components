@@ -5,6 +5,7 @@ import { AcCheckableTagList, AcCheckableTagListFc } from './lib/checkable-tag-li
 import { AcCheckbox, AcCheckboxFc } from './lib/checkbox';
 import { AcCheckboxGroup, AcCheckboxGroupFc } from './lib/checkbox-group';
 import { AcCodeFlask, AcCodeFlaskFc } from './lib/codeflask';
+import { AcColorPicker, AcColorPickerFc } from './lib/color-picker';
 import { AcConfirmButton } from './lib/confirm-button';
 import { AcDatePicker, AcDatePickerFc } from './lib/date-picker';
 import { AcEditableTagGroup, AcEditableTagGroupFc } from './lib/editable-tag-group';
@@ -44,6 +45,7 @@ import type { AcCheckableTagProps } from './lib/checkable-tag';
 import type { AcCheckableTagListProps } from './lib/checkable-tag-list';
 import type { AcCheckboxProps } from './lib/checkbox';
 import type { AcCheckboxGroupProps } from './lib/checkbox-group';
+import type { AcColorPickerProps } from './lib/color-picker';
 import type { AcConfirmButtonProps } from './lib/confirm-button';
 import type { AcDatePickerProps } from './lib/date-picker';
 import type { AcEditableTagGroupProps } from './lib/editable-tag-group';
@@ -115,6 +117,9 @@ export {
   AcCheckboxProps,
   AcCodeFlask,
   AcCodeFlaskFc,
+  AcColorPicker,
+  AcColorPickerFc,
+  AcColorPickerProps,
   AcConfirmButton,
   AcConfirmButtonProps,
   AcDatePicker,

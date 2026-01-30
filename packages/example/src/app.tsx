@@ -1,10 +1,11 @@
-import { AcCardExtras, AcInputCopyable, AcInputToken, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
-import { useRef } from "react";
+import { AcCardExtras, AcColorPicker, AcInputCopyable, AcInputToken, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
+import { useRef, useState } from "react";
 
 import "@jswork/antd-components/dist/style.css";
 
 export default function App() {
   const tbRef = useRef<any>(null);
+  const [color, setColor] = useState('#FFCC00');
   const columns = [
     { title: "ID", dataIndex: "id", key: "id", width: 100 },
     { title: "Title", dataIndex: "title", key: "title", width: 200 },
@@ -46,6 +47,18 @@ export default function App() {
         Get State
       </BtnSave>
       <AcInputToken />
+      <div className="mt-4">
+        <h3 className="mb-2 text-lg font-semibold">ColorPicker Demo</h3>
+        <AcColorPicker
+          value={color}
+          onChange={(e) => {
+            console.log('Color changed:', e.target.value);
+            setColor(e.target.value);
+          }}
+          allowClear
+        />
+        <p className="mt-2 text-sm text-gray-600">Selected: {color}</p>
+      </div>
     </div>
   );
 }
