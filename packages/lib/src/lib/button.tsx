@@ -4,12 +4,12 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-25 07:32:18
  */
-import React, { FC } from 'react';
-import { Button, ButtonProps } from 'antd';
 import {
-  ArrowLeftOutlined, BulbOutlined,
+  ArrowLeftOutlined,
+  BulbOutlined,
   CheckOutlined,
-  CloseOutlined, CopyOutlined,
+  CloseOutlined,
+  CopyOutlined,
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
@@ -20,8 +20,29 @@ import {
   SaveOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
+import { Button, ButtonProps } from 'antd';
+import React, { FC } from 'react';
 
-const locals = {
+// 类型定义
+type Locale = 'zh-CN' | 'en-US';
+type ActionType =
+  | 'create'
+  | 'edit'
+  | 'del'
+  | 'view'
+  | 'preview'
+  | 'save'
+  | 'export'
+  | 'imp'
+  | 'refresh'
+  | 'back'
+  | 'submit'
+  | 'cancel'
+  | 'sync'
+  | 'copy';
+
+// 文案
+const locals: Record<Locale, Record<ActionType, string>> = {
   'zh-CN': {
     create: '添加',
     edit: '编辑',
@@ -56,66 +77,91 @@ const locals = {
   },
 };
 
-const t = (locale: string, key: string) => {
-  return locals[locale][key] || key;
+// 图标映射
+const iconMap: Record<ActionType, React.ReactNode> = {
+  create: <PlusOutlined />,
+  edit: <EditOutlined />,
+  del: <CloseOutlined />,
+  view: <EyeOutlined />,
+  preview: <BulbOutlined />,
+  save: <SaveOutlined />,
+  export: <DownloadOutlined />,
+  imp: <ImportOutlined />,
+  refresh: <ReloadOutlined />,
+  back: <ArrowLeftOutlined />,
+  submit: <CheckOutlined />,
+  cancel: <RedoOutlined />,
+  sync: <SyncOutlined />,
+  copy: <CopyOutlined />,
 };
 
-type AcButtonProps = ButtonProps & {
-  lang?: string;
+// 国际化工具函数
+const t = (locale: Locale, key: ActionType): string => {
+  return locals[locale]?.[key] ?? key;
+};
+
+// 通用按钮组件
+interface ActionButtonProps extends ButtonProps {
+  action: ActionType;
+  lang?: Locale;
 }
 
-export const BtnCreate: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<PlusOutlined />} children={t(lang, 'create')} {...props} />;
+const ActionButton: FC<ActionButtonProps> = ({
+  action,
+  lang = 'zh-CN',
+  size = 'small',
+  children,
+  ...props
+}) => {
+  const text = children ?? t(lang, action);
+  const icon = iconMap[action];
+  return (
+    <Button size={size} icon={icon} {...props}>
+      {text}
+    </Button>
+  );
 };
 
-export const BtnEdit: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<EditOutlined />} children={t(lang, 'edit')} {...props} />;
-};
-
-export const BtnDelete: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<CloseOutlined />} children={t(lang, 'del')} {...props} />;
-};
-
-export const BtnView: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<EyeOutlined />} children={t(lang, 'view')} {...props} />;
-};
-
-export const BtnPreview: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<BulbOutlined />} children={t(lang, 'preview')} {...props} />;
-};
-
-export const BtnSave: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<SaveOutlined />} children={t(lang, 'save')} {...props} />;
-};
-
-export const BtnExport: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<DownloadOutlined />} children={t(lang, 'export')} {...props} />;
-};
-
-export const BtnImport: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<ImportOutlined />} children={t(lang, 'imp')} {...props} />;
-};
-
-export const BtnRefresh: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<ReloadOutlined />} children={t(lang, 'refresh')} {...props} />;
-};
-
-export const BtnBack: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<ArrowLeftOutlined />} children={t(lang, 'back')} {...props} />;
-};
-
-export const BtnSubmit: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<CheckOutlined />} children={t(lang, 'submit')} {...props} />;
-};
-
-export const BtnCancel: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<RedoOutlined />} children={t(lang, 'cancel')} {...props} />;
-};
-
-export const BtnSync: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<SyncOutlined />} children={t(lang, 'sync')} {...props} />;
-};
-
-export const BtnCopy: FC<AcButtonProps> = ({ lang = 'zh-CN', ...props }) => {
-  return <Button size="small" icon={<CopyOutlined />} children={t(lang, 'copy')} {...props} />;
-};
+// 导出具体命名的按钮（保持 API 兼容）
+export const BtnCreate = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="create" {...props} />
+);
+export const BtnEdit = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="edit" {...props} />
+);
+export const BtnDelete = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="del" {...props} />
+);
+export const BtnView = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="view" {...props} />
+);
+export const BtnPreview = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="preview" {...props} />
+);
+export const BtnSave = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="save" {...props} />
+);
+export const BtnExport = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="export" {...props} />
+);
+export const BtnImport = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="imp" {...props} />
+);
+export const BtnRefresh = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="refresh" {...props} />
+);
+export const BtnBack = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="back" {...props} />
+);
+export const BtnSubmit = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="submit" {...props} />
+);
+export const BtnCancel = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="cancel" {...props} />
+);
+export const BtnSync = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="sync" {...props} />
+);
+export const BtnCopy = (props: ButtonProps & { lang?: Locale }) => (
+  <ActionButton action="copy" {...props} />
+);
