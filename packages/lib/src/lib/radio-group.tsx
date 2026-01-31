@@ -1,8 +1,7 @@
-import React, { HTMLAttributes } from 'react';
 import ReactList from '@jswork/react-list';
-import noop from '@jswork/noop';
 import { Radio, RadioGroupProps } from 'antd';
 import cx from 'classnames';
+import React, { HTMLAttributes } from 'react';
 import { radioKv } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-radio-group';
@@ -20,7 +19,8 @@ export type AcRadioGroupProps = {
   template?: TemplateCallback;
   templateOptions?: any;
   buttonStyle?: 'solid' | 'outline';
-} & RadioGroupProps & HTMLAttributes<any>;
+} & RadioGroupProps &
+  HTMLAttributes<any>;
 
 export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
   static displayName = CLASS_NAME;
@@ -28,8 +28,6 @@ export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
   static defaultProps = {
     items: [],
     template: radioKv,
-    onChange: noop,
-    onSearch: noop,
   };
 
   get templateCallback() {
@@ -50,8 +48,8 @@ export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
     const { value } = inEvent.target;
     const target = { value };
     this.setState(target);
-    onChange!({ target });
-    onSearch!({ target });
+    onChange?.({ target });
+    onSearch?.({ target });
   };
 
   render() {
@@ -69,4 +67,3 @@ export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
 export const AcRadioGroupFc = (props: AcRadioGroupProps) => {
   return <AcRadioGroup {...props} />;
 };
-

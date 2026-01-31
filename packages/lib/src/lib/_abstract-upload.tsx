@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
-import Sortable from 'sortablejs';
 import { loadScript, loadStyle } from '@jswork/loadkit';
+import { UploadFile } from 'antd';
 import { DraggerProps } from 'antd/es/upload';
 import { UploadChangeParam } from 'antd/es/upload/interface';
-import { UploadFile } from 'antd';
+import React, { ReactNode } from 'react';
 import { flushSync } from 'react-dom';
+import Sortable from 'sortablejs';
 
 import '@jswork/next-gpid';
 
@@ -45,7 +45,7 @@ export class AcAbstractUpload extends React.Component<AcAbstractUploadProps, Sta
   constructor(inProps: AcAbstractUploadProps) {
     super(inProps);
     this.state = {
-      fileList: this.toFileList(inProps.value)
+      fileList: this.toFileList(inProps.value),
     };
   }
 
@@ -72,7 +72,7 @@ export class AcAbstractUpload extends React.Component<AcAbstractUploadProps, Sta
       ghostClass: 'sortable-ghost',
       chosenClass: 'sortable-chosen',
       dragClass: 'sortable-drag',
-      onEnd: this.handleSortEnd
+      onEnd: this.handleSortEnd,
     });
   }
 
@@ -112,7 +112,7 @@ export class AcAbstractUpload extends React.Component<AcAbstractUploadProps, Sta
   doChange = (inValue) => {
     const { onChange, transformResponse } = this.props;
     const value = inValue.map((item) => item.response ?? item);
-    onChange!({ target: { value: transformResponse!(value) } });
+    onChange?.({ target: { value: transformResponse!(value) } });
   };
 
   previewFile = (file): Promise<string> => {

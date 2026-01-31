@@ -1,7 +1,6 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Input, InputProps } from 'antd';
 import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-input';
 type StdEventTarget = { target: { value: any } };
@@ -17,7 +16,6 @@ export class AcInput extends React.Component<AcInputProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     autoComplete: false,
   };
 
@@ -34,7 +32,7 @@ export class AcInput extends React.Component<AcInputProps> {
     const { value } = inEvent.target;
     const target = { value };
     this.setState(target);
-    onChange!({ target });
+    onChange?.({ target });
   };
 
   get complete() {
@@ -60,4 +58,3 @@ export class AcInput extends React.Component<AcInputProps> {
 export const AcInputFc = (props: AcInputProps) => {
   return <AcInput {...props} />;
 };
-

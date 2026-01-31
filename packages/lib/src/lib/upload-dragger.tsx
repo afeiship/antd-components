@@ -1,9 +1,8 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { InboxOutlined } from '@ant-design/icons';
 import { Upload } from 'antd';
-import cx from 'classnames';
 import { DraggerProps } from 'antd/es/upload';
+import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-upload-dragger';
 const { Dragger } = Upload;
@@ -23,13 +22,12 @@ export class AcUploadDragger extends React.Component<AcUploadDraggerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
-    onRequest: (inEvent) => Promise.resolve(inEvent)
+    onRequest: (inEvent) => Promise.resolve(inEvent),
   };
 
   handleChange = (inEvent) => {
     const { onChange } = this.props;
-    onChange!({ target: { value: inEvent } });
+    onChange?.({ target: { value: inEvent } });
   };
 
   handleCustomRequest = (inRequestOption) => {
@@ -62,4 +60,3 @@ export class AcUploadDragger extends React.Component<AcUploadDraggerProps> {
 export const AcUploadDraggerFc = (props: AcUploadDraggerProps) => {
   return <AcUploadDragger {...props} />;
 };
-

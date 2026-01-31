@@ -1,10 +1,9 @@
-import React from 'react';
 import ReactList from '@jswork/react-list';
-import noop from '@jswork/noop';
 import { Checkbox } from 'antd';
-import cx from 'classnames';
-import { checkboxKv } from '../tpls/kv';
 import { CheckboxGroupProps } from 'antd/es/checkbox';
+import cx from 'classnames';
+import React from 'react';
+import { checkboxKv } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-checkbox-group';
 type StdEventTarget = { target: { value: any } };
@@ -27,8 +26,6 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
     items: [],
     value: [],
     template: checkboxKv,
-    onChange: noop,
-    onSearch: noop,
   };
 
   state = {
@@ -49,8 +46,8 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
     const target = { value: inEvent };
     const stdEvent = { target };
     this.setState(target, () => {
-      onChange!(stdEvent);
-      onSearch!(stdEvent);
+      onChange?.(stdEvent);
+      onSearch?.(stdEvent);
     });
   };
 
@@ -74,4 +71,3 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
 export const AcCheckboxGroupFc = (props: AcCheckboxGroupProps) => {
   return <AcCheckboxGroup {...props} />;
 };
-

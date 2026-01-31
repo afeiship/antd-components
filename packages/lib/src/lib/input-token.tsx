@@ -1,5 +1,4 @@
 import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
-import noop from '@jswork/noop';
 import { Button, Input, InputProps, Space } from 'antd';
 import cx from 'classnames';
 import { nanoid } from 'nanoid';
@@ -22,7 +21,6 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     autoComplete: false,
     labelCreate: '生成Token',
     labelRemove: '去掉Token',
@@ -81,7 +79,7 @@ export class AcInputToken extends React.Component<AcInputTokenProps> {
     const { onChange } = this.props;
     const target = { value: inValue };
     this.setState(target);
-    onChange!({ target });
+    onChange?.({ target });
   };
 
   render() {

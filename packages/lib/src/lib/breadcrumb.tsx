@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from '@jswork/noop';
 import { Breadcrumb, BreadcrumbProps } from 'antd';
 import ReactList, { TemplateArgs } from '@jswork/react-list';
 import { breadcrumbDefault } from '../tpls/breadcrumb';
@@ -25,7 +24,6 @@ export type AcBreadcrumbProps = {
 export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
   static displayName = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     template: breadcrumbDefault,
   };
 

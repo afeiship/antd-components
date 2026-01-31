@@ -1,8 +1,7 @@
-import noop from '@jswork/noop';
 import ReactList from '@jswork/react-list';
 import cx from 'classnames';
-import React, { Component, HTMLAttributes } from 'react';
 import deepEqual from 'fast-deep-equal';
+import React, { Component, HTMLAttributes } from 'react';
 
 const CLASS_NAME = 'ac-interactive-list';
 
@@ -66,11 +65,6 @@ class ReactInteractiveList extends Component<ReactInteractiveListProps, ReactInt
     min: 0,
     max: 10,
     items: [],
-    template: noop,
-    templateCreate: noop,
-    templateDefault: noop,
-    onChange: noop,
-    onError: noop
   };
 
   get length() {

@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Input } from 'antd';
-import cx from 'classnames';
 import { TextAreaProps } from 'antd/es/input';
+import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-textarea';
 const TextArea = Input.TextArea;
@@ -18,9 +17,7 @@ export type AcTextareaProps = {
 export class AcTextarea extends React.Component<AcTextareaProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop,
-  };
+  static defaultProps = {};
 
   render() {
     const { className, defaultValue, ...props } = this.props;
@@ -31,4 +28,3 @@ export class AcTextarea extends React.Component<AcTextareaProps> {
 export const AcTextareaFc = (props: AcTextareaProps) => {
   return <AcTextarea {...props} />;
 };
-

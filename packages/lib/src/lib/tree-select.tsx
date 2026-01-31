@@ -1,8 +1,7 @@
-import React from 'react';
-import cx from 'classnames';
-import noop from '@jswork/noop';
-import { TreeSelect, TreeSelectProps } from 'antd';
 import '@jswork/next-tree-walk';
+import { TreeSelect, TreeSelectProps } from 'antd';
+import cx from 'classnames';
+import React from 'react';
 import { treeSelectKv } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-tree-select';
@@ -26,7 +25,6 @@ export class AcTreeSelect extends React.Component<AcTreeSelectProps> {
     items: [],
     template: treeSelectKv,
     itemsKey: 'children',
-    onChange: noop,
   };
 
   get childView() {
@@ -36,19 +34,11 @@ export class AcTreeSelect extends React.Component<AcTreeSelectProps> {
 
   handleChange = (inValue) => {
     const { onChange } = this.props;
-    onChange!({ target: { value: inValue } });
+    onChange?.({ target: { value: inValue } });
   };
 
   render() {
-    const {
-      className,
-      items,
-      itemsKey,
-      template,
-      treeData,
-      onChange,
-      ...props
-    } = this.props;
+    const { className, items, itemsKey, template, treeData, onChange, ...props } = this.props;
 
     return (
       <TreeSelect
@@ -66,5 +56,3 @@ export class AcTreeSelect extends React.Component<AcTreeSelectProps> {
 export const AcTreeSelectFc = (props: AcTreeSelectProps) => {
   return <AcTreeSelect {...props} />;
 };
-
-

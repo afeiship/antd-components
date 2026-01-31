@@ -1,7 +1,6 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { InputNumber, InputNumberProps } from 'antd';
 import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-input-number';
 type StdEventTarget = { target: { value: any } };
@@ -16,9 +15,7 @@ export type AcInputNumberProps = {
 export class AcInputNumber extends React.Component<AcInputNumberProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop,
-  };
+  static defaultProps = {};
 
   state = {
     value: this.props.value,
@@ -34,7 +31,7 @@ export class AcInputNumber extends React.Component<AcInputNumberProps> {
     const { onChange } = this.props;
     const target = { value: inEvent };
     this.setState(target);
-    onChange!({ target });
+    onChange?.({ target });
   };
 
   render() {
@@ -54,5 +51,3 @@ export class AcInputNumber extends React.Component<AcInputNumberProps> {
 export const AcInputNumberFc = (props: AcInputNumberProps) => {
   return <AcInputNumber {...props} />;
 };
-
-

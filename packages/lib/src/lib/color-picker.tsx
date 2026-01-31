@@ -1,4 +1,3 @@
-import noop from '@jswork/noop';
 import { ColorPicker, ColorPickerProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
@@ -16,9 +15,7 @@ export type AcColorPickerProps = {
 export class AcColorPicker extends React.Component<AcColorPickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop,
-  };
+  static defaultProps = {};
 
   state = { value: this.props.value };
 
@@ -40,7 +37,7 @@ export class AcColorPicker extends React.Component<AcColorPickerProps> {
     const { onChange } = this.props;
     const target = { value: '' };
     this.setState({ value: '' });
-    onChange!({ target });
+    onChange?.({ target });
   };
 
   render() {

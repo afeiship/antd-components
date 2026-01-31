@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from '@jswork/noop';
 import { Space, Upload } from 'antd';
 import cx from 'classnames';
 import { UploadOutlined } from '@ant-design/icons';
@@ -18,7 +17,6 @@ export class AcUploadPictureCard extends AcAbstractUpload {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     value: [],
     transformURL: (pid) => (pid.includes('://') ? pid : `https://tva1.js.work/large/${pid}.jpg`),
     transformResponse: (inFileList: any) => {

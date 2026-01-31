@@ -1,11 +1,10 @@
-import cx from 'classnames';
-import React, { createRef } from 'react';
-import noop from '@jswork/noop';
-import AutosizeInput from 'react-input-autosize';
-import { Button, Tag } from 'antd';
-import deepEqual from 'fast-deep-equal';
 import '@jswork/next-dom-event';
 import '@jswork/next-unique';
+import { Button, Tag } from 'antd';
+import cx from 'classnames';
+import deepEqual from 'fast-deep-equal';
+import React, { createRef } from 'react';
+import AutosizeInput from 'react-input-autosize';
 import { AcInteractiveList } from './interactive-list';
 
 const CLASS_NAME = 'ac-editable-tag-group';
@@ -54,7 +53,6 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
     value: [],
     min: 0,
     max: 10,
-    onChange: noop,
     triggers: [' ', 'Tab'],
   };
 
@@ -181,13 +179,12 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
   };
 
   handleChange = (inValue, inCallback?) => {
-    const callback = inCallback || noop;
     const { onChange } = this.props;
     const value = inValue.map((item) => item.trim());
     const target = { value };
     this.setState(target, () => {
       onChange!({ target });
-      callback(value);
+      inCallback?.(value);
     });
   };
 
@@ -235,4 +232,3 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
 export const AcEditableTagGroupFc = (props: AcEditableTagGroupProps) => {
   return <AcEditableTagGroup {...props} />;
 };
-

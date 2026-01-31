@@ -1,4 +1,3 @@
-import noop from '@jswork/noop';
 import cx from 'classnames';
 import React from 'react';
 import { AcInput } from './input';
@@ -53,8 +52,6 @@ export class AcPreSelect extends React.Component<AcPreSelectProps> {
   static formSchema = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    onChange: noop,
-    onSearch: noop,
     searchable: false,
   };
 

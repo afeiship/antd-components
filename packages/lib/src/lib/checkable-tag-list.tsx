@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
-import cx from 'classnames';
 import ReactList from '@jswork/react-list';
-import { Space, Button } from 'antd';
+import { Button, Space } from 'antd';
+import cx from 'classnames';
+import React from 'react';
 import { AcCheckableTag } from './checkable-tag';
 
 const CLASS_NAME = 'ac-checkable-tag-list';
@@ -46,7 +45,6 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
   static defaultProps = {
     lang: 'zh-CN',
     value: [],
-    onChange: noop,
   };
 
   state = {
@@ -68,7 +66,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
     const { onChange } = this.props;
     const target = { value: inEvent };
     this.setState(target, () => {
-      onChange!({ target });
+      onChange?.({ target });
     });
   };
 
@@ -121,7 +119,6 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
     );
   }
 }
-
 
 export const AcCheckableTagListFc = (props: AcCheckableTagListProps) => {
   return <AcCheckableTagList {...props} />;

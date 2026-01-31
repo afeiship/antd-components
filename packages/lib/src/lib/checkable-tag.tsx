@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
-import noop from '@jswork/noop';
-import { Tag } from 'antd';
-import cx from 'classnames';
-import { CheckableTagProps } from 'antd/es/tag';
 import { CloseOutlined } from '@ant-design/icons';
+import { Tag } from 'antd';
+import { CheckableTagProps } from 'antd/es/tag';
+import cx from 'classnames';
+import React, { ReactNode } from 'react';
 
 const CLASS_NAME = 'ac-checkable-tag';
 const { CheckableTag } = Tag;
@@ -34,8 +33,6 @@ export class AcCheckableTag extends React.Component<AcCheckableTagProps> {
     disabled: false,
     toggleable: false,
     propagation: false,
-    onChange: noop,
-    onCloseClick: noop,
   };
 
   state = {
@@ -63,14 +60,14 @@ export class AcCheckableTag extends React.Component<AcCheckableTagProps> {
     const { onChange } = this.props;
     const target = { value: inEvent };
     this.setState(target, () => {
-      onChange!({ target });
+      onChange?.({ target });
     });
   };
 
   handleCloseClick = (inEvent) => {
     const { propagation, onCloseClick } = this.props;
     !propagation && inEvent.stopPropagation();
-    onCloseClick!(inEvent);
+    onCloseClick?.(inEvent);
   };
 
   render() {

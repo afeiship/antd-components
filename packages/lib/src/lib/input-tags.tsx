@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Tag } from 'antd';
 import cx from 'classnames';
 import fde from 'fast-deep-equal';
+import React from 'react';
 
 const CLASS_NAME = 'ac-input-tags';
 const TRIGGER_KEYS = ['Tab', 'Enter', 'Space'];
@@ -30,7 +29,6 @@ export class AcInputTags extends React.Component<AcInputTagsProps, State> {
   static defaultProps = {
     items: [],
     disabled: false,
-    onChange: noop,
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -96,7 +94,7 @@ export class AcInputTags extends React.Component<AcInputTagsProps, State> {
     const { onChange } = this.props;
     this.setState({ items: (inItems || []).slice(0) }, () => {
       this.inputRef.current?.focus();
-      onChange!({ target: { value: inItems } });
+      onChange?.({ target: { value: inItems } });
     });
   };
 
@@ -142,4 +140,3 @@ export class AcInputTags extends React.Component<AcInputTagsProps, State> {
 export const AcInputTagsFc = (props: AcInputTagsProps) => {
   return <AcInputTags {...props} />;
 };
-

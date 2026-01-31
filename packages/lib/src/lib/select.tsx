@@ -1,9 +1,8 @@
-import React from 'react';
 import ReactList from '@jswork/react-list';
-import noop from '@jswork/noop';
 import { Select, SelectProps } from 'antd';
 import cx from 'classnames';
-import { selectKv, kv as KvTmpl } from '../tpls/kv';
+import React from 'react';
+import { kv as KvTmpl, selectKv } from '../tpls/kv';
 
 const CLASS_NAME = 'ac-select';
 const DEFAULT_KV = {
@@ -32,8 +31,6 @@ export class AcSelect extends React.Component<AcSelectProps> {
     items: [],
     kv: DEFAULT_KV,
     template: selectKv,
-    onChange: noop,
-    onSearch: noop,
   };
 
   state = {
@@ -54,8 +51,8 @@ export class AcSelect extends React.Component<AcSelectProps> {
     const target = { value: inValue };
     const stdEvent: StdEventTarget = { target: { value: inValue } };
     this.setState(target, () => {
-      onChange!(stdEvent);
-      onSearch!(stdEvent);
+      onChange?.(stdEvent);
+      onSearch?.(stdEvent);
     });
   };
 
@@ -92,4 +89,3 @@ export class AcSelect extends React.Component<AcSelectProps> {
 export const AcSelectFc = (props: AcSelectProps) => {
   return <AcSelect {...props} />;
 };
-

@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Slider } from 'antd';
-import cx from 'classnames';
 import { SliderRangeProps } from 'antd/es/slider';
+import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-slider-range';
 type StdEventTarget = { target: { value: any } };
@@ -17,13 +16,11 @@ export type AcSliderRangeProps = {
 export class AcSliderRange extends React.Component<AcSliderRangeProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop
-  };
+  static defaultProps = {};
 
   handleChange = (inEvent) => {
     const { onChange } = this.props;
-    onChange!({ target: { value: inEvent } });
+    onChange?.({ target: { value: inEvent } });
   };
 
   render() {
@@ -42,5 +39,3 @@ export class AcSliderRange extends React.Component<AcSliderRangeProps> {
 export const AcSliderRangeFc = (props: AcSliderRangeProps) => {
   return <AcSliderRange {...props} />;
 };
-
-

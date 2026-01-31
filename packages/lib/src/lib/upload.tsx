@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
-import { Upload, Button } from 'antd';
-import type { UploadProps, ButtonProps } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import type { ButtonProps, UploadProps } from 'antd';
+import { Button, Upload } from 'antd';
+import React from 'react';
 
 import cx from 'classnames';
 
@@ -23,13 +22,12 @@ export class AcUpload extends React.Component<AcUploadProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
-    onRequest: (inEvent) => Promise.resolve(inEvent)
+    onRequest: (inEvent) => Promise.resolve(inEvent),
   };
 
   handleChange = (inEvent) => {
     const { onChange } = this.props;
-    onChange!({ target: { value: inEvent } });
+    onChange?.({ target: { value: inEvent } });
   };
 
   handleCustomRequest = (inRequestOption) => {
@@ -57,4 +55,3 @@ export class AcUpload extends React.Component<AcUploadProps> {
 export const AcUploadFc = (props: AcUploadProps) => {
   return <AcUpload {...props} />;
 };
-

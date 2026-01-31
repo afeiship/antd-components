@@ -1,8 +1,7 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { TimePicker, TimePickerProps } from 'antd';
 import cx from 'classnames';
 import dayjs from 'dayjs';
+import React from 'react';
 
 const CLASS_NAME = 'ac-time-picker';
 const STD_FORMAT = 'HH:mm:ss';
@@ -20,14 +19,13 @@ export class AcTimePicker extends React.Component<AcTimePickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     format: STD_FORMAT,
   };
 
   handleChange = (inEvent) => {
     const value = this.stringify(inEvent);
     const { onChange } = this.props;
-    onChange!({ target: { value } });
+    onChange?.({ target: { value } });
   };
 
   parse = (inValue) => {
@@ -68,4 +66,3 @@ export class AcTimePicker extends React.Component<AcTimePickerProps> {
 export const AcTimePickerFc = (props: AcTimePickerProps) => {
   return <AcTimePicker {...props} />;
 };
-

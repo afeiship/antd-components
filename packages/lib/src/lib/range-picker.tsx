@@ -1,9 +1,8 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { DatePicker } from 'antd';
+import { RangePickerProps } from 'antd/es/date-picker';
 import cx from 'classnames';
 import moment from 'dayjs';
-import { RangePickerProps } from 'antd/es/date-picker';
+import React from 'react';
 
 const CLASS_NAME = 'ac-range-picker';
 const STD_FORMAT = 'YYYY-MM-DD HH:mm:ss';
@@ -23,13 +22,12 @@ export class AcRangePicker extends React.Component<AcRangePickerProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
     format: STD_FORMAT,
   };
 
   handleChange = (inEvent) => {
     const { onChange } = this.props;
-    onChange!({ target: { value: this.stringify(inEvent) } });
+    onChange?.({ target: { value: this.stringify(inEvent) } });
   };
 
   parse = (inValue) => {
@@ -49,11 +47,7 @@ export class AcRangePicker extends React.Component<AcRangePickerProps> {
     if (value) props['value'] = this.parse(value);
 
     return (
-      <RangePicker
-        className={cx(CLASS_NAME, className)}
-        onChange={this.handleChange}
-        {...props}
-      />
+      <RangePicker className={cx(CLASS_NAME, className)} onChange={this.handleChange} {...props} />
     );
   }
 }
@@ -61,5 +55,3 @@ export class AcRangePicker extends React.Component<AcRangePickerProps> {
 export const AcRangePickerFc = (props: AcRangePickerProps) => {
   return <AcRangePicker {...props} />;
 };
-
-

@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from '@jswork/noop';
 import { Input } from 'antd';
 import cx from 'classnames';
 import { SearchProps } from 'antd/es/input';
@@ -19,8 +18,6 @@ export class AcSearch extends React.Component<AcSearchProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
   static defaultProps = {
-    onChange: noop,
-    onSearch: noop,
     autoComplete: false,
     placeholder: '输入关键字搜索',
   };
@@ -31,7 +28,7 @@ export class AcSearch extends React.Component<AcSearchProps> {
 
   handleSearch = (inEvent) => {
     const { onSearch } = this.props;
-    onSearch!({ target: { value: inEvent } });
+    onSearch?.({ target: { value: inEvent } });
   };
 
   render() {

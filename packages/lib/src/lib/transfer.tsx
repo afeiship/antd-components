@@ -1,7 +1,6 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Transfer, TransferProps } from 'antd';
 import cx from 'classnames';
+import React from 'react';
 import { transferLabel } from '../tpls/transfer';
 
 const CLASS_NAME = 'ac-transfer';
@@ -23,7 +22,6 @@ export class AcTransfer extends React.Component<AcTransferProps> {
   static defaultProps = {
     items: [],
     template: transferLabel,
-    onChange: noop
   };
 
   get templateCallback(): any {
@@ -32,7 +30,7 @@ export class AcTransfer extends React.Component<AcTransferProps> {
   }
 
   state = {
-    value: this.props.value
+    value: this.props.value,
   };
 
   shouldComponentUpdate(nextProps: Readonly<AcTransferProps>): boolean {
@@ -47,7 +45,7 @@ export class AcTransfer extends React.Component<AcTransferProps> {
   handleChange = (inEvent) => {
     const { onChange } = this.props;
     const target = { value: inEvent };
-    this.setState(target, () => onChange!({ target }));
+    this.setState(target, () => onChange?.({ target }));
   };
 
   render() {
@@ -72,4 +70,3 @@ export class AcTransfer extends React.Component<AcTransferProps> {
 export const AcTransferFc = (props: AcTransferProps) => {
   return <AcTransfer {...props} />;
 };
-

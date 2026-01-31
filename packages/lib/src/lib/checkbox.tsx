@@ -1,7 +1,6 @@
-import React, { HTMLAttributes } from 'react';
-import noop from '@jswork/noop';
 import { Checkbox, CheckboxProps } from 'antd';
 import cx from 'classnames';
+import React, { HTMLAttributes } from 'react';
 
 const CLASS_NAME = 'ac-checkbox';
 type StdEventTarget = { target: { value: any } };
@@ -17,9 +16,7 @@ export type AcCheckboxProps = {
 export class AcCheckbox extends React.Component<AcCheckboxProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop,
-  };
+  static defaultProps = {};
 
   state = {
     value: this.props.value,
@@ -39,7 +36,7 @@ export class AcCheckbox extends React.Component<AcCheckboxProps> {
     const target = { value: checked };
 
     this.setState(target, () => {
-      onChange!({ target });
+      onChange?.({ target });
     });
   };
 
@@ -58,8 +55,6 @@ export class AcCheckbox extends React.Component<AcCheckboxProps> {
   }
 }
 
-
 export const AcCheckboxFc = (props: AcCheckboxProps) => {
   return <AcCheckbox {...props} />;
 };
-

@@ -1,9 +1,8 @@
-import React from 'react';
-import noop from '@jswork/noop';
-import { Checkbox, Dropdown, Button, MenuProps } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import '@jswork/next-dom-event';
+import { Button, Checkbox, Dropdown, MenuProps } from 'antd';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
+import React from 'react';
 
 const CLASS_NAME = 'ac-checkable-dropdown';
 const locales = { 'zh-CN': { selectAll: '全部' }, 'en-US': { selectAll: 'All' } };
@@ -27,17 +26,16 @@ export class AcCheckableDropdown extends React.Component<AcCheckableDropdownProp
   static id = 1;
   static defaultProps = {
     lang: 'zh-CN',
-    onChange: noop,
     items: [],
     value: [],
-    width: 140
+    width: 140,
   };
 
   private readonly overlayClass = `${CLASS_NAME}-overlay--${AcCheckableDropdown.id++}`;
 
   state = {
     visible: false,
-    value: this.props.value
+    value: this.props.value,
   };
 
   private overlayRes: any;
@@ -73,7 +71,7 @@ export class AcCheckableDropdown extends React.Component<AcCheckableDropdownProp
             }}>
             {this.t('selectAll')}
           </Checkbox>
-        )
+        ),
       },
       { type: 'divider' },
       ...items!.map((opt) => {
@@ -91,9 +89,9 @@ export class AcCheckableDropdown extends React.Component<AcCheckableDropdownProp
               checked={shouldChecked}>
               {opt.label}
             </Checkbox>
-          )
+          ),
         };
-      })
+      }),
     ] as MenuProps['items'];
   }
 
@@ -106,7 +104,7 @@ export class AcCheckableDropdown extends React.Component<AcCheckableDropdownProp
     const { onChange } = this.props;
     const target = { value: inValue };
     this.setState(target);
-    onChange!({ target });
+    onChange?.({ target });
   };
 
   componentDidMount() {

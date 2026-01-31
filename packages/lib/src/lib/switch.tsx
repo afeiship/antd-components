@@ -1,7 +1,6 @@
-import React from 'react';
-import noop from '@jswork/noop';
 import { Switch, SwitchProps } from 'antd';
 import cx from 'classnames';
+import React from 'react';
 
 const CLASS_NAME = 'ac-switch';
 type StdEventTarget = { target: { value: any } };
@@ -16,9 +15,7 @@ export type AcSwitchProps = {
 export class AcSwitch extends React.Component<AcSwitchProps> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {
-    onChange: noop,
-  };
+  static defaultProps = {};
 
   state = {
     value: Boolean(this.props.value),
@@ -33,7 +30,7 @@ export class AcSwitch extends React.Component<AcSwitchProps> {
   handleChange = (value) => {
     const { onChange } = this.props;
     const target = { value };
-    this.setState(target, () => onChange!({ target }));
+    this.setState(target, () => onChange?.({ target }));
   };
 
   render() {
@@ -54,4 +51,3 @@ export class AcSwitch extends React.Component<AcSwitchProps> {
 export const AcSwitchFc = React.forwardRef<AcSwitch, AcSwitchProps>((props, ref) => {
   return <AcSwitch {...props} ref={ref} />;
 });
-
