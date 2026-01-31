@@ -24,7 +24,7 @@ import { Button, ButtonProps } from 'antd';
 import React, { FC } from 'react';
 
 // 类型定义
-type Locale = 'zh-CN' | 'en-US';
+export type Locale = 'zh-CN' | 'en-US';
 type ActionType =
   | 'create'
   | 'edit'

@@ -4,10 +4,10 @@
  * @LastEditors: aric 1290657123@qq.com
  * @LastEditTime: 2025-10-31 14:07:56
  */
+import nx from '@jswork/next';
 import { Space, SpaceProps } from 'antd';
 import React, { FC, Fragment } from 'react';
-import nx from '@jswork/next';
-import { BtnBack, BtnCreate, BtnRefresh } from './button';
+import { BtnBack, BtnCreate, BtnRefresh, Locale } from './button';
 
 declare global {
   interface NxStatic {
@@ -17,21 +17,24 @@ declare global {
 
 export type AcCardExtrasProps = SpaceProps & {
   name: string;
-  lang?: string;
+  lang?: Locale;
   as?: React.ComponentType<any>;
   extraBefore?: React.ReactNode;
   extraAfter?: React.ReactNode;
   asProps?: any;
-  actions?: string []
-}
+  actions?: string[];
+};
 
 const defaultExtras = {
-  lang: 'zh-CN',
+  lang: 'zh-CN' as const,
   actions: ['refetch', 'add'],
 };
 
 export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
-  const { name, lang, as, extraBefore, extraAfter, asProps, actions } = { ...defaultExtras, ...props };
+  const { name, lang, as, extraBefore, extraAfter, asProps, actions } = {
+    ...defaultExtras,
+    ...props,
+  };
   const handleRefresh = () => nx.$event?.emit?.(`${name}:refetch`);
   const handleReset = () => nx.$event?.emit?.(`${name}:reset`);
   const handleAdd = () => nx.$event?.emit?.(`${name}:add`);
@@ -47,7 +50,9 @@ export const AcCardExtras: FC<AcCardExtrasProps> = (props) => {
   return (
     <AsComponent {...asProps}>
       {extraBefore}
-      {actions?.map((action) => <Fragment key={action}>{items[action]}</Fragment>)}
+      {actions?.map((action) => (
+        <Fragment key={action}>{items[action]}</Fragment>
+      ))}
       {extraAfter}
     </AsComponent>
   );
