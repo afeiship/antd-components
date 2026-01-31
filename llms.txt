@@ -134,7 +134,7 @@ import { AcInputToken } from '@jswork/antd-components/main';
 
 <AcInputToken
   value={tokens}
-  onChange={(value) => setTokens(value)}
+  onChange={({ target }) => setTokens(target.value)}
   placeholder="Add tags..."
 />
 ```
@@ -157,7 +157,7 @@ import { AcInputTags } from '@jswork/antd-components/main';
 
 <AcInputTags
   value={tags}
-  onChange={(value) => setTags(value)}
+  onChange={({ target }) => setTags(target.value)}
 />
 ```
 
@@ -184,7 +184,7 @@ import { AcSelect } from '@jswork/antd-components/main';
 <AcSelect
   value={selected}
   onChange={({ target }) => setSelected(target.value)}
-  options={[
+  items={[
     { value: '1', label: 'Option 1' },
     { value: '2', label: 'Option 2' }
   ]}
@@ -198,8 +198,8 @@ import { AcTreeSelect } from '@jswork/antd-components/main';
 
 <AcTreeSelect
   value={selected}
-  onChange={(value) => setSelected(value)}
-  treeData={treeData}
+  onChange={({ target }) => setSelected(target.value)}
+  items={treeData}
 />
 ```
 
@@ -211,7 +211,7 @@ import { AcRadioGroup } from '@jswork/antd-components/main';
 <AcRadioGroup
   value={selected}
   onChange={({ target }) => setSelected(target.value)}
-  options={[
+  items={[
     { value: 'a', label: 'Option A' },
     { value: 'b', label: 'Option B' }
   ]}
@@ -225,8 +225,8 @@ import { AcCheckbox, AcCheckboxGroup } from '@jswork/antd-components/main';
 
 <AcCheckboxGroup
   value={checkedValues}
-  onChange={(value) => setCheckedValues(value)}
-  options={[
+  onChange={({ target }) => setCheckedValues(target.value)}
+  items={[
     { value: '1', label: 'Check 1' },
     { value: '2', label: 'Check 2' }
   ]}
@@ -258,7 +258,7 @@ import { AcSlider, AcSliderRange } from '@jswork/antd-components/main';
 
 <AcSliderRange
   value={[min, max]}
-  onChange={(value) => setRange(value)}
+  onChange={({ target }) => setRange(target.value)}
 />
 ```
 
@@ -280,8 +280,8 @@ import { AcTransfer } from '@jswork/antd-components/main';
 
 <AcTransfer
   value={targetKeys}
-  onChange={(value) => setTargetKeys(value)}
-  dataSource={items}
+  onChange={({ target }) => setTargetKeys(target.value)}
+  items={items}
 />
 ```
 
@@ -294,7 +294,7 @@ import { AcDatePicker } from '@jswork/antd-components/main';
 
 <AcDatePicker
   value={date}
-  onChange={(date) => setSelectedDate(date)}
+  onChange={({ target }) => setSelectedDate(target.value)}
   format="YYYY-MM-DD"
 />
 ```
@@ -306,7 +306,7 @@ import { AcTimePicker } from '@jswork/antd-components/main';
 
 <AcTimePicker
   value={time}
-  onChange={(time) => setSelectedTime(time)}
+  onChange={({ target }) => setSelectedTime(target.value)}
   format="HH:mm"
 />
 ```
@@ -318,7 +318,7 @@ import { AcRangePicker } from '@jswork/antd-components/main';
 
 <AcRangePicker
   value={[start, end]}
-  onChange={(dates) => setDateRange(dates)}
+  onChange={({ target }) => setDateRange(target.value)}
 />
 ```
 
@@ -331,7 +331,7 @@ import { AcUpload } from '@jswork/antd-components/main';
 
 <AcUpload
   value={files}
-  onChange={(files) => setFiles(files)}
+  onChange={({ target }) => setFiles(target.value)}
   action="/api/upload"
 />
 ```
@@ -343,7 +343,7 @@ import { AcUploadDragger } from '@jswork/antd-components/main';
 
 <AcUploadDragger
   value={files}
-  onChange={(files) => setFiles(files)}
+  onChange={({ target }) => setFiles(target.value)}
   action="/api/upload"
 />
 ```
@@ -355,7 +355,7 @@ import { AcUploadPicture } from '@jswork/antd-components/main';
 
 <AcUploadPicture
   value={imageUrl}
-  onChange={(url) => setImageUrl(url)}
+  onChange={({ target }) => setImageUrl(target.value)}
   action="/api/upload"
 />
 ```
@@ -367,7 +367,7 @@ import { AcUploadPictureCard } from '@jswork/antd-components/main';
 
 <AcUploadPictureCard
   value={images}
-  onChange={(images) => setImages(images)}
+  onChange={({ target }) => setImages(target.value)}
   action="/api/upload"
 />
 ```
@@ -410,7 +410,7 @@ Tree component for hierarchical data.
 import { AcTree } from '@jswork/antd-components/main';
 
 <AcTree
-  treeData={treeData}
+  items={treeData}
   onSelect={(keys) => setSelectedKeys(keys)}
 />
 ```
@@ -440,21 +440,25 @@ import {
 } from '@jswork/antd-components/main';
 
 <AcCheckableTag
-  checked={checked}
-  onChange={(checked) => setChecked(checked)}
+  value={checked}
+  onChange={({ target }) => setChecked(target.value)}
 >
   Tag Label
 </AcCheckableTag>
 
 <AcCheckableTagList
   value={selectedTags}
-  onChange={(tags) => setSelectedTags(tags)}
-  tags={['Tag1', 'Tag2', 'Tag3']}
+  onChange={({ target }) => setSelectedTags(target.value)}
+  items={[
+    { value: 'tag1', label: 'Tag1' },
+    { value: 'tag2', label: 'Tag2' },
+    { value: 'tag3', label: 'Tag3' }
+  ]}
 />
 
 <AcEditableTagGroup
   value={tags}
-  onChange={(tags) => setTags(tags)}
+  onChange={({ target }) => setTags(target.value)}
 />
 ```
 
@@ -488,20 +492,20 @@ import { AcSearch } from '@jswork/antd-components/main';
 <AcSearch
   value={searchTerm}
   onChange={({ target }) => setSearchTerm(target.value)}
-  onSearch={(value) => handleSearch(value)}
+  onSearch={({ target }) => handleSearch(target.value)}
   placeholder="Search..."
 />
 ```
 
 #### `AcExtraSearch`
-Extended search component with additional filters.
+Extended search component with URL sync support.
 ```tsx
 import { AcExtraSearch } from '@jswork/antd-components/main';
 
 <AcExtraSearch
-  value={searchParams}
-  onChange={(params) => setSearchParams(params)}
-  fields={searchFields}
+  name="search"
+  queryKey="keywords"
+  routerType="hash"
 />
 ```
 
@@ -565,8 +569,8 @@ import { AcCheckableDropdown } from '@jswork/antd-components/main';
 
 <AcCheckableDropdown
   value={selectedItems}
-  onChange={(items) => setSelectedItems(items)}
-  options={dropdownOptions}
+  onChange={({ target }) => setSelectedItems(target.value)}
+  items={dropdownOptions}
 />
 ```
 
@@ -588,8 +592,8 @@ import { AcPreSelect } from '@jswork/antd-components/main';
 
 <AcPreSelect
   value={selection}
-  onChange={(selection) => setSelection(selection)}
-  options={availableOptions}
+  onChange={({ target }) => setSelection(target.value)}
+  items={availableOptions}
 />
 ```
 
