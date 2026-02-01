@@ -32,7 +32,17 @@ export default function App() {
 
   return (
     <div className="rounded-2xl container mx-auto my-10 bg-gray-200 p-5">
-      <AcInputCopyable />
+      <div className="mb-4 space-y-4">
+        <h3 className="text-lg font-semibold">AcInputCopyable Demo</h3>
+        <div>
+          <label className="mb-1 block text-sm font-medium">Text Type (default):</label>
+          <AcInputCopyable value="https://example.com" />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm font-medium">Link Type:</label>
+          <AcInputCopyable value="https://github.com" valueType="link" />
+        </div>
+      </div>
       <div className="debug">
         <AcCardExtras name="posts" />
       </div>

@@ -1,3 +1,4 @@
+import { LinkOutlined } from '@ant-design/icons';
 import { Space, Typography } from 'antd';
 import cx from 'classnames';
 import { ValueType } from 'rc-input/lib/interface';
@@ -6,16 +7,24 @@ import { AcInput, AcInputProps } from './input';
 
 const CLASS_NAME = 'ac-input-copyable';
 
+export type AcInputCopyableValueType = 'text' | 'link';
+
+export interface AcInputCopyableProps extends AcInputProps {
+  valueType?: AcInputCopyableValueType;
+}
+
 interface AcInputCopyableState {
   value?: ValueType;
 }
 
-export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyableState> {
+export class AcInputCopyable extends React.Component<AcInputCopyableProps, AcInputCopyableState> {
   static displayName = CLASS_NAME;
   static formSchema = CLASS_NAME;
-  static defaultProps = {};
+  static defaultProps = {
+    valueType: 'text',
+  };
 
-  constructor(props) {
+  constructor(props: AcInputCopyableProps) {
     super(props);
     this.state = {
       value: props.value || '',
@@ -25,6 +34,17 @@ export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyab
   get copyView() {
     const { value } = this.state;
     return <Typography.Text copyable={{ text: String(value) }} />;
+  }
+
+  get linkView() {
+    const { value } = this.state;
+    if (!value) return null;
+    return (
+      <LinkOutlined
+        onClick={() => window.open(String(value), '_blank')}
+        style={{ cursor: 'pointer', fontSize: 14 }}
+      />
+    );
   }
 
   shouldComponentUpdate(props: Readonly<AcInputProps>): boolean {
@@ -41,16 +61,18 @@ export class AcInputCopyable extends React.Component<AcInputProps, AcInputCopyab
   };
 
   render() {
-    const { onChange, className, ...rest } = this.props;
+    const { onChange, className, valueType = 'text', ...rest } = this.props;
+
     return (
       <Space.Compact className={cx(CLASS_NAME, className)}>
         <AcInput onChange={this.handleInputChange} {...rest} />
         <Space.Addon>{this.copyView}</Space.Addon>
+        {valueType === 'link' && <Space.Addon>{this.linkView}</Space.Addon>}
       </Space.Compact>
     );
   }
 }
 
-export const AcInputCopyableFc = (props: AcInputProps) => {
+export const AcInputCopyableFc = (props: AcInputCopyableProps) => {
   return <AcInputCopyable {...props} />;
 };
