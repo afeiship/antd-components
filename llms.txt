@@ -117,15 +117,28 @@ import { AcInputNumber } from '@jswork/antd-components/main';
 ```
 
 #### `AcInputCopyable`
-Input component with copy-to-clipboard functionality.
+Input component with copy-to-clipboard functionality and optional link opener.
 ```tsx
 import { AcInputCopyable } from '@jswork/antd-components/main';
 
+// Text type (default) - copyable only
 <AcInputCopyable
   value={text}
   onChange={({ target }) => setText(target.value)}
 />
+
+// Link type - copyable + open link button
+<AcInputCopyable
+  value="https://example.com"
+  valueType="link"
+  onChange={({ target }) => setText(target.value)}
+/>
 ```
+
+**Props:**
+- `valueType?: 'text' | 'link'` - Display mode. Default: `'text'`
+  - `text`: Shows copyable input only
+  - `link`: Shows copyable input with link icon button to open URL in new tab
 
 #### `AcInputToken`
 Token-based input for managing tags/keywords.
