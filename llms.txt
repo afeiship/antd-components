@@ -152,6 +152,18 @@ import { AcInputToken } from '@jswork/antd-components/main';
 />
 ```
 
+#### `AcMarkdownEditor`
+Markdown editor with live preview.
+```tsx
+import { AcMarkdownEditor } from '@jswork/antd-components/main';
+
+<AcMarkdownEditor
+  value={markdown}
+  onChange={({ target }) => setMarkdown(target.value)}
+  placeholder="Write markdown..."
+/>
+```
+
 #### `AcInputHidden`
 Hidden input component for form data.
 ```tsx

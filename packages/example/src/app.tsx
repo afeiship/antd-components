@@ -1,4 +1,4 @@
-import { AcCardExtras, AcColorPicker, AcInputCopyable, AcInputToken, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
+import { AcCardExtras, AcColorPicker, AcInputCopyable, AcInputToken, AcMarkdownEditor, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
 import { useRef, useState } from "react";
 
 import "@jswork/antd-components/dist/style.css";
@@ -6,6 +6,33 @@ import "@jswork/antd-components/dist/style.css";
 export default function App() {
   const tbRef = useRef<any>(null);
   const [color, setColor] = useState('#FFCC00');
+  const [markdown, setMarkdown] = useState(`# Welcome to AcMarkdownEditor
+
+This is a **markdown editor** with live preview.
+
+## Features
+
+- Real-time preview
+- Syntax highlighting
+- Toolbar with common formatting options
+- Auto-save on changes
+
+## Code Example
+
+\`\`\`typescript
+const greeting = "Hello, World!";
+console.log(greeting);
+\`\`\`
+
+## Lists
+
+1. First item
+2. Second item
+3. Third item
+
+## Try it out!
+
+Start editing to see the magic happen!`);
   const columns = [
     { title: "ID", dataIndex: "id", key: "id", width: 100 },
     { title: "Title", dataIndex: "title", key: "title", width: 200 },
@@ -57,6 +84,24 @@ export default function App() {
         Get State
       </BtnSave>
       <AcInputToken />
+      <div className="mt-8">
+        <h3 className="mb-4 text-lg font-semibold">AcMarkdownEditor Demo</h3>
+        <div className="rounded-lg border border-gray-300 bg-white p-4">
+          <AcMarkdownEditor
+            value={markdown}
+            onChange={({ target }) => setMarkdown(target.value)}
+            placeholder="Start writing your markdown here..."
+          />
+        </div>
+        <details className="mt-4">
+          <summary className="cursor-pointer font-semibold text-gray-700 hover:text-gray-900">
+            View Raw Markdown (Debug)
+          </summary>
+          <pre className="mt-2 rounded bg-gray-100 p-4 text-sm">
+            {markdown}
+          </pre>
+        </details>
+      </div>
       <div className="mt-4">
         <h3 className="mb-2 text-lg font-semibold">ColorPicker Demo</h3>
         <AcColorPicker
