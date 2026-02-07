@@ -47,7 +47,7 @@ export const AcExtraSearch: FC<AcExtraSearchProps> = (props) => {
   const searchParams = readSearchString(routerType);
   const defaultQuery = searchParams.get(queryKey) || '';
   const [value, setValue] = React.useState(defaultQuery);
-  const defaultParams = Object.fromEntries(searchParams.entries());
+  const defaultParams = Object.fromEntries((searchParams as any).entries() as Iterable<[string, string]>);
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const q = e.target.value;
     setValue(q);

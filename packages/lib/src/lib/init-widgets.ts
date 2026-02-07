@@ -18,6 +18,7 @@ import { AcInputHiddenFc } from './input-hidden';
 import { AcInputNumberFc } from './input-number';
 import { AcInputTagsFc } from './input-tags';
 import { AcInputTokenFc } from './input-token';
+import { AcMarkdownEditorFc } from './markdown-editor';
 import { AcPreSelectFc } from './pre-select';
 import { AcRadioGroupFc } from './radio-group';
 import { AcRangePickerFc } from './range-picker';
@@ -50,6 +51,7 @@ export const widgets = {
   'ac:input-number': AcInputNumberFc,
   'ac:input-tags': AcInputTagsFc,
   'ac:input-token': AcInputTokenFc,
+  'ac:markdown-editor': AcMarkdownEditorFc,
   'ac:pre-select': AcPreSelectFc,
   'ac:radio-group': AcRadioGroupFc,
   'ac:range-picker': AcRangePickerFc,

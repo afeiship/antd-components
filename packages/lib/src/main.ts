@@ -15,6 +15,7 @@ import { AcInputHidden, AcInputHiddenFc } from './lib/input-hidden';
 import { AcInputNumber, AcInputNumberFc } from './lib/input-number';
 import { AcInputTags, AcInputTagsFc } from './lib/input-tags';
 import { AcInputToken, AcInputTokenFc } from './lib/input-token';
+import { AcMarkdownEditor, AcMarkdownEditorFc } from './lib/markdown-editor';
 import { AcPreSelect, AcPreSelectFc } from './lib/pre-select';
 import { AcRadioGroup, AcRadioGroupFc } from './lib/radio-group';
 import { AcRangePicker, AcRangePickerFc } from './lib/range-picker';
@@ -53,6 +54,7 @@ import type { AcInputProps } from './lib/input';
 import type { AcInputNumberProps } from './lib/input-number';
 import type { AcInputTagsProps } from './lib/input-tags';
 import type { AcInputTokenProps } from './lib/input-token';
+import type { AcMarkdownEditorProps } from './lib/markdown-editor';
 import type { AcPreSelectProps } from './lib/pre-select';
 import type { AcRadioGroupProps } from './lib/radio-group';
 import type { AcRangePickerProps } from './lib/range-picker';
@@ -146,6 +148,9 @@ export {
   AcInputToken,
   AcInputTokenFc,
   AcInputTokenProps,
+  AcMarkdownEditor,
+  AcMarkdownEditorFc,
+  AcMarkdownEditorProps,
   AcPreSelect,
   AcPreSelectFc,
   AcPreSelectProps,
