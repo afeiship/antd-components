@@ -174,13 +174,13 @@ export class AcTable extends React.Component<AcTableProps, AcTableState> {
   get calculateColumnsAction() {
     const { name, columnsAction, columnsActionParams, lang } = this.props;
     if (typeof columnsAction !== 'undefined') return columnsAction;
-    return tableAction({ name, lang, ...columnsActionParams });
+    return [tableAction({ name, lang, ...columnsActionParams })];
   }
 
   get calculateColumns() {
     const { columnsFields, columns } = this.props;
     if (columns && columns.length > 0) return columns;
-    return [...columnsFields!, this.calculateColumnsAction] as TableProps['columns'];
+    return [...columnsFields!, ...this.calculateColumnsAction] as TableProps['columns'];
   }
 
   constructor(props: AcTableProps) {

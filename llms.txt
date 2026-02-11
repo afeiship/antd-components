@@ -409,10 +409,42 @@ import {
   AcTableToggleSwitcher
 } from '@jswork/antd-components/main';
 
+// Basic usage
 <AcTable
-  columns={columns}
-  dataSource={data}
-  pagination={false}
+  name="users"
+  columns={[
+    { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Email', dataIndex: 'email', key: 'email' }
+  ]}
+/>
+
+// With CRUD actions and URL sync
+<AcTable
+  name="admin_users"
+  module="admin"
+  columnsFields={[
+    { title: 'Name', dataIndex: 'name', key: 'name' },
+    { title: 'Email', dataIndex: 'email', key: 'email' }
+  ]}
+  // columnsAction is auto-generated with edit/destroy buttons
+  // or provide custom action columns:
+  columnsAction={[
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (_, record) => (
+        <Space>
+          <a onClick={() => handleEdit(record)}>Edit</a>
+          <a onClick={() => handleDelete(record)}>Delete</a>
+        </Space>
+      )
+    }
+  ]}
+  params={{ status: 'active' }}
+  fetcher={async ({ current, pageSize, params }) => {
+    const response = await fetch(`/api/users?page=${current}&size=${pageSize}`);
+    return response.json();
+  }}
 />
 
 <AcTableLinks
@@ -428,6 +460,20 @@ import {
   onStatusChange={(record, status) => handleStatusChange(record, status)}
 />
 ```
+
+**AcTable Props:**
+- `name: string` - Resource identity name (required)
+- `module?: string` - Platform module name (default: `'admin'`)
+- `lang?: string` - Language (default: `'zh-CN'`)
+- `columnsFields?: ColumnsType<any>` - Column definitions for table fields
+- `columnsAction?: ColumnsType<any>` - Custom action columns (array type). When not provided, auto-generates edit/destroy actions
+- `columnsActionParams?: Record<string, any>` - Additional params for auto-generated actions
+- `params?: Record<string, any>` - Extra query params for data fetching
+- `fetcher?: (params) => Promise<{ data: any[]; total: number }>` - Custom data fetcher
+- `defaultCurrent?: number` - Initial page number (default: `1`)
+- `defaultPageSize?: number` - Initial page size (default: `10`)
+- `dataPath?: string` - Response data key (default: `'rows'`)
+- `totalPath?: string` - Response total key (default: `'total'`)
 
 #### `AcTree`
 Tree component for hierarchical data.
