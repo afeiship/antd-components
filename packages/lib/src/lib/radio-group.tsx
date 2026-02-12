@@ -3,10 +3,9 @@ import { Radio, RadioGroupProps } from 'antd';
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
 import { radioKv } from '../tpls/kv';
-import type { StdCallback, StdEventTarget, TemplateCallbackWithOptions } from './types';
+import type { StdCallback, TemplateCallback } from './types';
 
 const CLASS_NAME = 'ac-radio-group';
-type TemplateCallback = TemplateCallbackWithOptions;
 
 export type AcRadioGroupProps = {
   className?: string;

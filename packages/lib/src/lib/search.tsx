@@ -2,10 +2,9 @@ import React from 'react';
 import { Input } from 'antd';
 import cx from 'classnames';
 import { SearchProps } from 'antd/es/input';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-search';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcSearchProps = {
   value?: string;
@@ -47,5 +46,3 @@ export class AcSearch extends React.Component<AcSearchProps> {
 export const AcSearchFc = (props: AcSearchProps) => {
   return <AcSearch {...props} />;
 };
-
-

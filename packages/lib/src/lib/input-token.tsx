@@ -3,7 +3,7 @@ import { Button, Input, InputProps, Space } from 'antd';
 import cx from 'classnames';
 import { nanoid } from 'nanoid';
 import React from 'react';
-import type { StdCallback, StdEventTarget } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-input-token';
 

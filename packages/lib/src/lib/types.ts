@@ -19,41 +19,28 @@ export type AppLocale = 'zh-CN' | 'en-US';
  * const handleChange = (event: StdEventTarget) => {
  *   console.log(event.target.value);
  * };
+ * @template T The type of the value
  */
-export type StdEventTarget = { target: { value: any } };
-
-/**
- * Custom event target for string value components
- * @description String-typed version of StdEventTarget for components that only accept string values.
- * @example
- * const handleChange = (event: StdEventTargetString) => {
- *   console.log(event.target.value); // string
- * };
- */
-export type StdEventTargetString = { target: { value: string } };
+export type StdEventTarget<T = any> = { target: { value: T } };
 
 /**
  * Standard callback function for value changes
  * @description Normalized onChange callback that accepts our custom event format.
  * @example
  * onChange?: (inEvent: StdEventTarget) => void;
+ * @template T The type of the value
  */
-export type StdCallback = (inEvent: StdEventTarget) => void;
-
-/**
- * Standard callback function for string value changes
- * @description String-typed version of StdCallback.
- * @example
- * onChange?: (inEvent: StdEventTargetString) => void;
- */
-export type StdCallbackString = (inEvent: StdEventTargetString) => void;
+export type StdCallback<T = any> = (inEvent: StdEventTarget<T>) => void;
 
 /**
  * Template callback for rendering items
  * @example
  * renderItem?: (item: { item: any; index: number }) => React.ReactNode;
  */
-export type TemplateCallback<T = any> = (item: { item: T; index: number }) => React.ReactNode;
+export type TemplateCallback<T = any> = (
+  item: { item: T; index: number },
+  options?: any
+) => React.ReactNode;
 
 /**
  * Template callback with items array

@@ -2,12 +2,10 @@ import { UploadOutlined } from '@ant-design/icons';
 import type { ButtonProps, UploadProps } from 'antd';
 import { Button, Upload } from 'antd';
 import React from 'react';
-
 import cx from 'classnames';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-upload';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
 export type AcUploadProps = {

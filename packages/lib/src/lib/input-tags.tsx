@@ -2,7 +2,7 @@ import { Tag } from 'antd';
 import cx from 'classnames';
 import fde from 'fast-deep-equal';
 import React from 'react';
-import type { StdCallback, StdEventTarget } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-input-tags';
 const TRIGGER_KEYS = ['Tab', 'Enter', 'Space'];

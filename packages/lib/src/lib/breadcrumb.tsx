@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbProps } from 'antd';
 import ReactList, { TemplateArgs } from '@jswork/react-list';
 import { breadcrumbDefault } from '../tpls/breadcrumb';
 import cx from 'classnames';
+import type { StdCallback } from './types';
 
 // hack for react-list
 // Warning: [antd: Breadcrumb] Only accepts Breadcrumb.Item and Breadcrumb.Separator as it's children
@@ -10,8 +11,6 @@ import cx from 'classnames';
 // ReactList['__ANT_BREADCRUMB_ITEM'] = true;
 
 const CLASS_NAME = 'ac-breadcrumb';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcBreadcrumbProps = {
   className?: string;

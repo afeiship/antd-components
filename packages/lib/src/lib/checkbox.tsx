@@ -1,10 +1,9 @@
 import { Checkbox, CheckboxProps } from 'antd';
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-checkbox';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcCheckboxProps = {
   className?: string;

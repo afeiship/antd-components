@@ -1,10 +1,9 @@
 import MarkdownEditor from '@uiw/react-markdown-editor';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-markdown-editor';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcMarkdownEditorProps = {
   className?: string;

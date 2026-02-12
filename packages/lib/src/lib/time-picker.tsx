@@ -2,7 +2,7 @@ import { TimePicker, TimePickerProps } from 'antd';
 import cx from 'classnames';
 import dayjs from 'dayjs';
 import React from 'react';
-import type { StdCallback, StdEventTarget } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-time-picker';
 const STD_FORMAT = 'HH:mm:ss';

@@ -6,10 +6,9 @@ import deepEqual from 'fast-deep-equal';
 import React, { createRef } from 'react';
 import AutosizeInput from 'react-input-autosize';
 import { AcInteractiveList } from './interactive-list';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-editable-tag-group';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcEditableTagGroupProps = {
   /**

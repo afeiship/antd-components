@@ -3,7 +3,7 @@ import { RangePickerProps } from 'antd/es/date-picker';
 import cx from 'classnames';
 import moment from 'dayjs';
 import React from 'react';
-import type { StdCallback, StdEventTarget } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-range-picker';
 const STD_FORMAT = 'YYYY-MM-DD HH:mm:ss';

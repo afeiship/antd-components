@@ -3,11 +3,10 @@ import { Upload } from 'antd';
 import { DraggerProps } from 'antd/es/upload';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-upload-dragger';
 const { Dragger } = Upload;
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 type CustomRequest = (inEvent: any) => Promise<any>;
 
 export type AcUploadDraggerProps = {

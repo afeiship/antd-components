@@ -6,8 +6,6 @@ import type { StdCallback, StdEventTarget, TemplateCallbackWithItems } from './t
 
 const CLASS_NAME = 'ac-interactive-list';
 
-type TemplateCallback = TemplateCallbackWithItems;
-
 export type ReactInteractiveListProps = {
   /**
    * The extended className for component.

@@ -5,16 +5,12 @@ import { UploadChangeParam } from 'antd/es/upload/interface';
 import React, { ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import Sortable from 'sortablejs';
-
-import '@jswork/next-gpid';
+import type { StdCallback } from './types';
 
 const styleOpts = { id: 'viewer-style' };
 const scriptOpts = { id: 'viewerjs' };
 const styleURL = 'https://unpkg.com/viewerjs@1.11.1/dist/viewer.min.css';
 const scriptURL = 'https://unpkg.com/viewerjs@1.11.1/dist/viewer.min.js';
-
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcAbstractUploadProps = {
   className?: string;

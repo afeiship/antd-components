@@ -1,14 +1,14 @@
 import { ColorPicker, ColorPickerProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
-import type { StdCallbackString, StdEventTargetString } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-color-picker';
 
 export type AcColorPickerProps = {
   className?: string;
   value?: string;
-  onChange?: StdCallbackString;
+  onChange?: StdCallback<string>;
 } & Omit<ColorPickerProps, 'value' | 'onChange'>;
 
 export class AcColorPicker extends React.Component<AcColorPickerProps> {

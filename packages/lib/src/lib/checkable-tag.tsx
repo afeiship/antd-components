@@ -3,11 +3,10 @@ import { Tag } from 'antd';
 import { CheckableTagProps } from 'antd/es/tag';
 import cx from 'classnames';
 import React, { ReactNode } from 'react';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-checkable-tag';
 const { CheckableTag } = Tag;
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 /**
  * @see https://ant.design/components/tag-cn/#Tag.CheckableTag

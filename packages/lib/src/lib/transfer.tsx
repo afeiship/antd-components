@@ -2,10 +2,9 @@ import { Transfer, TransferProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
 import { transferLabel } from '../tpls/transfer';
-import type { StdCallback, StdEventTarget, TemplateCallbackWithOptions } from './types';
+import type { StdCallback, TemplateCallback } from './types';
 
 const CLASS_NAME = 'ac-transfer';
-type TemplateCallback = TemplateCallbackWithOptions;
 
 export type AcTransferProps = {
   className?: string;
@@ -25,7 +24,7 @@ export class AcTransfer extends React.Component<AcTransferProps> {
 
   get templateCallback(): any {
     const { template } = this.props;
-    return (item: any) => template({ item });
+    return (item: any) => template({ item, index: -1 });
   }
 
   state = {

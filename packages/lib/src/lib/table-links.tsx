@@ -47,7 +47,7 @@ export type TableActionArgs = {
 }
 
 const defaultProps = {
-  lang: 'zh-CN',
+  lang: 'zh-CN' as const,
   actions: ['edit', 'destroy'],
 };
 

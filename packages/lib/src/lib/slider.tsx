@@ -1,7 +1,7 @@
 import { Slider, SliderSingleProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
-import type { StdCallback, StdEventTarget } from './types';
+import type { StdCallback } from './types';
 
 const CLASS_NAME = 'ac-slider';
 
