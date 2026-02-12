@@ -10,12 +10,6 @@ import React, { FC } from 'react';
 import { AcConfirmButton } from './confirm-button';
 import type { AppLocale } from './types';
 
-declare global {
-  interface NxStatic {
-    $event: any;
-  }
-}
-
 const locales = {
   'zh-CN': {
     edit: '编辑',

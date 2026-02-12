@@ -11,13 +11,6 @@ import { Input } from 'antd';
 import { SearchProps } from 'antd/es/input';
 import type { AppLocale } from './types';
 
-declare global {
-  interface NxStatic {
-    $event: any;
-    $api: Record<string, any>;
-  }
-}
-
 export type AcExtraSearchProps = SearchProps & {
   name: string;
   lang?: AppLocale;

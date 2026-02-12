@@ -1,17 +1,6 @@
 import React from 'react';
 import { Input, InputProps, message, Modal } from 'antd';
 
-declare global {
-  interface NxStatic {
-    err: (msg: string) => any;
-    msg: (msg: string) => any;
-    info: (msg: string) => any;
-    alert: (msg: string, title?: String) => any;
-    confirm: (msg: string, title?: String) => any;
-    prompt: (msg: string, options?: InputProps) => any;
-  }
-}
-
 export const msg = (msg: string) => {
   return message.success(msg);
 };

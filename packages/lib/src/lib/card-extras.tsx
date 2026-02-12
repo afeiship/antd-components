@@ -10,12 +10,6 @@ import React, { FC, Fragment } from 'react';
 import { BtnBack, BtnCreate, BtnRefresh } from './button';
 import type { AppLocale } from './types';
 
-declare global {
-  interface NxStatic {
-    $event: any;
-  }
-}
-
 export type AcCardExtrasProps = SpaceProps & {
   name: string;
   lang?: AppLocale;

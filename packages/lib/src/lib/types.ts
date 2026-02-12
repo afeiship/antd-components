@@ -3,6 +3,9 @@
  * Shared types used across multiple components
  */
 
+import { InputProps } from 'antd';
+import { NavigateFunction } from 'react-router-dom';
+
 /**
  * Supported locale languages
  * @example
@@ -115,4 +118,19 @@ export interface TableActionProps {
   paramsReset?: Record<string, any>;
   pathAdd?: string;
   pathEdit?: string;
+}
+
+declare global {
+  interface NxStatic {
+    $event: any;
+    $api: Record<string, any>;
+    $nav: NavigateFunction;
+
+    err: (msg: string) => any;
+    msg: (msg: string) => any;
+    info: (msg: string) => any;
+    alert: (msg: string, title?: String) => any;
+    confirm: (msg: string, title?: String) => any;
+    prompt: (msg: string, options?: InputProps) => any;
+  }
 }

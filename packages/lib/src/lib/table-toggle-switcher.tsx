@@ -8,12 +8,6 @@ import React, { FC } from 'react';
 import nx from '@jswork/next';
 import { Switch, SwitchProps } from 'antd';
 
-declare global {
-  interface NxStatic {
-    $api: Record<string, any>;
-  }
-}
-
 export type AcTableToggleSwitcherProps = SwitchProps & {
   name: string;
   model: any;

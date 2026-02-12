@@ -9,12 +9,6 @@ import React, { FC } from 'react';
 import { ReactAntStatusSwitchProps } from '@jswork/react-ant-status-switch/dist/components';
 import nx from '@jswork/next';
 
-declare global {
-  interface NxStatic {
-    $api: Record<string, any>;
-  }
-}
-
 export type AcTableStatusSwitcherProps = ReactAntStatusSwitchProps & {
   name: string;
   items: any[];

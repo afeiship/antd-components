@@ -23,16 +23,6 @@ import React from 'react';
 import type { AppLocale, FetcherParams, FetcherResponse } from './types';
 import { tableAction } from './table-links';
 
-type NavigateFunction = import('react-router-dom').NavigateFunction;
-
-declare global {
-  interface NxStatic {
-    $event: any;
-    $nav: NavigateFunction;
-    $api: Record<string, any>;
-  }
-}
-
 const CLASS_NAME = 'ac-table';
 
 export type AcTableProps = TableProps & {
