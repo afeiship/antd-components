@@ -3,58 +3,57 @@ import { Input, InputProps, message, Modal } from 'antd';
 
 declare global {
   interface NxStatic {
-    err: (inMessage: string) => any;
-    msg: (inMessage: string) => any;
-    info: (inMessage: string) => any;
-    alert: (inMessage: string, inTitle?: String) => any;
-    confirm: (inMessage: string, inTitle?: String) => any;
-    prompt: (inMessage: string, inOptions?: InputProps) => any;
+    err: (msg: string) => any;
+    msg: (msg: string) => any;
+    info: (msg: string) => any;
+    alert: (msg: string, title?: String) => any;
+    confirm: (msg: string, title?: String) => any;
+    prompt: (msg: string, options?: InputProps) => any;
   }
 }
 
-export const msg = (inMessage: string) => {
-  return message.success(inMessage);
+export const msg = (msg: string) => {
+  return message.success(msg);
 };
 
-export const info = (inMessage: string) => {
-  return message.info(inMessage);
+export const info = (msg: string) => {
+  return message.info(msg);
 };
 
-export const err = (inMessage: string) => {
-  return message.error(inMessage);
+export const err = (msg: string) => {
+  return message.error(msg);
 };
 
-
-export const alert = (inMessage: string, inTitle?: String) => {
+export const alert = (msg: string, title?: String) => {
   return Modal.info({
-    title: inTitle || 'Tips',
-    content: inMessage,
+    title: title || 'Tips',
+    content: msg,
   });
 };
 
-export const confirm = (inMessage: string, inTitle?: String) => {
+export const confirm = (msg: string, title?: String) => {
   return new Promise((resolve) => {
     Modal.confirm({
-      title: inTitle || 'Confirm',
-      content: inMessage,
+      title: title || 'Confirm',
+      content: msg,
       onOk: () => resolve(true),
       onCancel: () => resolve(false),
     });
   });
 };
 
-export const prompt = (inMessage: string, inOptions?: InputProps) => {
+export const prompt = (msg: string, options?: InputProps) => {
   let value = '';
   return new Promise((resolve) => {
     Modal.confirm({
-      title: inMessage || 'Prompt',
+      title: msg || 'Prompt',
       content: (
         <Input
           type="text"
-          placeholder={inMessage}
+          placeholder={msg}
           defaultValue={value}
           onChange={(e) => (value = e.target.value)}
-          {...inOptions}
+          {...options}
         />
       ),
       onOk: () => resolve(value),

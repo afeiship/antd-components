@@ -2,16 +2,15 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { DatePicker, DatePickerProps } from 'antd';
 import cx from 'classnames';
+import type { StdCallback, StdEventTargetString } from './types';
 
 const CLASS_NAME = 'ac-date-picker';
 const STD_FORMAT = 'YYYY-MM-DD HH:mm:ss';
-type StdEventTarget = { target: { value: string } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcDatePickerProps = Omit<DatePickerProps, 'value' | 'onChange' | 'ref'> & {
   className?: string;
   value?: any;
-  onChange?: StdCallback;
+  onChange?: StdCallbackString;
 };
 
 const DATA_FORMAT_HOOKS = {

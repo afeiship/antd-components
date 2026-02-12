@@ -1,10 +1,9 @@
 import { Switch, SwitchProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-switch';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcSwitchProps = {
   className?: string;

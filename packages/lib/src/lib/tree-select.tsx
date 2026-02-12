@@ -3,10 +3,9 @@ import { TreeSelect, TreeSelectProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
 import { treeSelectKv } from '../tpls/kv';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-tree-select';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 // @see: https://github.com/afeiship/react-ant-tree-select
 

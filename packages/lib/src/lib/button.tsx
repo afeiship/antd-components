@@ -22,9 +22,7 @@ import {
 } from '@ant-design/icons';
 import { Button, ButtonProps } from 'antd';
 import React, { FC } from 'react';
-
-// 类型定义
-export type Locale = 'zh-CN' | 'en-US';
+import type { AppLocale } from './types';
 type ActionType =
   | 'create'
   | 'edit'
@@ -42,7 +40,7 @@ type ActionType =
   | 'copy';
 
 // 文案
-const locals: Record<Locale, Record<ActionType, string>> = {
+const locals: Record<AppLocale, Record<ActionType, string>> = {
   'zh-CN': {
     create: '添加',
     edit: '编辑',
@@ -96,14 +94,14 @@ const iconMap: Record<ActionType, React.ReactNode> = {
 };
 
 // 国际化工具函数
-const t = (locale: Locale, key: ActionType): string => {
+const t = (locale: AppLocale, key: ActionType): string => {
   return locals[locale]?.[key] ?? key;
 };
 
 // 通用按钮组件
 interface ActionButtonProps extends ButtonProps {
   action: ActionType;
-  lang?: Locale;
+  lang?: AppLocale;
 }
 
 const ActionButton: FC<ActionButtonProps> = ({
@@ -123,45 +121,45 @@ const ActionButton: FC<ActionButtonProps> = ({
 };
 
 // 导出具体命名的按钮（保持 API 兼容）
-export const BtnCreate = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnCreate = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="create" {...props} />
 );
-export const BtnEdit = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnEdit = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="edit" {...props} />
 );
-export const BtnDelete = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnDelete = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="del" {...props} />
 );
-export const BtnView = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnView = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="view" {...props} />
 );
-export const BtnPreview = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnPreview = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="preview" {...props} />
 );
-export const BtnSave = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnSave = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="save" {...props} />
 );
-export const BtnExport = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnExport = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="export" {...props} />
 );
-export const BtnImport = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnImport = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="imp" {...props} />
 );
-export const BtnRefresh = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnRefresh = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="refresh" {...props} />
 );
-export const BtnBack = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnBack = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="back" {...props} />
 );
-export const BtnSubmit = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnSubmit = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="submit" {...props} />
 );
-export const BtnCancel = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnCancel = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="cancel" {...props} />
 );
-export const BtnSync = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnSync = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="sync" {...props} />
 );
-export const BtnCopy = (props: ButtonProps & { lang?: Locale }) => (
+export const BtnCopy = (props: ButtonProps & { lang?: AppLocale }) => (
   <ActionButton action="copy" {...props} />
 );

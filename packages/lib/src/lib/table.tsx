@@ -20,6 +20,7 @@ import { ColumnsType } from 'antd/es/table';
 import cx from 'classnames';
 import deepEqual from 'fast-deep-equal';
 import React from 'react';
+import type { AppLocale, FetcherParams, FetcherResponse } from './types';
 import { tableAction } from './table-links';
 
 type NavigateFunction = import('react-router-dom').NavigateFunction;
@@ -44,7 +45,7 @@ export type AcTableProps = TableProps & {
    * The language.
    * @default 'zh-CN'
    */
-  lang?: string;
+  lang?: AppLocale;
   /**
    * The platform module name.
    * @default admin
@@ -81,11 +82,7 @@ export type AcTableProps = TableProps & {
    * @param params { current: number; pageSize: number }
    * @returns Promise<{ data: any[]; total: number }>
    */
-  fetcher?: (params: {
-    current: number;
-    pageSize: number;
-    params?: Record<string, any>;
-  }) => Promise<{ data: any[]; total: number }>;
+  fetcher?: (params: FetcherParams) => FetcherResponse;
   /**
    * @param page
    * @param size

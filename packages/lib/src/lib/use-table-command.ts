@@ -6,7 +6,8 @@ type Payload = Record<string, any>;
 
 const useCommand = (inName?: string) => {
   const name = inName || '@';
-  const execute: ExecuteFn = (command, ...args) => AcTable.event?.emit(`${name}:${command}`, ...args);
+  const execute: ExecuteFn = (command, ...args) =>
+    AcTable.event?.emit(`${name}:${command}`, ...args);
   const listen: ListenFn = (cmd, callback) => AcTable.event?.on(`${name}:${cmd}`, callback);
 
   // the command repository:
@@ -14,8 +15,8 @@ const useCommand = (inName?: string) => {
   const refetch = () => execute('refetch');
   const reset = () => execute('reset');
   const add = () => execute('add');
-  const edit = () => execute('edit');
-  const destroy = () => execute('destroy');
+  const edit = (payload: Payload) => execute('edit', payload);
+  const destroy = (payload: Payload) => execute('destroy', payload);
   const draft = (payload: Payload) => execute('draft', payload);
 
   return {

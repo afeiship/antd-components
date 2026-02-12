@@ -1,10 +1,9 @@
 import { Rate, RateProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-rate';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcRateProps = {
   className?: string;

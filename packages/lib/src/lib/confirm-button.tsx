@@ -2,6 +2,7 @@ import type { ButtonProps, PopconfirmProps } from 'antd';
 import { Button, message, Popconfirm } from 'antd';
 import cx from 'classnames';
 import React, { Component } from 'react';
+import type { AppLocale } from './types';
 
 const CLASS_NAME = 'ac-confirm-button';
 const locals = {
@@ -17,7 +18,7 @@ const locals = {
 
 export interface AcConfirmButtonProps extends Omit<PopconfirmProps, 'title'> {
   className?: string;
-  lang?: string;
+  lang?: AppLocale;
   title?: string;
   type?: ButtonProps['type'] | 'raw' | 'anchor';
   childProps?: ButtonProps;

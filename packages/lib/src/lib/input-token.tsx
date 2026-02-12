@@ -3,10 +3,9 @@ import { Button, Input, InputProps, Space } from 'antd';
 import cx from 'classnames';
 import { nanoid } from 'nanoid';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-input-token';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcInputTokenProps = {
   className?: string;

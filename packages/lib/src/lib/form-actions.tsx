@@ -6,9 +6,10 @@
  */
 import React, { RefObject } from 'react';
 import { Button, ButtonProps, Space, SpaceProps } from 'antd';
+import type { AppLocale } from './types';
 
 export type FormActionsProps = SpaceProps & {
-  lang?: string;
+  lang?: AppLocale;
   actions?: string[];
   okText?: string;
   cancelText?: string;

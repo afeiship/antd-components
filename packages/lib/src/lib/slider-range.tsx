@@ -2,10 +2,9 @@ import { Slider } from 'antd';
 import { SliderRangeProps } from 'antd/es/slider';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-slider-range';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcSliderRangeProps = {
   className?: string;

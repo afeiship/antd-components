@@ -3,16 +3,13 @@ import { Select, SelectProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
 import { kv as KvTmpl, selectKv } from '../tpls/kv';
+import type { StdCallback, StdEventTarget, TemplateCallback } from './types';
 
 const CLASS_NAME = 'ac-select';
 const DEFAULT_KV = {
   label: 'label',
   value: 'value',
 };
-
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
-type TemplateCallback = (item: { item: any; index: number }) => React.ReactNode;
 
 export type AcSelectProps = {
   className?: string;

@@ -4,11 +4,9 @@ import { CheckboxGroupProps } from 'antd/es/checkbox';
 import cx from 'classnames';
 import React from 'react';
 import { checkboxKv } from '../tpls/kv';
+import type { StdCallback, StdEventTarget, TemplateCallback } from './types';
 
 const CLASS_NAME = 'ac-checkbox-group';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
-type TemplateCallback = (item: { item: any; index: number }) => React.ReactNode;
 
 export type AcCheckboxGroupProps = {
   className?: string;

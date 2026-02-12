@@ -3,15 +3,14 @@ import '@jswork/next-dom-event';
 import { Button, Checkbox, Dropdown, MenuProps } from 'antd';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import React from 'react';
+import type { AppLocale, StdCallback } from './types';
 
 const CLASS_NAME = 'ac-checkable-dropdown';
 const locales = { 'zh-CN': { selectAll: '全部' }, 'en-US': { selectAll: 'All' } };
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcCheckableDropdownProps = {
   className?: string;
-  lang?: string;
+  lang?: AppLocale;
   items?: any[];
   value?: any[];
   width?: number;

@@ -9,6 +9,7 @@ import { readSearchString, writeSearchString } from '@jswork/url-sync-flat';
 import nx from '@jswork/next';
 import { Input } from 'antd';
 import { SearchProps } from 'antd/es/input';
+import type { AppLocale } from './types';
 
 declare global {
   interface NxStatic {
@@ -19,7 +20,7 @@ declare global {
 
 export type AcExtraSearchProps = SearchProps & {
   name: string;
-  lang?: string;
+  lang?: AppLocale;
   queryKey?: string;
   routerType?: 'hash' | 'browser';
 }

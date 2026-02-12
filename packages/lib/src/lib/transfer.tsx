@@ -2,11 +2,10 @@ import { Transfer, TransferProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
 import { transferLabel } from '../tpls/transfer';
+import type { StdCallback, StdEventTarget, TemplateCallbackWithOptions } from './types';
 
 const CLASS_NAME = 'ac-transfer';
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
-type TemplateCallback = (item: { item: any }, options?: any) => React.ReactNode;
+type TemplateCallback = TemplateCallbackWithOptions;
 
 export type AcTransferProps = {
   className?: string;

@@ -3,14 +3,13 @@ import { Button, Space } from 'antd';
 import cx from 'classnames';
 import React from 'react';
 import { AcCheckableTag } from './checkable-tag';
+import type { AppLocale, StdCallback } from './types';
 
 const CLASS_NAME = 'ac-checkable-tag-list';
 const locales = {
   'zh-CN': { selectAll: '全部' },
   'en-US': { selectAll: 'All' },
 };
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcCheckableTagListProps = {
   /**
@@ -20,7 +19,7 @@ export type AcCheckableTagListProps = {
   /**
    * The language key.
    */
-  lang?: string;
+  lang?: AppLocale;
   /**
    * The component data soruce.
    */

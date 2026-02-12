@@ -2,13 +2,12 @@ import { Tag } from 'antd';
 import cx from 'classnames';
 import fde from 'fast-deep-equal';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-input-tags';
 const TRIGGER_KEYS = ['Tab', 'Enter', 'Space'];
 
 // @ https://cdpn.io/iamqamarali/fullpage/qyawoR?anon=true&view=
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcInputTagsProps = {
   className?: string;

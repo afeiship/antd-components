@@ -7,7 +7,8 @@
 import nx from '@jswork/next';
 import { Space, SpaceProps } from 'antd';
 import React, { FC, Fragment } from 'react';
-import { BtnBack, BtnCreate, BtnRefresh, Locale } from './button';
+import { BtnBack, BtnCreate, BtnRefresh } from './button';
+import type { AppLocale } from './types';
 
 declare global {
   interface NxStatic {
@@ -17,7 +18,7 @@ declare global {
 
 export type AcCardExtrasProps = SpaceProps & {
   name: string;
-  lang?: Locale;
+  lang?: AppLocale;
   as?: React.ComponentType<any>;
   extraBefore?: React.ReactNode;
   extraAfter?: React.ReactNode;

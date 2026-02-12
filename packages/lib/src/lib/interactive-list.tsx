@@ -2,15 +2,11 @@ import ReactList from '@jswork/react-list';
 import cx from 'classnames';
 import deepEqual from 'fast-deep-equal';
 import React, { Component, HTMLAttributes } from 'react';
+import type { StdCallback, StdEventTarget, TemplateCallbackWithItems } from './types';
 
 const CLASS_NAME = 'ac-interactive-list';
 
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
-type TemplateCallback = (
-  item: { item: any; index: number; items: any[] },
-  cb: any
-) => React.ReactNode;
+type TemplateCallback = TemplateCallbackWithItems;
 
 export type ReactInteractiveListProps = {
   /**

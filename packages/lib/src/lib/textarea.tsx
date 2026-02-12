@@ -2,11 +2,10 @@ import { Input } from 'antd';
 import { TextAreaProps } from 'antd/es/input';
 import cx from 'classnames';
 import React from 'react';
+import type { StdCallback, StdEventTarget } from './types';
 
 const CLASS_NAME = 'ac-textarea';
 const TextArea = Input.TextArea;
-type StdEventTarget = { target: { value: any } };
-type StdCallback = (inEvent: StdEventTarget) => void;
 
 export type AcTextareaProps = {
   className?: string;

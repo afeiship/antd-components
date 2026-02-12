@@ -8,6 +8,7 @@ import nx from '@jswork/next';
 import { Space } from 'antd';
 import React, { FC } from 'react';
 import { AcConfirmButton } from './confirm-button';
+import type { AppLocale } from './types';
 
 declare global {
   interface NxStatic {
@@ -31,7 +32,7 @@ const locales = {
 export type AcTableLinksProps = {
   name: string;
   model?: any;
-  lang?: string;
+  lang?: AppLocale;
   extraBefore?: React.ReactNode;
   extraAfter?: React.ReactNode;
   as?: React.ComponentType<any>;
@@ -41,7 +42,7 @@ export type AcTableLinksProps = {
 
 export type TableActionArgs = {
   name: string;
-  lang?: string;
+  lang?: AppLocale;
   [key: string]: any;
 }
 
