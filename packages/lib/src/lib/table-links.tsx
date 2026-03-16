@@ -25,7 +25,7 @@ const locales = {
 
 export type AcTableLinksProps = {
   name: string;
-  model?: any;
+  model: any;
   lang?: AppLocale;
   extraBefore?: React.ReactNode;
   extraAfter?: React.ReactNode;
