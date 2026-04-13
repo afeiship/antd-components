@@ -1,8 +1,8 @@
-import ReactList from '@jswork/react-list';
+import { ReactList } from '@jswork/react-list';
 import cx from 'classnames';
 import deepEqual from 'fast-deep-equal';
 import React, { Component, HTMLAttributes } from 'react';
-import type { StdCallback, StdEventTarget, TemplateCallbackWithItems } from './types';
+import type { StdCallback, TemplateCallbackWithItems } from './types';
 
 const CLASS_NAME = 'ac-interactive-list';
 
@@ -26,7 +26,7 @@ export type ReactInteractiveListProps = {
   /**
    * The data item template.
    */
-  template: TemplateCallback;
+  template: TemplateCallbackWithItems;
   /**
    * The action of `create` component.
    */
@@ -78,7 +78,7 @@ class ReactInteractiveList extends Component<ReactInteractiveListProps, ReactInt
 
   get listView() {
     const { value } = this.state;
-    return <ReactList items={value} template={this.template} />;
+    return <ReactList data={value} keyExtractor={(_, index) => index} slots={{ item: this.template }} />;
   }
 
   get createView() {

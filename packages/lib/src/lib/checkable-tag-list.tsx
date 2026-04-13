@@ -1,4 +1,4 @@
-import ReactList from '@jswork/react-list';
+import { ReactList } from '@jswork/react-list';
 import { Button, Space } from 'antd';
 import cx from 'classnames';
 import React from 'react';
@@ -74,7 +74,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
   };
 
   render() {
-    const { className, items, value, onChange, disabled, ...props } = this.props;
+    const { className, items, disabled } = this.props;
     const label = this.t('selectAll');
 
     return (
@@ -87,32 +87,33 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
           {label}
         </Button>
         <ReactList
-          items={items || []}
-          template={({ item, index }) => {
-            const _value = this.state.value as any[];
-            const isChecked = _value?.includes(item.value);
-            return (
-              <AcCheckableTag
-                className="ac-is-item"
-                toggleable
-                closeable
-                propagation
-                disabled={disabled}
-                value={isChecked}
-                onChange={(inEvent) => {
-                  const checked = inEvent.target.value;
-                  const curSet = new Set([..._value]);
-                  const method = checked ? 'add' : 'delete';
-                  curSet[method](item.value);
-                  // @ts-ignore
-                  this.handleChange([...curSet]);
-                }}
-                key={index}>
-                {item.label}
-              </AcCheckableTag>
-            );
+          data={items || []}
+          keyExtractor={(_, index) => index}
+          slots={{
+            item: ({ item }) => {
+              const _value = this.state.value as any[];
+              const isChecked = _value?.includes(item.value);
+              return (
+                <AcCheckableTag
+                  className="ac-is-item"
+                  toggleable
+                  closeable
+                  propagation
+                  disabled={disabled}
+                  value={isChecked}
+                  onChange={(inEvent) => {
+                    const checked = inEvent.target.value;
+                    const curSet = new Set([..._value]);
+                    const method = checked ? 'add' : 'delete';
+                    curSet[method](item.value);
+                    // @ts-ignore
+                    this.handleChange([...curSet]);
+                  }}>
+                  {item.label}
+                </AcCheckableTag>
+              );
+            }
           }}
-          {...props}
         />
       </Space>
     );

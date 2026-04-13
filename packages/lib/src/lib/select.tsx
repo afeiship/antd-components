@@ -1,4 +1,4 @@
-import ReactList from '@jswork/react-list';
+import { ReactList } from '@jswork/react-list';
 import { Select, SelectProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
@@ -63,22 +63,21 @@ export class AcSelect extends React.Component<AcSelectProps> {
   };
 
   render() {
-    const { className, onChange, onSearch, value, template, ...props } = this.props;
+    const { className, onChange, onSearch, value, template, items, ...props } = this.props;
     const { value: _value } = this.state;
-    const asProps = {
+    const selectProps = {
       onChange: this.handleChange,
       value: _value,
     } as any;
 
     return (
-      <ReactList
-        allowEmpty
-        as={Select}
-        className={cx(CLASS_NAME, className)}
-        template={this.template}
-        {...asProps}
-        {...props}
-      />
+      <Select className={cx(CLASS_NAME, className)} {...selectProps} {...props}>
+        <ReactList
+          data={items || []}
+          keyExtractor={(_, index) => index}
+          slots={{ item: this.template }}
+        />
+      </Select>
     );
   }
 }

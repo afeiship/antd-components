@@ -1,4 +1,4 @@
-import ReactList from '@jswork/react-list';
+import { ReactList } from '@jswork/react-list';
 import { Radio, RadioGroupProps } from 'antd';
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
@@ -56,7 +56,7 @@ export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
 
     return (
       <Radio.Group className={cx(CLASS_NAME, className)} onChange={this.handleChange} {...props}>
-        <ReactList items={items || []} template={this.templateCallback} />
+        <ReactList data={items || []} keyExtractor={(_, index) => index} slots={{ item: this.templateCallback }} />
       </Radio.Group>
     );
   }

@@ -1,4 +1,4 @@
-import ReactList from '@jswork/react-list';
+import { ReactList } from '@jswork/react-list';
 import { Checkbox } from 'antd';
 import { CheckboxGroupProps } from 'antd/es/checkbox';
 import cx from 'classnames';
@@ -60,7 +60,7 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
         value={stateValue}
         onChange={this.handleChange}
         {...props}>
-        <ReactList items={items || []} template={template} />
+        <ReactList data={items || []} keyExtractor={(_, index) => index} slots={{ item: template! }} />
       </Checkbox.Group>
     );
   }
