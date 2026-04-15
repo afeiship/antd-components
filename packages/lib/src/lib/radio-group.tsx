@@ -56,7 +56,11 @@ export class AcRadioGroup extends React.Component<AcRadioGroupProps> {
 
     return (
       <Radio.Group className={cx(CLASS_NAME, className)} onChange={this.handleChange} {...props}>
-        <ReactList data={items || []} keyExtractor={(_, index) => index} slots={{ item: this.templateCallback }} />
+        <ReactList
+          data={items || []}
+          keyExtractor={({ index }) => index}
+          slots={{ item: this.templateCallback }}
+        />
       </Radio.Group>
     );
   }

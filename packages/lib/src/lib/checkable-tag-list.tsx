@@ -88,7 +88,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
         </Button>
         <ReactList
           data={items || []}
-          keyExtractor={(_, index) => index}
+          keyExtractor={({ index }) => index}
           slots={{
             item: ({ item }) => {
               const _value = this.state.value as any[];
@@ -112,7 +112,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
                   {item.label}
                 </AcCheckableTag>
               );
-            }
+            },
           }}
         />
       </Space>

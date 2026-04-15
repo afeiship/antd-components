@@ -60,7 +60,11 @@ export class AcCheckboxGroup extends React.Component<AcCheckboxGroupProps> {
         value={stateValue}
         onChange={this.handleChange}
         {...props}>
-        <ReactList data={items || []} keyExtractor={(_, index) => index} slots={{ item: template! }} />
+        <ReactList
+          data={items || []}
+          keyExtractor={({ index }) => index}
+          slots={{ item: template! }}
+        />
       </Checkbox.Group>
     );
   }

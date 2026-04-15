@@ -27,7 +27,7 @@ export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
       <Breadcrumb className={cx(className, CLASS_NAME)} {...props}>
         <ReactList
           data={items || []}
-          keyExtractor={(_, index) => index}
+          keyExtractor={({ index }) => index}
           slots={{ item: template! }}
         />
       </Breadcrumb>
@@ -38,5 +38,3 @@ export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
 export const AcBreadcrumbFc = (props: AcBreadcrumbProps) => {
   return <AcBreadcrumb {...props} />;
 };
-
-

@@ -74,7 +74,7 @@ export class AcSelect extends React.Component<AcSelectProps> {
       <Select className={cx(CLASS_NAME, className)} {...selectProps} {...props}>
         <ReactList
           data={items || []}
-          keyExtractor={(_, index) => index}
+          keyExtractor={({ index }) => index}
           slots={{ item: this.template }}
         />
       </Select>

@@ -143,8 +143,9 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
 
   handleInputChange = (inIndex, inEvent) => {
     const { value } = this.state;
-    value![inIndex] = inEvent.target.value;
-    this.handleChange(value);
+    const newValue = [...value!];
+    newValue[inIndex] = inEvent.target.value;
+    this.setState({ value: newValue });
   };
 
   handleInputBlur = () => {
