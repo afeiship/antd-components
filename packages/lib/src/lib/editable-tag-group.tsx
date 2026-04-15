@@ -59,8 +59,8 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
   private btnRef = createRef<HTMLButtonElement>();
   private rootForwardedRef = createRef<HTMLDivElement>();
   private rootRef = createRef<any>();
-  private imeStartRes;
-  private imeEndRes;
+  private imeStartRes: { destroy: any };
+  private imeEndRes: { destroy: any };
 
   get latestInput(): HTMLInputElement {
     const root = this.rootForwardedRef.current!;
@@ -182,7 +182,7 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
     const value = inValue.map((item) => item.trim());
     const target = { value };
     this.setState(target, () => {
-      onChange!({ target });
+      onChange?.({ target });
       inCallback?.(value);
     });
   };

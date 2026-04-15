@@ -1,11 +1,21 @@
-import { AcCardExtras, AcColorPicker, AcInputCopyable, AcInputToken, AcMarkdownEditor, AcTable, AcTableLinks, BtnSave } from "@jswork/antd-components";
+import {
+  AcCardExtras,
+  AcColorPicker,
+  AcEditableTagGroupFc,
+  AcInputCopyable,
+  AcInputToken,
+  AcMarkdownEditor,
+  AcTable,
+  AcTableLinks,
+  BtnSave,
+} from "@jswork/antd-components/src/main";
 import { useRef, useState } from "react";
 
 import "@jswork/antd-components/dist/style.css";
 
 export default function App() {
   const tbRef = useRef<any>(null);
-  const [color, setColor] = useState('#FFCC00');
+  const [color, setColor] = useState("#FFCC00");
   const [markdown, setMarkdown] = useState(`# Welcome to AcMarkdownEditor
 
 This is a **markdown editor** with live preview.
@@ -60,6 +70,10 @@ Start editing to see the magic happen!`);
   return (
     <div className="rounded-2xl container mx-auto my-10 bg-gray-200 p-5">
       <div className="mb-4 space-y-4">
+        <h3>AcInputTagGroup</h3>
+        <AcEditableTagGroupFc value={["abc"]} />
+      </div>
+      <div className="mb-4 space-y-4">
         <h3 className="text-lg font-semibold">AcInputCopyable Demo</h3>
         <div>
           <label className="mb-1 block text-sm font-medium">Text Type (default):</label>
@@ -97,9 +111,7 @@ Start editing to see the magic happen!`);
           <summary className="cursor-pointer font-semibold text-gray-700 hover:text-gray-900">
             View Raw Markdown (Debug)
           </summary>
-          <pre className="mt-2 rounded bg-gray-100 p-4 text-sm">
-            {markdown}
-          </pre>
+          <pre className="mt-2 rounded bg-gray-100 p-4 text-sm">{markdown}</pre>
         </details>
       </div>
       <div className="mt-4">
@@ -107,7 +119,7 @@ Start editing to see the magic happen!`);
         <AcColorPicker
           value={color}
           onChange={(e) => {
-            console.log('Color changed:', e.target.value);
+            console.log("Color changed:", e.target.value);
             setColor(e.target.value);
           }}
           allowClear
