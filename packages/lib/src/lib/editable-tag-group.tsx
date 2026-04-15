@@ -5,32 +5,20 @@ import cx from 'classnames';
 import deepEqual from 'fast-deep-equal';
 import React, { createRef } from 'react';
 import AutosizeInput from 'react-input-autosize';
-import { AcInteractiveList } from './interactive-list';
-import type { StdCallback } from './types';
+import {
+  ReactInteractiveList,
+  ReactInteractiveListProps,
+  useCommand,
+} from '@jswork/react-interactive-list';
+import { INDEX } from '@jswork/react-list';
 
 const CLASS_NAME = 'ac-editable-tag-group';
 
-export type AcEditableTagGroupProps = {
+export type AcEditableTagGroupProps = ReactInteractiveListProps & {
   /**
    * The extended className for component.
    */
   className?: string;
-  /**
-   * Default value.
-   */
-  value?: any[];
-  /**
-   * The change handler.
-   */
-  onChange?: StdCallback;
-  /**
-   * The minimum tag number.
-   */
-  min?: number;
-  /**
-   * The maximum tags number.
-   */
-  max?: number;
   /**
    * If set readOnly.
    */
@@ -59,8 +47,12 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
   private btnRef = createRef<HTMLButtonElement>();
   private rootForwardedRef = createRef<HTMLDivElement>();
   private rootRef = createRef<any>();
-  private imeStartRes;
-  private imeEndRes;
+  private listCtx;
+
+  constructor(props: AcEditableTagGroupProps) {
+    super(props);
+    this.listCtx = useCommand(props.name);
+  }
 
   get latestInput(): HTMLInputElement {
     const root = this.rootForwardedRef.current!;
@@ -71,11 +63,16 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
 
   state = {
     value: this.props.value,
-    ime: false,
   };
 
-  template = ({ item, index }, cb) => {
-    // TODO: tag.cloable will create ant-tag-hidden?
+  handleTagRemove = (inIndex) => {
+    // const { value } = this.state;
+    // const newValue = value!.filter((_, idx) => idx !== inIndex);
+    // this.handleChange(newValue);
+    this.listCtx.remove(inIndex);
+  };
+
+  template = ({ item, index }) => {
     const { readOnly } = this.props;
     return (
       <Tag key={index}>
@@ -91,7 +88,11 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
           onBlur={this.handleInputBlur}
           onKeyDown={this.handleInputKeyDown}
         />
-        {!readOnly && <i className={`${CLASS_NAME}__close`} onClick={cb}></i>}
+        {!readOnly && (
+          <i
+            className={`${CLASS_NAME}__close`}
+            onClick={this.handleTagRemove.bind(this, index)}></i>
+        )}
       </Tag>
     );
   };
@@ -124,9 +125,8 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
    */
   actionCreate = () => {
     const { value } = this.state;
-    value!.push(this.templateDefault());
+    this.listCtx.add();
     this.handleChange(value);
-    this.rootRef.current!.notify(value);
     this.actionFocusLast();
   };
 
@@ -143,8 +143,9 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
 
   handleInputChange = (inIndex, inEvent) => {
     const { value } = this.state;
-    value![inIndex] = inEvent.target.value;
-    this.handleChange(value);
+    const newValue = [...value!];
+    newValue[inIndex] = inEvent.target.value;
+    this.setState({ value: newValue });
   };
 
   handleInputBlur = () => {
@@ -164,17 +165,16 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
 
   handleInputKeyDown = (inEvent) => {
     const { triggers } = this.props;
-    const { ime } = this.state;
+    if (inEvent.nativeEvent.isComposing || inEvent.keyCode === 229) return;
     if (triggers?.includes(inEvent.key)) {
-      if (inEvent.key === ' ' && ime) return;
       inEvent.preventDefault();
       this.actionCreate();
     }
   };
 
   handleInterChange = (inEvent) => {
-    const { value } = inEvent.target;
-    this.handleChange(value);
+    // const { value } = inEvent.target;
+    this.handleChange(inEvent);
   };
 
   handleChange = (inValue, inCallback?) => {
@@ -182,21 +182,10 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
     const value = inValue.map((item) => item.trim());
     const target = { value };
     this.setState(target, () => {
-      onChange!({ target });
+      onChange?.({ target });
       inCallback?.(value);
     });
   };
-
-  componentDidMount() {
-    const doc = document as any;
-    this.imeStartRes = nx.DomEvent.on(doc, 'compositionstart', () => this.setState({ ime: true }));
-    this.imeEndRes = nx.DomEvent.on(doc, 'compositionend', () => this.setState({ ime: false }));
-  }
-
-  componentWillUnmount() {
-    this.imeStartRes.destroy();
-    this.imeEndRes.destroy();
-  }
 
   shouldComponentUpdate(nextProps: Readonly<AcEditableTagGroupProps>): boolean {
     const { value } = nextProps;
@@ -207,23 +196,36 @@ export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps>
   }
 
   render() {
-    const { className, value, onChange, min, max, triggers, ...props } = this.props;
+    const {
+      className,
+      value,
+      onChange,
+      min,
+      max,
+      triggers,
+      keyExtractor,
+      slots,
+      defaults,
+      ...props
+    } = this.props;
     const { value: stateValue } = this.state;
 
     return (
-      <AcInteractiveList
-        className={cx(CLASS_NAME, className)}
-        forwardedRef={this.rootForwardedRef}
-        ref={this.rootRef}
-        min={min}
-        max={max}
-        items={stateValue}
-        template={this.template}
-        templateCreate={this.templateCreate}
-        templateDefault={this.templateDefault}
-        onChange={this.handleInterChange}
-        {...props}
-      />
+      <div ref={this.rootForwardedRef}>
+        <ReactInteractiveList
+          className={cx(CLASS_NAME, className)}
+          ref={this.rootRef}
+          min={min}
+          max={max}
+          value={stateValue}
+          keyExtractor={INDEX}
+          slots={{ item: this.template, empty: slots?.empty }}
+          defaults={this.templateDefault}
+          onChange={this.handleInterChange}
+          {...props}
+        />
+        {this.templateCreate()}
+      </div>
     );
   }
 }

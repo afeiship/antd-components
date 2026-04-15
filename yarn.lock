@@ -1270,6 +1270,11 @@
     js-beautify "^1.15.1"
     tslib "^2.5.0"
 
+"@jswork/react-interactive-list@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@jswork/react-interactive-list/-/react-interactive-list-1.6.2.tgz#a4caed983f550969daab4b2479edc7804f0ffb21"
+  integrity sha512-5CjBzkdemU1FCqZlDSgPkrBd8CTEF6Zwjh59Fxjk1gLrSggbmg3dQSqZR8hUoz5udlN6+z4p5RubERkHuVd5TQ==
+
 "@jswork/react-list@^1.1.3":
   version "1.4.3"
   resolved "https://registry.npmmirror.com/@jswork/react-list/-/react-list-1.4.3.tgz#f137ffb40bf3ad07c5e53f043628c1dc7ea2f4d3"
@@ -1283,6 +1288,15 @@
   version "2.0.5"
   resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.5.tgz#659c8f23506d81d32497d4ff63f05a2e1f2090c4"
   integrity sha512-xLdCCY/l/UZ8qI0FYb7eyn3p9UPu8u7toa8xXkejx7YA2XsLJfkRUJjfUPPbsnCxGLU4ZTWGoas0hGr45KZYuA==
+  dependencies:
+    "@jswork/class-imperative-handle" "^1.0.1"
+    "@jswork/noop" "^1.0.0"
+    classnames "^2.5.1"
+
+"@jswork/react-list@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.9.tgz#7b652ffdcd866b9748d9dbeee93d4301090b957b"
+  integrity sha512-Ab05PBVrzS5+ikx2+ebYEq16VQMtga2FBoDzQAmfmtPjB1UzzaFoH4U15236S/7xdB+2d5GrPjHh/gimpvFKZw==
   dependencies:
     "@jswork/class-imperative-handle" "^1.0.1"
     "@jswork/noop" "^1.0.0"
