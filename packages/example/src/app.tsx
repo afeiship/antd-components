@@ -8,7 +8,7 @@ import {
   AcTableLinks,
   BtnSave,
   AcEditableTagGroupFc,
-} from "@jswork/antd-components";
+} from "@jswork/antd-components/src/main";
 import { useRef, useState } from "react";
 
 import "@jswork/antd-components/dist/style.css";
