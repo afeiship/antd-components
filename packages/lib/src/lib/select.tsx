@@ -1,4 +1,4 @@
-import { ReactList } from '@jswork/react-list';
+import { ReactList, INDEX } from '@jswork/react-list';
 import { Select, SelectProps } from 'antd';
 import cx from 'classnames';
 import React from 'react';
@@ -74,7 +74,7 @@ export class AcSelect extends React.Component<AcSelectProps> {
       <Select className={cx(CLASS_NAME, className)} {...selectProps} {...props}>
         <ReactList
           data={items || []}
-          keyExtractor={({ index }) => index}
+          keyExtractor={INDEX}
           slots={{ item: this.template }}
         />
       </Select>

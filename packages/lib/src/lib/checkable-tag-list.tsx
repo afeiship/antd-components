@@ -1,4 +1,4 @@
-import { ReactList } from '@jswork/react-list';
+import { INDEX, ReactList } from '@jswork/react-list';
 import { Button, Space } from 'antd';
 import cx from 'classnames';
 import React from 'react';
@@ -88,7 +88,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
         </Button>
         <ReactList
           data={items || []}
-          keyExtractor={({ index }) => index}
+          keyExtractor={INDEX}
           slots={{
             item: ({ item }) => {
               const _value = this.state.value as any[];

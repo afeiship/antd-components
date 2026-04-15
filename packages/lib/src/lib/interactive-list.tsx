@@ -1,4 +1,4 @@
-import { ReactList, SELF } from '@jswork/react-list';
+import { INDEX, ReactList } from '@jswork/react-list';
 import cx from 'classnames';
 import deepEqual from 'fast-deep-equal';
 import React, { Component, HTMLAttributes } from 'react';
@@ -78,7 +78,7 @@ class ReactInteractiveList extends Component<ReactInteractiveListProps, ReactInt
 
   get listView() {
     const { items } = this.props;
-    return <ReactList data={items} keyExtractor={SELF} slots={{ item: this.template }} />;
+    return <ReactList data={items} keyExtractor={INDEX} slots={{ item: this.template }} />;
   }
 
   get createView() {

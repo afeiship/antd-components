@@ -1288,10 +1288,10 @@
     "@jswork/noop" "^1.0.0"
     classnames "^2.5.1"
 
-"@jswork/react-list@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.8.tgz#806f622c91f039fcee59259c94fccce6f2be7d11"
-  integrity sha512-NoHRLEaCJV2/eZWXTSD8yF/luT0mRFoZsnRHvAb6YttWSkd2aKwdTP5iJF0Chz1iWfM9tz9WaKiFuGjlJnFujw==
+"@jswork/react-list@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.9.tgz#7b652ffdcd866b9748d9dbeee93d4301090b957b"
+  integrity sha512-Ab05PBVrzS5+ikx2+ebYEq16VQMtga2FBoDzQAmfmtPjB1UzzaFoH4U15236S/7xdB+2d5GrPjHh/gimpvFKZw==
   dependencies:
     "@jswork/class-imperative-handle" "^1.0.1"
     "@jswork/noop" "^1.0.0"
