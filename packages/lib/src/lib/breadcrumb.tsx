@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbProps } from 'antd';
-import { ReactList } from '@jswork/react-list';
+import { INDEX, ReactList } from '@jswork/react-list';
 import { breadcrumbDefault } from '../tpls/breadcrumb';
 import cx from 'classnames';
 import type { StdCallback } from './types';
@@ -25,11 +25,7 @@ export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
     const { className, value, items, template, onChange, ...props } = this.props;
     return (
       <Breadcrumb className={cx(className, CLASS_NAME)} {...props}>
-        <ReactList
-          data={items || []}
-          keyExtractor={(_, index) => index}
-          slots={{ item: template! }}
-        />
+        <ReactList data={items || []} keyExtractor={INDEX} slots={{ item: template! }} />
       </Breadcrumb>
     );
   }
@@ -38,5 +34,3 @@ export class AcBreadcrumb extends React.Component<AcBreadcrumbProps> {
 export const AcBreadcrumbFc = (props: AcBreadcrumbProps) => {
   return <AcBreadcrumb {...props} />;
 };
-
-
