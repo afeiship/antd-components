@@ -132,6 +132,97 @@
   }
 }
 
+.ac-edit-tag-group2 {
+  .ant-tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ant-btn {
+    position: relative;
+    padding-left: 15px;
+  }
+
+  &__input {
+    flex: 1;
+
+    input {
+      border-color: transparent;
+      background: none;
+      text-align: center;
+    }
+  }
+
+  &__create {
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  &__plus {
+    width: 10px;
+    height: 10px;
+    opacity: 0.3;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 0;
+      content: '';
+      height: 10px;
+      width: 1px;
+      background-color: #333;
+    }
+
+    &:before {
+      transform: rotate(90deg);
+    }
+
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__close {
+    position: relative;
+    margin-left: 3px;
+    width: 10px;
+    height: 10px;
+    opacity: 0.3;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 0;
+      content: '';
+      height: 10px;
+      width: 1px;
+      background-color: #333;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
 .ac-upload-picture-card {
   /**
   定义 css 变量，可以改变 image-item 的大小

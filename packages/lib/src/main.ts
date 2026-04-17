@@ -9,6 +9,7 @@ import { AcColorPicker, AcColorPickerFc } from './lib/color-picker';
 import { AcConfirmButton } from './lib/confirm-button';
 import { AcDatePicker, AcDatePickerFc } from './lib/date-picker';
 import { AcEditableTagGroup, AcEditableTagGroupFc } from './lib/editable-tag-group';
+import { AcEditTagGroup2 } from './lib/edit-tag-group2';
 import { AcInput, AcInputFc } from './lib/input';
 import { AcInputCopyable, AcInputCopyableFc } from './lib/input-copyable';
 import { AcInputHidden, AcInputHiddenFc } from './lib/input-hidden';
@@ -50,6 +51,7 @@ import type { AcColorPickerProps } from './lib/color-picker';
 import type { AcConfirmButtonProps } from './lib/confirm-button';
 import type { AcDatePickerProps } from './lib/date-picker';
 import type { AcEditableTagGroupProps } from './lib/editable-tag-group';
+import type { AcEditTagGroup2Props } from './lib/edit-tag-group2';
 import type { AcInputProps } from './lib/input';
 import type { AcInputNumberProps } from './lib/input-number';
 import type { AcInputTagsProps } from './lib/input-tags';
@@ -130,6 +132,8 @@ export {
   AcEditableTagGroup,
   AcEditableTagGroupFc,
   AcEditableTagGroupProps,
+  AcEditTagGroup2,
+  AcEditTagGroup2Props,
   AcExtraSearch,
   AcExtraSearchProps,
   AcInput,

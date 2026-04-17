@@ -64,6 +64,7 @@
     "@jswork/next-tree-walk": "^1.0.7",
     "@jswork/next-unique": "^1.0.2",
     "@jswork/react-codeflask": "^1.1.2",
+    "@jswork/react-dynamic-list": "^1.0.4",
     "@jswork/react-interactive-list": "^1.6.2",
     "@jswork/react-list": "^2.0.9",
     "@jswork/url-sync-flat": "^1.0.8",

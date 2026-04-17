@@ -32,6 +32,7 @@ export default defineConfig({
     '@jswork/noop',
     '@jswork/react-codeflask',
     '@jswork/react-list',
+    '@jswork/react-dynamic-list',
     '@jswork/weibo2res',
     'fast-deep-equal',
     'nanoid',

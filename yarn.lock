@@ -1270,6 +1270,11 @@
     js-beautify "^1.15.1"
     tslib "^2.5.0"
 
+"@jswork/react-dynamic-list@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@jswork/react-dynamic-list/-/react-dynamic-list-1.0.4.tgz#09a868b5b74ba3d99021e335bc48554ae215384f"
+  integrity sha512-008D9HRnnB2AsFDjmx2XLoIi0J1Zgd2iPoyqFK4S7rseX1PJZU3K0SCFGDq96pxcfOls3LqhC11WhEtgcs9WhQ==
+
 "@jswork/react-interactive-list@^1.6.2":
   version "1.6.2"
   resolved "https://registry.npmjs.org/@jswork/react-interactive-list/-/react-interactive-list-1.6.2.tgz#a4caed983f550969daab4b2479edc7804f0ffb21"
