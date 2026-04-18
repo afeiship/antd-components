@@ -1,235 +1,178 @@
-import '@jswork/next-dom-event';
 import '@jswork/next-unique';
 import { Button, Tag } from 'antd';
 import cx from 'classnames';
-import deepEqual from 'fast-deep-equal';
-import React, { createRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import AutosizeInput from 'react-input-autosize';
-import {
-  ReactInteractiveList,
-  ReactInteractiveListProps,
-  useCommand,
-} from '@jswork/react-interactive-list';
-import { INDEX } from '@jswork/react-list';
+import { DynamicList, useCommand } from '@jswork/react-dynamic-list';
 
 const CLASS_NAME = 'ac-editable-tag-group';
 
-export type AcEditableTagGroupProps = ReactInteractiveListProps & {
-  /**
-   * The extended className for component.
-   */
+export type AcEditableTagGroupProps = {
+  name: string;
   className?: string;
-  /**
-   * If set readOnly.
-   */
+  value?: string[];
+  onChange?: (e: { target: { value: string[] } }) => void;
   readOnly?: boolean;
-  /**
-   * If set disabled.
-   */
   disabled?: boolean;
-  /**
-   * Trigger key, default is `Space`.
-   */
+  min?: number;
+  max?: number;
   triggers?: string[];
 };
 
-export class AcEditableTagGroup extends React.Component<AcEditableTagGroupProps> {
-  static displayName = CLASS_NAME;
-  static formSchema = CLASS_NAME;
-  static defaultProps = {
-    value: [],
-    min: 0,
-    max: 10,
-    triggers: [' ', 'Tab'],
-  };
+const ITEM_SLOT = `${CLASS_NAME}__input`;
 
-  private inputRef = createRef<HTMLInputElement>();
-  private btnRef = createRef<HTMLButtonElement>();
-  private rootForwardedRef = createRef<HTMLDivElement>();
-  private rootRef = createRef<any>();
-  private listCtx;
+const isEqual = (a: string[], b: string[]) =>
+  a.length === b.length && a.every((v, i) => v === b[i]);
 
-  constructor(props: AcEditableTagGroupProps) {
-    super(props);
-    this.listCtx = useCommand(props.name);
-  }
+const EMPTY_DEFAULT = () => '';
 
-  get latestInput(): HTMLInputElement {
-    const root = this.rootForwardedRef.current!;
-    const selector = `.${CLASS_NAME}__input input`;
-    const els: NodeListOf<HTMLInputElement> = root.querySelectorAll(selector);
-    return els[els.length - 1];
-  }
+export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
+  name,
+  className,
+  value = [],
+  onChange,
+  readOnly = false,
+  disabled = false,
+  min = 0,
+  max = 10,
+  triggers = [' ', 'Tab'],
+}) => {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isComposing = useRef(false);
+  // null = not yet synced, ensures first effect always runs
+  const syncedRef = useRef<string[] | null>(null);
 
-  state = {
-    value: this.props.value,
-  };
+  const { state, actions } = useCommand<string>(name, {
+    defaults: EMPTY_DEFAULT,
+    min,
+    max,
+  });
 
-  handleTagRemove = (inIndex) => {
-    // const { value } = this.state;
-    // const newValue = value!.filter((_, idx) => idx !== inIndex);
-    // this.handleChange(newValue);
-    this.listCtx.remove(inIndex);
-  };
+  // keep ref in sync so handleBlur doesn't depend on state.list
+  const listRef = useRef(state.list);
+  listRef.current = state.list;
 
-  template = ({ item, index }) => {
-    const { readOnly } = this.props;
-    return (
+  // external value -> store (skip if already synced to same value)
+  useEffect(() => {
+    if (syncedRef.current === null || !isEqual(value, syncedRef.current)) {
+      syncedRef.current = value.slice();
+      actions.reset(value.slice());
+    }
+  }, [value]);
+
+  // store change -> external onChange
+  useEffect(() => {
+    if (!state.change) return;
+    const list = state.list.map((s) => s.trim());
+    syncedRef.current = list;
+    onChange?.({ target: { value: list } });
+  }, [state.change]);
+
+  const getLatestInput = useCallback((): HTMLInputElement | null => {
+    if (!rootRef.current) return null;
+    const els = rootRef.current.querySelectorAll(`.${ITEM_SLOT} input`);
+    return els[els.length - 1] as HTMLInputElement;
+  }, []);
+
+  const focusLast = useCallback(
+    (delay = 100) => {
+      setTimeout(() => getLatestInput()?.focus(), delay);
+    },
+    [getLatestInput]
+  );
+
+  const handleAdd = useCallback(() => {
+    actions.add();
+    focusLast();
+  }, [actions, focusLast]);
+
+  const handleRemove = useCallback(
+    (index: number) => {
+      actions.remove(index);
+    },
+    [actions]
+  );
+
+  const handleInputChange = useCallback(
+    (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+      actions.update(index, () => e.target.value);
+    },
+    [actions]
+  );
+
+  const handleCompositionStart = useCallback(() => {
+    isComposing.current = true;
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    isComposing.current = false;
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    if (isComposing.current) return;
+    const list = nx.unique(listRef.current || []);
+    const latestInput = getLatestInput();
+    setTimeout(() => {
+      const filtered = document.activeElement !== latestInput ? list.filter(Boolean) : list;
+      actions.reset(filtered);
+    }, 10);
+  }, [actions, getLatestInput]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if ((e.nativeEvent as any).isComposing || e.keyCode === 229) return;
+      if (triggers.includes(e.key)) {
+        e.preventDefault();
+        actions.add();
+        setTimeout(() => focusLast(), 100);
+      }
+    },
+    [triggers, actions, focusLast]
+  );
+
+  const renderItem = useCallback(
+    ({ item, index }: { item: string; index: number }) => (
       <Tag key={index}>
         <AutosizeInput
-          ref={this.inputRef}
           type="text"
-          size="small"
           value={item}
           disabled={readOnly}
           readOnly={readOnly}
-          className={`${CLASS_NAME}__input`}
-          onChange={this.handleInputChange.bind(this, index)}
-          onBlur={this.handleInputBlur}
-          onKeyDown={this.handleInputKeyDown}
+          className={ITEM_SLOT}
+          onChange={(e) => handleInputChange(index, e)}
+          onCompositionStart={handleCompositionStart}
+          onCompositionEnd={handleCompositionEnd}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
         />
-        {!readOnly && (
-          <i
-            className={`${CLASS_NAME}__close`}
-            onClick={this.handleTagRemove.bind(this, index)}></i>
-        )}
+        {!readOnly && <i className={`${CLASS_NAME}__close`} onClick={() => handleRemove(index)} />}
       </Tag>
-    );
-  };
+    ),
+    [readOnly, handleInputChange, handleBlur, handleKeyDown, handleRemove]
+  );
 
-  templateCreate = () => {
-    const { readOnly } = this.props;
-    if (readOnly) return null;
-    return (
-      <Button
-        ref={this.btnRef}
-        size="small"
-        type="dashed"
-        onClick={this.actionCreate}
-        className={`${CLASS_NAME}__create`}>
-        <i className={`${CLASS_NAME}__plus`}></i>
-        新增
-      </Button>
-    );
-  };
-
-  /**
-   * Default item's value.
-   */
-  templateDefault = () => {
-    return '';
-  };
-
-  /**
-   * Add new default item.
-   */
-  actionCreate = () => {
-    const { value } = this.state;
-    this.listCtx.add();
-    this.handleChange(value);
-    this.actionFocusLast();
-  };
-
-  /**
-   * Focus latest input element if exists.
-   * @param inDelay
-   */
-  actionFocusLast = (inDelay?: number) => {
-    const delay = inDelay || 100;
-    setTimeout(() => {
-      this.latestInput?.focus();
-    }, delay);
-  };
-
-  handleInputChange = (inIndex, inEvent) => {
-    const { value } = this.state;
-    const newValue = [...value!];
-    newValue[inIndex] = inEvent.target.value;
-    this.setState({ value: newValue });
-  };
-
-  handleInputBlur = () => {
-    let { value } = this.state;
-    const len = value?.length;
-    setTimeout(() => {
-      value = nx.unique(value || []);
-      if (document.activeElement !== this.latestInput) {
-        value = value?.filter(Boolean);
-      }
-      this.handleChange(value);
-      if (value?.length !== len) {
-        this.actionFocusLast(100);
-      }
-    }, 10);
-  };
-
-  handleInputKeyDown = (inEvent) => {
-    const { triggers } = this.props;
-    if (inEvent.nativeEvent.isComposing || inEvent.keyCode === 229) return;
-    if (triggers?.includes(inEvent.key)) {
-      inEvent.preventDefault();
-      this.actionCreate();
-    }
-  };
-
-  handleInterChange = (inEvent) => {
-    // const { value } = inEvent.target;
-    this.handleChange(inEvent);
-  };
-
-  handleChange = (inValue, inCallback?) => {
-    const { onChange } = this.props;
-    const value = inValue.map((item) => item.trim());
-    const target = { value };
-    this.setState(target, () => {
-      onChange?.({ target });
-      inCallback?.(value);
-    });
-  };
-
-  shouldComponentUpdate(nextProps: Readonly<AcEditableTagGroupProps>): boolean {
-    const { value } = nextProps;
-    if (!deepEqual(value, this.props.value)) {
-      this.setState({ value: value!.slice() });
-    }
-    return true;
-  }
-
-  render() {
-    const {
-      className,
-      value,
-      onChange,
-      min,
-      max,
-      triggers,
-      keyExtractor,
-      slots,
-      defaults,
-      ...props
-    } = this.props;
-    const { value: stateValue } = this.state;
-
-    return (
-      <div ref={this.rootForwardedRef}>
-        <ReactInteractiveList
-          className={cx(CLASS_NAME, className)}
-          ref={this.rootRef}
-          min={min}
-          max={max}
-          value={stateValue}
-          keyExtractor={INDEX}
-          slots={{ item: this.template, empty: slots?.empty }}
-          defaults={this.templateDefault}
-          onChange={this.handleInterChange}
-          {...props}
-        />
-        {this.templateCreate()}
-      </div>
-    );
-  }
-}
-
-export const AcEditableTagGroupFc = (props: AcEditableTagGroupProps) => {
-  return <AcEditableTagGroup {...props} />;
+  return (
+    <div ref={rootRef} className={cx(CLASS_NAME, className)}>
+      <DynamicList<string>
+        name={name}
+        defaults={EMPTY_DEFAULT}
+        min={min}
+        max={max}
+        slots={{ item: renderItem }}
+      />
+      {!readOnly && (
+        <Button
+          size="small"
+          type="dashed"
+          disabled={!state.canAdd || disabled}
+          onClick={handleAdd}
+          className={`${CLASS_NAME}__create`}>
+          <i className={`${CLASS_NAME}__plus`} />
+          新增
+        </Button>
+      )}
+    </div>
+  );
 };
+
+export default AcEditableTagGroup;

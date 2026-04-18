@@ -11,8 +11,7 @@ import { AcCheckboxFc } from './checkbox';
 import { AcCheckboxGroupFc } from './checkbox-group';
 import { AcCodeFlaskFc } from './codeflask';
 import { AcDatePickerFc } from './date-picker';
-import { AcEditableTagGroupFc } from './editable-tag-group';
-import { AcEditTagGroup2 } from './edit-tag-group2';
+import { AcEditableTagGroup } from './editable-tag-group';
 import { AcInputFc } from './input';
 import { AcInputCopyableFc } from './input-copyable';
 import { AcInputHiddenFc } from './input-hidden';
@@ -45,8 +44,7 @@ export const widgets = {
   'ac:checkbox-group': AcCheckboxGroupFc,
   'ac:code-flask': AcCodeFlaskFc,
   'ac:date-picker': AcDatePickerFc,
-  'ac:editable-tag-group': AcEditableTagGroupFc,
-  'ac:edit-tag-group2': AcEditTagGroup2,
+  'ac:editable-tag-group': AcEditableTagGroup,
   'ac:input': AcInputFc,
   'ac:input-copyable': AcInputCopyableFc,
   'ac:input-hidden': AcInputHiddenFc,
