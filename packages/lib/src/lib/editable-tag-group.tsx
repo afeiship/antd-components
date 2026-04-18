@@ -26,6 +26,11 @@ const isEqual = (a: string[], b: string[]) =>
 
 const EMPTY_DEFAULT = () => '';
 
+const getIndex = (el: EventTarget | null): number => {
+  const tag = (el as HTMLElement)?.closest('[data-index]');
+  return Number((tag as HTMLElement)?.dataset?.index);
+};
+
 export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
   name,
   className,
@@ -39,8 +44,9 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const isComposing = useRef(false);
-  // null = not yet synced, ensures first effect always runs
   const syncedRef = useRef<string[] | null>(null);
+  const triggersRef = useRef(triggers);
+  triggersRef.current = triggers;
 
   const { state, actions } = useCommand<string>(name, {
     defaults: EMPTY_DEFAULT,
@@ -48,11 +54,10 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
     max,
   });
 
-  // keep ref in sync so handleBlur doesn't depend on state.list
   const listRef = useRef(state.list);
   listRef.current = state.list;
 
-  // external value -> store (skip if already synced to same value)
+  // external value -> store
   useEffect(() => {
     if (syncedRef.current === null || !isEqual(value, syncedRef.current)) {
       syncedRef.current = value.slice();
@@ -60,9 +65,10 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
     }
   }, [value]);
 
-  // store change -> external onChange
+  // store change -> external onChange (skip during IME composition)
   useEffect(() => {
     if (!state.change) return;
+    if (state.change.action === 'update' && isComposing.current) return;
     const list = state.list.map((s) => s.trim());
     syncedRef.current = list;
     onChange?.({ target: { value: list } });
@@ -86,16 +92,17 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
     focusLast();
   }, [actions, focusLast]);
 
-  const handleRemove = useCallback(
-    (index: number) => {
-      actions.remove(index);
+  // stable handlers — read index from DOM via data-index
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      actions.update(getIndex(e.target), () => e.target.value);
     },
     [actions]
   );
 
-  const handleInputChange = useCallback(
-    (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
-      actions.update(index, () => e.target.value);
+  const handleRemove = useCallback(
+    (e: React.MouseEvent) => {
+      actions.remove(getIndex(e.target));
     },
     [actions]
   );
@@ -121,31 +128,31 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if ((e.nativeEvent as any).isComposing || e.keyCode === 229) return;
-      if (triggers.includes(e.key)) {
+      if (triggersRef.current.includes(e.key)) {
         e.preventDefault();
         actions.add();
         setTimeout(() => focusLast(), 100);
       }
     },
-    [triggers, actions, focusLast]
+    [actions, focusLast]
   );
 
   const renderItem = useCallback(
     ({ item, index }: { item: string; index: number }) => (
-      <Tag key={index}>
+      <Tag key={index} data-index={index}>
         <AutosizeInput
           type="text"
           value={item}
           disabled={readOnly}
           readOnly={readOnly}
           className={ITEM_SLOT}
-          onChange={(e) => handleInputChange(index, e)}
+          onChange={handleInputChange}
           onCompositionStart={handleCompositionStart}
           onCompositionEnd={handleCompositionEnd}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
         />
-        {!readOnly && <i className={`${CLASS_NAME}__close`} onClick={() => handleRemove(index)} />}
+        {!readOnly && <i className={`${CLASS_NAME}__close`} onClick={handleRemove} />}
       </Tag>
     ),
     [readOnly, handleInputChange, handleBlur, handleKeyDown, handleRemove]

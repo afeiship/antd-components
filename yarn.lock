@@ -1270,10 +1270,10 @@
     js-beautify "^1.15.1"
     tslib "^2.5.0"
 
-"@jswork/react-dynamic-list@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jswork/react-dynamic-list/-/react-dynamic-list-1.0.4.tgz#09a868b5b74ba3d99021e335bc48554ae215384f"
-  integrity sha512-008D9HRnnB2AsFDjmx2XLoIi0J1Zgd2iPoyqFK4S7rseX1PJZU3K0SCFGDq96pxcfOls3LqhC11WhEtgcs9WhQ==
+"@jswork/react-dynamic-list@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jswork/react-dynamic-list/-/react-dynamic-list-1.0.5.tgz#08f404c5345b7150fbd3351c9f894073cc36229a"
+  integrity sha512-xn8cMHmkKUoSEaCdNWQoT6iw9LV5nboFuB/ZXQxgMik4OcHSJ1wckk+P0+ghB+nVNHFtDLphaVIqlIvNX0Dclg==
 
 "@jswork/react-interactive-list@^1.6.2":
   version "1.6.2"
@@ -1289,19 +1289,19 @@
     "@jswork/noop" "^1.0.0"
     classnames "^2.5.1"
 
-"@jswork/react-list@^2.0.5":
-  version "2.0.5"
-  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.5.tgz#659c8f23506d81d32497d4ff63f05a2e1f2090c4"
-  integrity sha512-xLdCCY/l/UZ8qI0FYb7eyn3p9UPu8u7toa8xXkejx7YA2XsLJfkRUJjfUPPbsnCxGLU4ZTWGoas0hGr45KZYuA==
+"@jswork/react-list@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.10.tgz#4a372567349ffa5f1f82cf4f288678cfd43d1f96"
+  integrity sha512-o61D7AjZf9JymHMR8c3cHMX8yz310iIXjRmvTMKAx1zqvzzve8T9UrQrtVobjAh0GDnLHV2Cub2LCETURXWB8Q==
   dependencies:
     "@jswork/class-imperative-handle" "^1.0.1"
     "@jswork/noop" "^1.0.0"
     classnames "^2.5.1"
 
-"@jswork/react-list@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.9.tgz#7b652ffdcd866b9748d9dbeee93d4301090b957b"
-  integrity sha512-Ab05PBVrzS5+ikx2+ebYEq16VQMtga2FBoDzQAmfmtPjB1UzzaFoH4U15236S/7xdB+2d5GrPjHh/gimpvFKZw==
+"@jswork/react-list@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.5.tgz#659c8f23506d81d32497d4ff63f05a2e1f2090c4"
+  integrity sha512-xLdCCY/l/UZ8qI0FYb7eyn3p9UPu8u7toa8xXkejx7YA2XsLJfkRUJjfUPPbsnCxGLU4ZTWGoas0hGr45KZYuA==
   dependencies:
     "@jswork/class-imperative-handle" "^1.0.1"
     "@jswork/noop" "^1.0.0"
