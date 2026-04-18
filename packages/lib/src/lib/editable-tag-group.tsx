@@ -61,7 +61,7 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
   useEffect(() => {
     if (syncedRef.current === null || !isEqual(value, syncedRef.current)) {
       syncedRef.current = value.slice();
-      actions.reset(value.slice());
+      actions.set(value.slice());
     }
   }, [value]);
 
@@ -121,7 +121,7 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
     const latestInput = getLatestInput();
     setTimeout(() => {
       const filtered = document.activeElement !== latestInput ? list.filter(Boolean) : list;
-      actions.reset(filtered);
+      actions.set(filtered);
     }, 10);
   }, [actions, getLatestInput]);
 
