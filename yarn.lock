@@ -1278,9 +1278,9 @@
     fast-deep-equal "^3.1.3"
 
 "@jswork/react-list@*":
-  version "2.0.15"
-  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.15.tgz#3da355ec61bc1a002808d5f1f6007c1ce4df0d15"
-  integrity sha512-OxCZDDFqeRdX05ZrKZKeU4QPSZKAI97bYdL0kfaGZHRy8jAgmFCqO9GVFQJxCPI1hM5b8T9ADmfD0NAX1Qx41A==
+  version "2.0.16"
+  resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.16.tgz#6d870463d4615cfcdd357b4093a3059bc1804de0"
+  integrity sha512-h9P+SGM1CJJkn+pK4UY7dws5ESteHobVha821w6pLqXI9wFZqHBXEbaoog7I1y8F7OrUxP+am6JgGHiXvZHMwA==
   dependencies:
     "@jswork/class-imperative-handle" "^1.0.1"
     "@jswork/noop" "^1.0.0"
