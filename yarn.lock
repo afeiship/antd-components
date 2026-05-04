@@ -1151,45 +1151,45 @@
   resolved "https://registry.npmmirror.com/@jswork/loadkit/-/loadkit-1.0.6.tgz#0e384a650088abf2df5eab29e5a04de627764301"
   integrity sha512-ggR1wjzB1bb/bPphCQiRej7W/MmULEdtEVM//fFityvX+3yQV8CNuyAHzukGmbkgP5zIQOU56mbBfrtHqtM5rw==
 
-"@jswork/next-compact-object@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmmirror.com/@jswork/next-compact-object/-/next-compact-object-1.0.7.tgz#f226596d35437a76b9e28bd8ee7d4bba63a4c1c0"
-  integrity sha512-i/0XaF8kltQwuKf6Wjvi0LBl5zV68DrxwE/fCA/cAhjedUSTr5Y0yKtTs8OBQuRz4pfJGAmg4rIcb70Ohr+iBQ==
-
-"@jswork/next-create-fetcher@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmmirror.com/@jswork/next-create-fetcher/-/next-create-fetcher-1.0.6.tgz#869159e709118caea6b72cb8727c84e567d991d8"
-  integrity sha512-7611+nMdMdBdYe8hj/smxtvaTxxLEyxNpGAzlEjERPvi53j6umtY9Q4tYWhvb9NpVxCZOsngwhJlEeVPBg9d9A==
-
-"@jswork/next-dom-event@^1.0.8":
+"@jswork/next-compact-object@^1.0.8":
   version "1.0.8"
-  resolved "https://registry.npmmirror.com/@jswork/next-dom-event/-/next-dom-event-1.0.8.tgz#d040cd56748330ce3e1baafce4d4e31943ce8530"
-  integrity sha512-/vBPjy7EGs0ysVO2QJSCZ05B8SYOQnigXh3KvCPPKglf8KwWm2348VobDqmgBVhQGc847Bg/NzKavzZinDCHyw==
+  resolved "https://registry.npmjs.org/@jswork/next-compact-object/-/next-compact-object-1.0.8.tgz#347e891da2d39410bf2c3758a60ad00cd65546ac"
+  integrity sha512-qe/bWm+1/XrYiEHfFV4AhlqlD+MceyLY4KjpwgcMe0pF3u7mOnGiopa69+2KDWFzGk1V2+73zPJewjNxtsG3qQ==
 
-"@jswork/next-gpid@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmmirror.com/@jswork/next-gpid/-/next-gpid-1.0.4.tgz#2aaebc279210815d233236bf2ef2f049bd194284"
-  integrity sha512-DyEeCIOreYAfVcQ3bhaCBap6SHGRhnkp1SgN3MTgyyOW3KoGPCtFdPSS0SzxVss8LLJY63OyTmGVkOx/NXCvUg==
-
-"@jswork/next-tmpl@^1.0.7":
+"@jswork/next-create-fetcher@^1.0.7":
   version "1.0.7"
-  resolved "https://registry.npmjs.org/@jswork/next-tmpl/-/next-tmpl-1.0.7.tgz#7849e43f43782479329b740e0b93b40e3719a63f"
-  integrity sha512-PASVF+ak3RArfyJ9r7uDICLBYkko3MZwOkn9ORXU9malXdiUl/Eog2sELNIo+wPqWCn0sLpC2DoZTiTBmeQ7YA==
+  resolved "https://registry.npmjs.org/@jswork/next-create-fetcher/-/next-create-fetcher-1.0.7.tgz#4491b28785d697962446c209cf13e7e0147f3583"
+  integrity sha512-BuSX7lEm74+Q2awSnX12lWD9UUdyFOaV+/GID9WoQGUomHHWtmGf2FTzURQD0oa0heottosbWeOAwdryMC/zOw==
 
-"@jswork/next-tree-walk@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmmirror.com/@jswork/next-tree-walk/-/next-tree-walk-1.0.7.tgz#7b8ec1532e1a9f6c7e02f4b71e42d8fdf90d32e9"
-  integrity sha512-mEFysGEUCNGd57nzAGh3SNIErZNcq92Yk0UmevnueSzUnxdVcHejR+SC5zbf3U5ik9FeyPXdkN6PdZS+gwiMuQ==
+"@jswork/next-dom-event@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@jswork/next-dom-event/-/next-dom-event-1.0.9.tgz#8969403579f5b581552a36edc146b2192e2dd025"
+  integrity sha512-aeYeVynECd5NE7IukHrIQ4oAUDYBsHfPgXzE9EOJ0/vq4UEdF6SjtDkpntFO/Or7hMl8vZ/3BQr7DXBPZdJX5g==
 
-"@jswork/next-unique@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmmirror.com/@jswork/next-unique/-/next-unique-1.0.2.tgz#8475c8c827eff8fdc629216372347f348f68d7c4"
-  integrity sha512-H1vr4OQ9sbKMw4gQfuDCFF3Y68ASnYteTXrg/JLKNm7GmCmlnM+Zh0/sfJs/P2KdHcgt0dlHIVm20FLAsFmavQ==
+"@jswork/next-gpid@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@jswork/next-gpid/-/next-gpid-1.0.5.tgz#793f0292df3f6e3c406a55a16d5a11d5c00660d3"
+  integrity sha512-LJtyR70mEyDsiNzDoAaouJtIQ+oq3sL6C8FIYdiOg0aPlMvOoWAgMUYuWwgkIyAckOx5ex0WgkuyGgqOS+1htw==
 
-"@jswork/next@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.npmmirror.com/@jswork/next/-/next-1.4.2.tgz#d9bc1eacb57b35ab1e41f0eb5b41e680f9a6e1d4"
-  integrity sha512-pt+crzxZ1gFPORImjdwnLGNCjkbC9KsOD28QidfukHVWShlUxLRagcvX0gSE5zkV8j8+HxP/IYJ6CKRbtp+iYQ==
+"@jswork/next-tmpl@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@jswork/next-tmpl/-/next-tmpl-1.0.8.tgz#f4e476bde7f1a38e62512dd447bd6e13aa89c324"
+  integrity sha512-1ab+u731SsaqTfu1ifiRwthoGtQI4APF8bs2obkkd/SYU4S6w4EAIgMgNy1x8JDbz1u+6iZDca3+Oz4CeVXTug==
+
+"@jswork/next-tree-walk@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@jswork/next-tree-walk/-/next-tree-walk-1.0.8.tgz#b11a325f1f07eed7d425d7589df1c88e1b9d7db2"
+  integrity sha512-G6fZUhbeJy8IP/iktcuwqmVTyXzd4C/OhkbpdUfSY2iJi9AZh1V4O8pKbvvfiuVNtZ3qsT1eQsQUiPhg4t+2Wg==
+
+"@jswork/next-unique@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@jswork/next-unique/-/next-unique-1.0.3.tgz#b52bdefc206941e1d179a3519a22434ae68abc3a"
+  integrity sha512-dPxINw9ZYK+h6bzrwtNDtAQ73wZTj1Dl8K+mQPJRaVFW5L/j4c7v9AfDj7cjCXENqazqT1+XZh/MK9tIiIr0Eg==
+
+"@jswork/next@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@jswork/next/-/next-1.5.2.tgz#f7d5b7691dc0e5eedc600c5e50b74e84166c9823"
+  integrity sha512-D8Eiyg8SiN9MasLiQHp4uqZqwEOUceaQnq+yGToWRT7fDTCQdtMzDiuJHzflFQy94LxVYKcGpdiIplsfsSBYGw==
 
 "@jswork/noop@^1.0.0":
   version "1.0.0"
@@ -1249,10 +1249,10 @@
     "@jswork/react-list" "^1.1.3"
     classnames "^2.2.6"
 
-"@jswork/react-ant-status-switch@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@jswork/react-ant-status-switch/-/react-ant-status-switch-1.0.4.tgz#0fb37ed79839df3e2e9ed0c333c093de3ea3308e"
-  integrity sha512-hSXJYIdE4xJJRPD+x9Ba+T8jfM8HHyMTtkahntgYuQdD7wf4dPfR0PwNhsKhNyIyzwvWeyJAZDu7ME/bYKyp9w==
+"@jswork/react-ant-status-switch@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@jswork/react-ant-status-switch/-/react-ant-status-switch-1.0.6.tgz#0861d188fb6e19c95764ad8b4749a7d3a907ebda"
+  integrity sha512-a8hH36gGB1iSHEH56SxsyuNIito4/uDxBHN6R3MUwNCeF8kyAD/cFSAu0k6lDgI02kbYH6Hpg2C0B89yQCa0kA==
   dependencies:
     "@jswork/noop" "^1.0.0"
     "@jswork/rctpl-ant-radio-button" "^1.0.3"
