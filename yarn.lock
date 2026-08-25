@@ -1270,6 +1270,13 @@
     js-beautify "^1.15.1"
     tslib "^2.5.0"
 
+"@jswork/react-dynamic-list@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/@jswork/react-dynamic-list/-/react-dynamic-list-1.0.11.tgz#970e8ccc034ae562ef0f23d809a4c2e223371b6b"
+  integrity sha512-W/HywW9CQBVIkZKdt99XrOHOmSnVeslA968w7QfHH8bRORI5muVWJ4pQc5T5VyBZ52KgEuF8KpV4sX3GJdUJnQ==
+  dependencies:
+    fast-deep-equal "^3.1.3"
+
 "@jswork/react-list@*":
   version "2.0.18"
   resolved "https://registry.npmjs.org/@jswork/react-list/-/react-list-2.0.18.tgz#c1233c3a82da908dbc24e40a96b6ee944d62c95c"
