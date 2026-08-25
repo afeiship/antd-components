@@ -1,7 +1,6 @@
 import { LinkOutlined } from '@ant-design/icons';
 import { Space, Typography } from 'antd';
 import cx from 'classnames';
-import { ValueType } from 'rc-input/lib/interface';
 import React from 'react';
 import { AcInput, AcInputProps } from './input';
 
@@ -14,7 +13,7 @@ export interface AcInputCopyableProps extends AcInputProps {
 }
 
 interface AcInputCopyableState {
-  value?: ValueType;
+  value?: string;
 }
 
 export class AcInputCopyable extends React.Component<AcInputCopyableProps, AcInputCopyableState> {
@@ -27,7 +26,7 @@ export class AcInputCopyable extends React.Component<AcInputCopyableProps, AcInp
   constructor(props: AcInputCopyableProps) {
     super(props);
     this.state = {
-      value: props.value || '',
+      value: String(props.value || ''),
     };
   }
 
@@ -49,7 +48,7 @@ export class AcInputCopyable extends React.Component<AcInputCopyableProps, AcInp
 
   shouldComponentUpdate(props: Readonly<AcInputProps>): boolean {
     const { value } = props;
-    if (value !== this.props.value) this.setState({ value });
+    if (value !== this.props.value) this.setState({ value: String(value ?? '') });
     return true;
   }
 
