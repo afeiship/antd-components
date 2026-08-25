@@ -1,9 +1,10 @@
 import '@jswork/next-unique';
 import { Button, Tag } from 'antd';
 import cx from 'classnames';
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 import AutosizeInput from 'react-input-autosize';
 import { DynamicList, useCommand } from '@jswork/react-dynamic-list';
+import type { ChangeEvent } from '@jswork/react-dynamic-list';
 
 const CLASS_NAME = 'ac-editable-tag-group';
 
@@ -20,9 +21,6 @@ export type AcEditableTagGroupProps = {
 };
 
 const ITEM_SLOT = `${CLASS_NAME}__input`;
-
-const isEqual = (a: string[], b: string[]) =>
-  a.length === b.length && a.every((v, i) => v === b[i]);
 
 const EMPTY_DEFAULT = () => '';
 
@@ -44,35 +42,13 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const isComposing = useRef(false);
-  const syncedRef = useRef<string[] | null>(null);
   const triggersRef = useRef(triggers);
   triggersRef.current = triggers;
 
-  const { state, actions } = useCommand<string>(name, {
-    defaults: EMPTY_DEFAULT,
-    min,
-    max,
-  });
+  const { state, actions } = useCommand<string>(name);
 
   const listRef = useRef(state.list);
   listRef.current = state.list;
-
-  // external value -> store
-  useEffect(() => {
-    if (syncedRef.current === null || !isEqual(value, syncedRef.current)) {
-      syncedRef.current = value.slice();
-      actions.set(value.slice());
-    }
-  }, [value]);
-
-  // store change -> external onChange (skip during IME composition)
-  useEffect(() => {
-    if (!state.change) return;
-    if (state.change.action === 'update' && isComposing.current) return;
-    const list = state.list.map((s) => s.trim());
-    syncedRef.current = list;
-    onChange?.({ target: { value: list } });
-  }, [state.change]);
 
   const getLatestInput = useCallback((): HTMLInputElement | null => {
     if (!rootRef.current) return null;
@@ -137,6 +113,15 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
     [actions, focusLast]
   );
 
+  const handleDynamicChange = useCallback(
+    (e: ChangeEvent<string>) => {
+      if (e.action === 'update' && isComposing.current) return;
+      const list = e.data.map((s) => s.trim());
+      onChange?.({ target: { value: list } });
+    },
+    [onChange]
+  );
+
   const renderItem = useCallback(
     ({ item, index }: { item: string; index: number }) => (
       <Tag key={index} data-index={index}>
@@ -163,8 +148,10 @@ export const AcEditableTagGroup: React.FC<AcEditableTagGroupProps> = ({
       <DynamicList<string>
         name={name}
         defaults={EMPTY_DEFAULT}
+        data={value}
         min={min}
         max={max}
+        onChange={handleDynamicChange}
         slots={{ item: renderItem }}
       />
       {!readOnly && (
