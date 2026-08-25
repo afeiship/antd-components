@@ -1,6 +1,6 @@
 {
   "name": "@jswork/antd-components",
-  "version": "1.0.241",
+  "version": "1.0.243",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -64,7 +64,6 @@
     "@jswork/next-tree-walk": "^1.0.8",
     "@jswork/next-unique": "^1.0.3",
     "@jswork/react-codeflask": "^1.1.2",
-    "@jswork/react-dynamic-list": "*",
     "@jswork/react-list": "*",
     "@jswork/url-sync-flat": "^1.0.8",
     "@jswork/weibo2res": "^1.0.4",
