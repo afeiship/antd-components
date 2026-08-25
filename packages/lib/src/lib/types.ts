@@ -123,7 +123,7 @@ export interface TableActionProps {
 declare global {
   interface NxStatic {
     $event: any;
-    $api: Record<string, any>;
+    $api: any;
     $nav: NavigateFunction;
 
     err: (msg: string) => any;
