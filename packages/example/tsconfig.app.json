@@ -32,6 +32,7 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "../../node_modules/@jswork/next/types/misc.d.ts"
   ]
 }
