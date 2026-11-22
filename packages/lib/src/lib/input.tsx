@@ -18,7 +18,7 @@ export class AcInput extends React.Component<AcInputProps> {
     autoComplete: false,
   };
 
-  state = { value: this.props.value };
+  state: { value: InputProps['value'] } = { value: this.props.value };
 
   shouldComponentUpdate(inProps: Readonly<AcInputProps>): boolean {
     const { value } = inProps;
