@@ -31,7 +31,7 @@ All components are written in TypeScript and built on top of Ant Design 5.x. The
 
 ### Basic Installation
 ```bash
-npm install -S @jswork/antd-components
+pnpm add @jswork/antd-components
 ```
 
 ### Dependencies
@@ -724,16 +724,16 @@ Components maintain internal state and support controlled/uncontrolled modes:
 ### Development
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Build library
-npm run build
+pnpm build
 
 # Run examples
-npm run dev:example
+pnpm dev:example
 
 # Publish release
-npm run release
+pnpm release
 ```
 
 ## License

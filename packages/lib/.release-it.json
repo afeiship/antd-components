@@ -4,8 +4,8 @@
   },
   "hooks": {
     "after:init": ["t2k"],
-    "after:bump": ["yarn run build"],
-    "after:release": ["yarn pkg get name | cnpm sync"]
+    "after:bump": ["pnpm run build"],
+    "after:release": ["node -p \"require('./package.json').name\" | cnpm sync"]
   },
   "github": {
     "release": true,

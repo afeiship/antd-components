@@ -3,5 +3,5 @@
 
 ## installation
 ```shell
-yarn add @jswork/antd-components
+pnpm add @jswork/antd-components
 ```

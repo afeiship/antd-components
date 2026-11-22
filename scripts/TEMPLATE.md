@@ -8,7 +8,7 @@
 
 ## installation
 ```shell
-npm install -S @jswork/antd-components
+pnpm add @jswork/antd-components
 ```
 
 ## usage
