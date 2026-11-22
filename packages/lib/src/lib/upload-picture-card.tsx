@@ -42,7 +42,7 @@ export class AcUploadPictureCard extends AcAbstractUpload {
           onPreview={this.handlePreview}
           onChange={this.handleChange}
           {...props}>
-          <Space direction="horizontal">
+          <Space orientation="horizontal">
             <UploadOutlined />
             <span>上传</span>
           </Space>

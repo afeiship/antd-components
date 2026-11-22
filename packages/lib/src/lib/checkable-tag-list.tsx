@@ -78,7 +78,7 @@ export class AcCheckableTagList extends React.Component<AcCheckableTagListProps>
     const label = this.t('selectAll');
 
     return (
-      <Space direction="horizontal" className={cx(CLASS_NAME, className)}>
+      <Space orientation="horizontal" className={cx(CLASS_NAME, className)}>
         <Button
           disabled={disabled}
           size="small"
