@@ -1,0 +1,11 @@
+# 替代 scripts/build-style.mjs（原 postbuild 做的事情）
+# sassg build 等价于：sass 编译 src/style.scss → dist/style.css（compressed）
+entries:
+  - src: src/style.scss
+    out: dist/style.css
+
+# 这部分原来由 tsup.config.ts 里的 esbuild-plugin-copy 完成，
+# 交给 sassg 后可以从 tsup 配置里删掉
+copy:
+  - from: src/styles/**/*.scss
+    to: dist/styles

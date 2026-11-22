@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "postbuild": "node scripts/build-style.mjs",
+    "postbuild": "sassg build",
     "release": "release-it"
   },
   "peerDependencies": {
