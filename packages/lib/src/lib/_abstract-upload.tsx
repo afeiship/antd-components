@@ -9,8 +9,8 @@ import type { StdCallback } from './types';
 
 const styleOpts = { id: 'viewer-style' };
 const scriptOpts = { id: 'viewerjs' };
-const styleURL = 'https://unpkg.com/viewerjs@1.11.1/dist/viewer.min.css';
-const scriptURL = 'https://unpkg.com/viewerjs@1.11.1/dist/viewer.min.js';
+const styleURL = 'https://cdn.jsdelivr.net/npm/viewerjs@1.11.1/dist/viewer.min.css';
+const scriptURL = 'https://cdn.jsdelivr.net/npm/viewerjs@1.11.1/dist/viewer.min.js';
 
 export type AcAbstractUploadProps = {
   className?: string;
