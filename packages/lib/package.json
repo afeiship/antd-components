@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "postbuild": "sass src/style.scss dist/style.css --style=compressed --no-source-map --load-path=node_modules",
+    "postbuild": "node scripts/build-style.mjs",
     "release": "release-it"
   },
   "peerDependencies": {
